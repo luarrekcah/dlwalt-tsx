@@ -58,10 +58,9 @@ const Main = () => {
          * <SectionAbout />
          */
       }
-      <SectionBYD />
       <SectionFeatures />
       <SectionServices />
-      <SectionProjects data={projects} />
+      {/**<SectionProjects data={projects} /> */}
       <SectionTestimonial />
       {/*SECTIONS*/}
       <FloatingWhatsApp

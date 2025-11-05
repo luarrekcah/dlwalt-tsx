@@ -78,7 +78,8 @@ const Footer = () => {
                 <br /> Domingo: <span className="text-right">Fechado</span>
               </div>
             </div>
-            <div className="col-lg-3 col-md-6 mt-5 mt-lg-0 footer-widget">
+            {   /**
+             * <div className="col-lg-3 col-md-6 mt-5 mt-lg-0 footer-widget">
               <h3 className="widget-title">Serviços</h3>
               {services.length === 0 ? (
                 <LoadingServer />
@@ -96,6 +97,7 @@ const Footer = () => {
                 </ul>
               )}
             </div>
+             */}
           </div>
         </div>
       </div>
