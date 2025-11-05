@@ -19,7 +19,7 @@ import { FreeMode, Navigation, Thumbs } from "swiper";
 import HelmetHeader from "../components/HelmetHeader";
 
 const ProjectsSingle = () => {
-  const [thumbsSwiper, setThumbsSwiper] = React.useState<any>();
+  const [thumbsSwiper] = React.useState<any>();
   let { id } = useParams();
   const [project, setProject] = React.useState<any>({});
 

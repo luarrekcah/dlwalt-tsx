@@ -1,4 +1,4 @@
-import react from "react";
+
 import SearchModal from "./SearchModal";
 
 const Navbar = () => {
@@ -82,7 +82,7 @@ const Navbar = () => {
                     </li>
                     <li className="nav-item dropdown">
                       <a
-                        href="#"
+                        href="/#"
                         className="nav-link dropdown-toggle"
                         data-toggle="dropdown"
                       >
@@ -97,7 +97,7 @@ const Navbar = () => {
                         </li>
                         <li className="dropdown-submenu">
                           <a
-                            href="#"
+                            href="/#"
                             className="dropdown-toggle"
                             data-toggle="dropdown"
                           >
@@ -118,7 +118,7 @@ const Navbar = () => {
                     </li>
                     <li className="nav-item dropdown">
                       <a
-                        href="#"
+                        href="/#"
                         className="nav-link dropdown-toggle"
                         data-toggle="dropdown"
                       >

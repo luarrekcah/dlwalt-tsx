@@ -26,7 +26,7 @@ const Search = () => {
 
     setAll(data);
     setLoading(false);
-  }, []);
+  }, [query]);
 
   return (
     <div className="body-inner">

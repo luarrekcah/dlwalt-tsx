@@ -20,7 +20,7 @@ const Bv = () => {
           <a
             href="https://meufinanciamentosolar.com.br"
             target="_blank"
-            rel="noopener"
+            rel="noreferrer"
             style={{ textDecoration: "none", color: "#666666" }}
           >
             Meu Financiamento Solar
