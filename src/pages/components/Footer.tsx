@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React from "react";
 import { getAllItems } from "../../services/database";
 import LoadingServer from "./LoadingServer";

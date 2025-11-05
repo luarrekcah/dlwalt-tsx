@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React from "react";
 import { FloatingWhatsApp } from "react-floating-whatsapp";
 

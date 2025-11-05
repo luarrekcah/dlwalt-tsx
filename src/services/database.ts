@@ -1,3 +1,5 @@
+/* eslint-disable no-unreachable */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import axios from "axios";
 
 export const getAllItems = async (path:any): Promise<any> => {
