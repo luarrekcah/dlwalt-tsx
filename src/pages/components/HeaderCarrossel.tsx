@@ -14,13 +14,13 @@ const HeaderCarrossel = () => {
             <div className="row align-items-center h-100">
               <div className="col-md-12 text-center">
                 <h2 className="slide-title" data-animation-in="slideInLeft">
-                  6 anos de excelência em
+                  9 anos de excelência em
                 </h2>
                 <h3
                   className="slide-sub-title"
                   data-animation-in="slideInRight"
                 >
-                  Engenharia
+                  Energia Solar
                 </h3>
                 <p
                   data-animation-in="slideInRight"
