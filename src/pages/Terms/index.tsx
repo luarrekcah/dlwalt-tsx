@@ -29,7 +29,7 @@ const Terms = () => {
                 Nosso Site é mantido pela pessoa jurídica{" "}
                 <strong>V Silva e Silva LTDA</strong> ("D.walt Engenharia"),
                 devidamente registrada sob o CNPJ n. 26.711.744/0001-08, e-mail:
-                contato@dlwalt.net, com sede em:
+                contato@dwalt.net, com sede em:
               </p>
               <p>Av. Ceará, 2042 - Bosque - Rio Branco - AC CEP 69900-379</p>
               <b>
@@ -410,7 +410,7 @@ const Terms = () => {
               <p>
                 Em caso de dúvidas, sugestões ou problemas com a utilização do
                 Site, o Usuário poderá contatar diretamente Nosso serviço de
-                atendimento, através do endereço de e-mail: contato@dlwalt.net
+                atendimento, através do endereço de e-mail: contato@dwalt.net
                 ou do telefone: +55 68 9252-2616. Estes serviços de atendimento
                 ao Usuário estarão disponíveis nos seguintes dias e horários:
               </p>

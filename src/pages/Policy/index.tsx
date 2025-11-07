@@ -226,7 +226,7 @@ const Policy = () => {
               algum dos canais mencionados abaixo:
             </p>
             <ul>
-              <li>E-Mail: contato@dlwalt.net</li>
+              <li>E-Mail: contato@dwalt.net</li>
               <li>Telefone: +55 68 9240-2096</li>
               <li>
                 Endereço postal: Av. Ceará, 2042 - Bosque - Rio Branco - AC CEP

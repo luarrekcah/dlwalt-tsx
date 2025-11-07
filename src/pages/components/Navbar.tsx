@@ -71,11 +71,6 @@ const Navbar = () => {
                       </a>
                     </li>
                     <li className="nav-item">
-                      <a className="nav-link" href="/#projetos">
-                        Projetos
-                      </a>
-                    </li>
-                    <li className="nav-item">
                       <a className="nav-link" href="/#servicos">
                         Serviços
                       </a>
@@ -89,12 +84,6 @@ const Navbar = () => {
                         Empresa <i className="fa fa-angle-down" />
                       </a>
                       <ul className="dropdown-menu" role="menu">
-                        <li>
-                          <a href="/vagas">Trabalhe Conosco</a>
-                        </li>
-                        <li>
-                          <a href="/faq">F.A.Q</a>
-                        </li>
                         <li className="dropdown-submenu">
                           <a
                             href="/#"
@@ -142,15 +131,6 @@ const Navbar = () => {
                 </div>
               </nav>
             </div>
-          </div>
-          <div
-            data-toggle="modal"
-            data-target="#searchModal"
-            className="nav-search"
-          >
-            <span id="search">
-              <i className="fa fa-search" />
-            </span>
           </div>
         </div>
       </div>

@@ -43,7 +43,7 @@ const Contact = () => {
                 </span>
                 <div className="ts-service-box-content">
                   <h4>E-mail</h4>
-                  <p>contato@dlwalt.net</p>
+                  <p>contato@dwalt.net</p>
                 </div>
               </div>
             </div>
@@ -54,7 +54,7 @@ const Contact = () => {
                 </span>
                 <div className="ts-service-box-content">
                   <h4>Telefones</h4>
-                  <p>(68) 99225-3306</p>
+                  <p>69 99369-5702</p>
                   <p />
                 </div>
               </div>

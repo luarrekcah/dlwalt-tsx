@@ -22,7 +22,8 @@ const HeaderCarrossel = () => {
                 >
                   Energia Solar
                 </h3>
-                <p
+               {/**
+                *  <p
                   data-animation-in="slideInRight"
                   style={{
                     color: "#fff",
@@ -34,6 +35,7 @@ const HeaderCarrossel = () => {
                 >
                   Elétrica & Civil
                 </p>
+                */}
                 <p data-animation-in="slideInLeft" data-duration-in="1.2">
                   <a href="/servicos" className="slider btn btn-primary">
                     Nossos serviços
