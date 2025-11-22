@@ -23,6 +23,13 @@ const Main = () => {
     });
   }, []);
 
+    const handleWhatsClick = (action) => {
+    if (typeof fbq !== "undefined") {
+      fbq("track", action);
+    }
+  };
+
+
   const jsonLd = {
     "@context": "http://schema.org",
     "@type": "Organization",
@@ -70,6 +77,9 @@ const Main = () => {
         placeholder="Olá! Preciso de um orçamento de 500kW"
         chatMessage="Vamos realizar seu orçamento agora mesmo?"
         statusMessage="Geralmente responde em 5 minutos"
+        onclick={handleWhatsClick('ClicouWhatsApp')}
+        onSubmit={handleWhatsClick('EnviouWhatsApp')}
+        onSubmit={handleWhatsClick('EscreveuWhatsApp')}
         avatar="https://firebasestorage.googleapis.com/v0/b/banco-geral-412b6.appspot.com/o/popup.png?alt=media&token=d684ed46-a3cb-4c6e-a496-1ed47955d27f"
       />
       <Footer />
