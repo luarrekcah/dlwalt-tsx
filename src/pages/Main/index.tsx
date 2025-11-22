@@ -23,7 +23,7 @@ const Main = () => {
     });
   }, []);
 
-    const handleWhatsClick = (action) => {
+  const handleWhatsClick = (action: any) => {
     if (typeof fbq !== "undefined") {
       fbq("track", action);
     }
@@ -91,3 +91,7 @@ const Main = () => {
 };
 
 export default Main;
+function fbq(arg0: string, action: any) {
+  throw new Error("Function not implemented.");
+}
+
