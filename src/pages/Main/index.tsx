@@ -16,8 +16,9 @@ import SectionBYD from "./components/SectionBYD";
 
 const Main = () => {
   const [projects, setProjects] = React.useState<any[]>([]);
+  const whatsRef = React.useRef<any>(null);
 
-    const isMobile = /iPhone|iPad|iPod|Android|Mobile/i.test(
+  const isMobile = /iPhone|iPad|iPod|Android|Mobile/i.test(
     typeof navigator !== "undefined" ? navigator.userAgent : ""
   );
 
@@ -25,6 +26,14 @@ const Main = () => {
     getAllItems("dlwalt/projects").then((response: any) => {
       setProjects(response);
     });
+    setTimeout(() => {
+      if (whatsRef.current) {
+        const button = whatsRef.current.querySelector(
+          ".floating-whatsapp-button"
+        );
+        if (button) button.click();
+      }
+    }, 1000); // delay opcional
   }, []);
 
   const handleWhatsClick = (action: any) => {
@@ -32,7 +41,6 @@ const Main = () => {
       fbq("track", action);
     }
   };
-
 
   const jsonLd = {
     "@context": "http://schema.org",
@@ -63,37 +71,38 @@ const Main = () => {
       <Navbar />
       <HeaderCarrossel />
       {/*SECTIONS*/}
-      {
-        /**
-         * DEPOIMENTOS 
-         * 
-         * <SectionAbout />
-         */
-      }
+      {/**
+       * DEPOIMENTOS
+       *
+       * <SectionAbout />
+       */}
       <SectionFeatures />
       <SectionServices />
       {/**<SectionProjects data={projects} /> */}
       <SectionTestimonial />
       {/*SECTIONS*/}
-      <FloatingWhatsApp
-        phoneNumber="+5569993695702"
-        accountName="Atendimento D | Walt"
-        placeholder="Olá! Preciso de um orçamento de 500kW"
-        chatMessage="Vamos realizar seu orçamento agora mesmo?"
-        statusMessage="Geralmente responde em 5 minutos"
-        onClick={() => {
-          handleWhatsClick('ClicouWhatsApp')
-        }}
-        onSubmit={() => {
-          handleWhatsClick('EnviouWhatsApp')
-        }}
-        avatar="https://firebasestorage.googleapis.com/v0/b/banco-geral-412b6.appspot.com/o/popup.png?alt=media&token=d684ed46-a3cb-4c6e-a496-1ed47955d27f"
-        buttonStyle={{
-          width: isMobile ? 48 : 60,
-          height: isMobile ? 48 : 60,
-        }}
-        chatboxHeight={isMobile ? 260 : 320}
-     />
+      <div ref={whatsRef}>
+        <FloatingWhatsApp
+          phoneNumber="+5569993695702"
+          accountName="Atendimento D | Walt"
+          placeholder="Olá! Preciso de um orçamento de 500kW"
+          chatMessage="Vamos realizar seu orçamento agora mesmo?"
+          statusMessage="Geralmente responde em 5 minutos"
+          onClick={() => {
+            handleWhatsClick("ClicouWhatsApp");
+          }}
+          onSubmit={() => {
+            handleWhatsClick("EnviouWhatsApp");
+          }}
+          avatar="https://firebasestorage.googleapis.com/v0/b/banco-geral-412b6.appspot.com/o/popup.png?alt=media&token=d684ed46-a3cb-4c6e-a496-1ed47955d27f"
+          buttonStyle={{
+            width: isMobile ? 48 : 60,
+            height: isMobile ? 48 : 60,
+          }}
+          chatboxHeight={isMobile ? 260 : 320}
+        />
+      </div>
+
       <Footer />
     </div>
   );
@@ -103,4 +112,3 @@ export default Main;
 function fbq(arg0: string, action: any) {
   throw new Error("Function not implemented.");
 }
-
