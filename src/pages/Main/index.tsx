@@ -17,6 +17,10 @@ import SectionBYD from "./components/SectionBYD";
 const Main = () => {
   const [projects, setProjects] = React.useState<any[]>([]);
 
+    const isMobile = /iPhone|iPad|iPod|Android|Mobile/i.test(
+    typeof navigator !== "undefined" ? navigator.userAgent : ""
+  );
+
   React.useEffect(() => {
     getAllItems("dlwalt/projects").then((response: any) => {
       setProjects(response);
@@ -84,7 +88,12 @@ const Main = () => {
           handleWhatsClick('EnviouWhatsApp')
         }}
         avatar="https://firebasestorage.googleapis.com/v0/b/banco-geral-412b6.appspot.com/o/popup.png?alt=media&token=d684ed46-a3cb-4c6e-a496-1ed47955d27f"
-      />
+        buttonStyle={{
+          width: isMobile ? 48 : 60,
+          height: isMobile ? 48 : 60,
+        }}
+        chatboxHeight={isMobile ? 260 : 320}
+     />
       <Footer />
     </div>
   );
