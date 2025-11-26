@@ -81,7 +81,58 @@ const Main = () => {
       {/**<SectionProjects data={projects} /> */}
       <SectionTestimonial />
       {/*SECTIONS*/}
-      <div ref={whatsRef}>
+      {isMobile ? (
+         <div
+    style={{
+      position: "fixed",
+      bottom: "20px",
+      right: "20px",
+      display: "flex",
+      alignItems: "center",
+      gap: "10px",
+      zIndex: 999,
+    }}
+  >
+    {/* Balão de mensagem */}
+    <div
+      style={{
+        backgroundColor: "#ffffff",
+        padding: "8px 14px",
+        borderRadius: "20px",
+        fontSize: "14px",
+        color: "#333",
+        boxShadow: "0 4px 10px rgba(0,0,0,0.15)",
+        whiteSpace: "nowrap",
+      }}
+    >
+      Vamos fazer seu orçamento?
+    </div>
+
+    {/* Botão WhatsApp */}
+    <a
+      href="https://wa.me/5569993695702?text=Olá!%20Quero%20realizar%20um%20orçamento"
+      target="_blank"
+      rel="noopener noreferrer"
+      onClick={() => handleWhatsClick("ClicouWhatsApp")}
+      style={{
+        width: "60px",
+        height: "60px",
+        backgroundColor: "#25D366",
+        borderRadius: "50%",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        boxShadow: "0 4px 10px rgba(0,0,0,0.2)",
+      }}
+    >
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
+        alt="WhatsApp"
+        style={{ width: "32px", height: "32px" }}
+      />
+    </a>
+  </div>
+      ) : (
         <FloatingWhatsApp
           phoneNumber="+5569993695702"
           accountName="Atendimento D | Walt"
@@ -101,7 +152,7 @@ const Main = () => {
           }}
           chatboxHeight={isMobile ? 260 : 320}
         />
-      </div>
+      )}
 
       <Footer />
     </div>
