@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 /* eslint-disable @typescript-eslint/no-unused-vars */
@@ -11,10 +12,11 @@ import Navbar from "../components/Navbar";
 import SectionFeatures from "@/components/SectionFeatures";
 import SectionServices from "@/components/SectionServices";
 import SectionTestimonial from "@/components/SectionTestimonial";
+import Image from "next/image";
 
 const Main = () => {
   const [projects, setProjects] = React.useState<Array<unknown>>([]);
-  const whatsRef = React.useRef<React.RefObject<HTMLDivElement>>(null);
+  const whatsRef = React.useRef<HTMLDivElement>(null);
 
   const isMobile = /iPhone|iPad|iPod|Android|Mobile/i.test(
     typeof navigator !== "undefined" ? navigator.userAgent : ""
@@ -25,7 +27,7 @@ const Main = () => {
       if (whatsRef.current) {
         const button = whatsRef.current.querySelector(
           ".floating-whatsapp-button"
-        );
+        ) as HTMLButtonElement;
         if (button) button.click();
       }
     }, 1000); // delay opcional
@@ -116,10 +118,11 @@ const Main = () => {
               boxShadow: "0 4px 10px rgba(0,0,0,0.2)",
             }}
           >
-            <img
+            <Image
               src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
               alt="WhatsApp"
-              style={{ width: "32px", height: "32px" }}
+              width={32}
+              height={32}
             />
           </a>
         </div>
