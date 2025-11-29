@@ -1,5 +1,6 @@
-
+import Link from "next/link";
 import SearchModal from "./SearchModal";
+import Image from "next/image";
 
 const Navbar = () => {
   return (
@@ -28,9 +29,9 @@ const Navbar = () => {
             }}
           >
             <div className="logo ">
-              <a className="d-block" href="/">
-                <img src="/logo.svg" alt="D Walt Logo" />
-              </a>
+              <Link className="d-block" href="/">
+                <Image src="/logo.svg" alt="D Walt Logo" width={150} height={50} />
+              </Link>
             </div>
           </div>
           <h4
@@ -66,59 +67,59 @@ const Navbar = () => {
                 <div id="navbar-collapse" className="collapse navbar-collapse">
                   <ul className="nav navbar-nav mr-auto">
                     <li className="nav-item active">
-                      <a className="nav-link" href="/">
+                      <Link className="nav-link" href="/">
                         Página Principal
-                      </a>
+                      </Link>
                     </li>
                     <li className="nav-item">
-                      <a className="nav-link" href="/#servicos">
+                      <Link className="nav-link" href="/#servicos">
                         Serviços
-                      </a>
+                      </Link>
                     </li>
                     <li className="nav-item dropdown">
-                      <a
+                      <Link
                         href="/#"
                         className="nav-link dropdown-toggle"
                         data-toggle="dropdown"
                       >
                         Empresa <i className="fa fa-angle-down" />
-                      </a>
+                      </Link>
                       <ul className="dropdown-menu" role="menu">
                         <li className="dropdown-submenu">
-                          <a
+                          <Link
                             href="/#"
                             className="dropdown-toggle"
                             data-toggle="dropdown"
                           >
                             Termos e Políticas
-                          </a>
+                          </Link>
                           <ul className="dropdown-menu">
                             <li>
-                              <a href="/politica">Política de Privacidade</a>
+                              <Link href="/termos/politica-de-privacidade">Política de Privacidade</Link>
                             </li>
                             <li>
-                              <a href="/termos">
+                              <Link href="/termos/termos-de-uso">
                                 TERMOS E CONDIÇÕES GERAIS DE USO E/OU DE VENDA
-                              </a>
+                              </Link>
                             </li>
                           </ul>
                         </li>
                       </ul>
                     </li>
                     <li className="nav-item dropdown">
-                      <a
+                      <Link
                         href="/#"
                         className="nav-link dropdown-toggle"
                         data-toggle="dropdown"
                       >
                         Ferramentas <i className="fa fa-angle-down" />
-                      </a>
+                      </Link>
                       <ul className="dropdown-menu" role="menu">
                         <li>
-                          <a href="/integracoes/banco-bv">Banco BV</a>
+                          <Link href="/ferramentas/banco-bv">Banco BV</Link>
                         </li>
                         <li>
-                          <a href="/mediakit.rar">Media Kit</a>
+                          <Link href="/mediakit.rar">Media Kit</Link>
                         </li>
                       </ul>
                     </li>
