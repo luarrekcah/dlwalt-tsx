@@ -1,0 +1,24 @@
+/**
+ * Algumas estilizações soltas
+ */
+
+.painel-bg {
+  position: relative;
+  overflow: hidden;
+}
+
+.painel-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("/images/backgrounds/bg-panel.png");
+  background-size: cover;
+  background-position: center;
+  opacity: 0.35; /* opacidade da imagem */
+  z-index: 0;
+}
+
+.painel-bg > * {
+  position: relative;
+  z-index: 1; /* conteúdo fica por cima */
+}

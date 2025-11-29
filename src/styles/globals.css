@@ -1,0 +1,23 @@
+@import "@/styles/plugins/animate-css/animate.css";
+@import "@/styles/plugins/aos/aos.css";
+@import "@/styles/plugins/bootstrap/bootstrap.min.css";
+@import "@/styles/plugins/colorbox/colorbox.css";
+@import "@/styles/plugins/fontawesome/css/all.min.css";
+@import "@/styles/plugins/notifIt/notifIt.min.css";
+@import "@/styles/plugins/slick/slick.css";
+@import "@/styles/plugins/slick/slick-theme.css";
+
+@import "swiper/css";
+@import "swiper/css/pagination";
+
+@import "@/styles/style.css";
+
+@import "@/styles/about.css";
+@import "@/styles/projects.css";
+@import "@/styles/reviews.css";
+
+@import "@/styles/custom.css";
+
+
+@import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css");
+@import url("https://unpkg.com/leaflet@1.8.0/dist/leaflet.css");
