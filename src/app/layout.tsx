@@ -2,17 +2,6 @@
 /* eslint-disable jsx-a11y/alt-text */
 import "@/styles/globals.css";
 import Script from "next/script";
-import { Metadata } from "next";
-
-export const metadata: Metadata = {
-  title: "D | Walt Engenharia - Energia Solar",
-  description:
-    "Transforme a energia do sol em economia e sustentabilidade para o seu lar ou empresa!",
-  icons: {
-    icon: "/favicon.ico",
-    apple: "/logo192.png",
-  },
-};
 
 export default function RootLayout({
   children,

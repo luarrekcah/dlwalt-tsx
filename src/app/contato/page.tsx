@@ -3,6 +3,26 @@
 import BannerHeading from "@/components/BannerHeading";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Contato — D | Walt Engenharia",
+  description:
+    "Entre em contato com a D | Walt Engenharia. Suporte completo, atendimento rápido e especializado. Tire dúvidas ou solicite um orçamento.",
+  keywords: [
+    "contato D Walt Engenharia",
+    "suporte energia solar",
+    "consultoria energia solar",
+    "orçamento energia solar"
+  ],
+  openGraph: {
+    title: "Contato — D | Walt Engenharia",
+    description:
+      "Fale com nossa equipe e tire todas as suas dúvidas sobre energia solar.",
+    url: "https://www.dwalt.net/contato",
+    siteName: "D | Walt Engenharia",
+  },
+};
 
 const Contact = () => {
   return (

@@ -3,6 +3,26 @@
 /* eslint-disable react/no-unescaped-entities */
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Termos de Uso — D | Walt Engenharia",
+  description:
+    "Termos e condições para utilização deste site e dos serviços da D | Walt Engenharia. Leia atentamente antes de prosseguir.",
+  keywords: [
+    "termos de uso",
+    "condições de uso",
+    "uso do site",
+    "D Walt Engenharia"
+  ],
+  openGraph: {
+    title: "Termos de Uso — D | Walt Engenharia",
+    description:
+      "Regras e condições para utilização dos serviços e do site.",
+    url: "https://www.dwalt.net/termos/termos-de-uso",
+  },
+};
+
 
 const TermsOfUse = () => {
   return (

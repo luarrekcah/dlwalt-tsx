@@ -3,6 +3,26 @@
 /* eslint-disable react/no-unescaped-entities */
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Media Kit — D | Walt Engenharia",
+  description:
+    "Logotipos, diretrizes de marca e materiais oficiais da D | Walt Engenharia. Baixe o media kit atualizado para uso institucional.",
+  keywords: [
+    "media kit D Walt",
+    "identidade visual D Walt",
+    "marca D Walt",
+    "logotipos D Walt"
+  ],
+  openGraph: {
+    title: "Media Kit — D | Walt Engenharia",
+    description:
+      "Baixe materiais oficiais, logotipos e diretrizes da marca.",
+    url: "https://www.dwalt.net/ferramentas/mediakit",
+  },
+};
+
 
 const BVBank = () => {
   return (

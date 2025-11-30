@@ -13,6 +13,44 @@ import SectionFeatures from "@/components/SectionFeatures";
 import SectionServices from "@/components/SectionServices";
 import SectionTestimonial from "@/components/SectionTestimonial";
 import Image from "next/image";
+import { Metadata } from "next";
+
+
+export const metadata: Metadata = {
+  title: "D | Walt Engenharia — Energia Solar de Alta Performance",
+  description:
+    "Economize até 95% na conta de luz com projetos de energia solar personalizados para residências e empresas. Instalação rápida, suporte especializado e máxima eficiência.",
+  keywords: [
+    "energia solar",
+    "painéis solares",
+    "economizar energia",
+    "energia fotovoltaica",
+    "energia solar para residência",
+    "energia solar para empresas",
+    "instalação de energia solar",
+    "D Walt Engenharia"
+  ],
+  openGraph: {
+    title: "D | Walt Engenharia — Energia Solar de Alta Performance",
+    description:
+      "Energia solar para residências e empresas, com economia real e suporte especializado. Descubra como reduzir seus custos hoje!",
+    url: "https://www.dwalt.net/",
+    siteName: "D | Walt Engenharia",
+    images: [
+      {
+        url: "/images/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "D | Walt Engenharia - Energia Solar",
+      },
+    ],
+  },
+  icons: {
+    icon: "/favicon.ico",
+    apple: "/logo192.png",
+  },
+};
+
 
 const Main = () => {
   const [projects, setProjects] = React.useState<Array<unknown>>([]);

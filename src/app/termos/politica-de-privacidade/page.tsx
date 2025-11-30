@@ -3,6 +3,26 @@
 /* eslint-disable react/no-unescaped-entities */
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Política de Privacidade — D | Walt Engenharia",
+  description:
+    "Veja como a D | Walt Engenharia coleta, utiliza e protege suas informações pessoais de acordo com a LGPD.",
+  keywords: [
+    "política de privacidade",
+    "LGPD",
+    "privacidade dados",
+    "proteção de dados"
+  ],
+  openGraph: {
+    title: "Política de Privacidade — D | Walt Engenharia",
+    description:
+      "Como tratamos seus dados pessoais de forma transparente e segura.",
+    url: "https://www.dwalt.net/termos/politica-de-privacidade",
+  },
+};
+
 
 const PolicyPrivacy = () => {
   return (
