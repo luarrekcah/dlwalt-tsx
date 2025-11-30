@@ -144,27 +144,105 @@ export default async function CityPage(props: {
 
                 {/* Lista de benefícios */}
                 <div className="mb-5" data-aos="fade-up">
-                  <ul className="list-group list-group-flush bg-transparent">
-                    <li className="list-group-item bg-transparent text-light py-3 d-flex align-items-center border-secondary">
-                      <i className="fas fa-solar-panel fa-lg mr-3 text-primary"></i>
-                      <span>
-                        Mais de {city.estimatedSystems} sistemas instalados em{" "}
-                        {city.name}
-                      </span>
-                    </li>
+                 
+            <div className="row g-4">
+              {/* CARD 1 */}
+              <div className="col-md-4" data-aos="fade-up">
+                <div
+                  className="p-4 rounded shadow-sm h-100"
+                  style={{ background: "#f8f8f6", color: "#333" }}
+                >
+                  <div className="d-flex align-items-start">
+                    <div
+                      className="d-flex align-items-center justify-content-center rounded-circle mr-3"
+                      style={{
+                        width: 55,
+                        height: 55,
+                        background: "#029EEF",
+                        color: "white",
+                        fontSize: 22,
+                        padding: 20,
+                      }}
+                    >
+                      <i className="fas fa-solar-panel"></i>
+                    </div>
 
-                    <li className="list-group-item bg-transparent text-light py-3 d-flex align-items-center border-secondary">
-                      <i className="fas fa-bolt fa-lg mr-3 text-primary"></i>
-                      <span>
-                        A Energisa é a principal distribuidora da região
-                      </span>
-                    </li>
+                    <p
+                      className="mb-0"
+                      style={{ fontSize: "1.05rem", lineHeight: 1.4 }}
+                    >
+                      Mais de <b>{city.estimatedSystems}</b> sistemas
+                      fotovoltaicos já foram instalados em{" "}
+                      <b>{city.name} – RO</b>.
+                    </p>
+                  </div>
+                </div>
+              </div>
 
-                    <li className="list-group-item bg-transparent text-light py-3 d-flex align-items-center border-secondary">
-                      <i className="fas fa-percent fa-lg mr-3 text-primary"></i>
-                      <span>Economia de até 90% na conta de luz</span>
-                    </li>
-                  </ul>
+              {/* CARD 2 */}
+              <div className="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                <div
+                  className="p-4 rounded shadow-sm h-100"
+                  style={{ background: "#f8f8f6", color: "#333" }}
+                >
+                  <div className="d-flex align-items-start">
+                    <div
+                      className="d-flex align-items-center justify-content-center rounded-circle mr-3"
+                      style={{
+                        width: 55,
+                        height: 55,
+                        background: "#029EEF",
+                        color: "white",
+                        fontSize: 22,
+                        padding: 20,
+                      }}
+                    >
+                      <i className="fas fa-bolt"></i>
+                    </div>
+
+                    <p
+                      className="mb-0"
+                      style={{ fontSize: "1.05rem", lineHeight: 1.4 }}
+                    >
+                      A principal distribuidora em <b>{city.name} – RO</b> é a
+                      Energisa.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* CARD 3 — DESTAQUE EM VERDE */}
+              <div className="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                <div
+                  className="p-4 rounded shadow h-100"
+                  style={{ background: "#0c962eff", color: "white" }}
+                >
+                  <div className="d-flex align-items-start">
+                    <div
+                      className="d-flex align-items-center justify-content-center rounded-circle mr-3"
+                      style={{
+                        width: 55,
+                        height: 55,
+                        background: "rgba(255,255,255,0.25)",
+                        fontSize: 22,
+                        color: "#fff",
+                        padding: 20,
+                      }}
+                    >
+                      <i className="fas fa-percent"></i>
+                    </div>
+
+                    <p
+                      className="mb-0"
+                      style={{ fontSize: "1.1rem", lineHeight: 1.4 }}
+                    >
+                      Você pode economizar até <b>90%</b> na sua conta de
+                      energia solar.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
                 </div>
 
                 {/* Cidades atendidas */}
@@ -189,7 +267,7 @@ export default async function CityPage(props: {
           </div>
         </section>
 
-        <section className="py-5 bg-primary text-light">
+        <section className="py-5 text-light" style={{backgroundColor: '#029EEF'}}>
           <div className="container">
             <div className="row justify-content-center">
               <div className="col-lg-8 text-center" data-aos="zoom-in">
@@ -211,7 +289,7 @@ export default async function CityPage(props: {
                 >
                   <i
                     className="fas fa-paper-plane mr-2"
-                    style={{ color: "#007BFF" }}
+                    style={{ color: "#029EEF" }}
                   ></i>
                   Solicitar orçamento agora
                 </a>
