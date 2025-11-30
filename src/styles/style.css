@@ -2637,7 +2637,7 @@ img.testimonial-thumb {
 }
 
 #back-to-top {
-  right: 40px;
+  left: 40px;
   top: auto;
   z-index: 10;
   display: none;
