@@ -3,8 +3,11 @@
 import Link from "next/link";
 import SearchModal from "./SearchModal";
 import Image from "next/image";
+interface NavbarProps {
+  children?: React.ReactNode;
+}
 
-const Navbar = () => {
+const Navbar = ({ children }: NavbarProps)  => {
   return (
     <header id="header" className="header-one">
       <div
@@ -36,6 +39,9 @@ const Navbar = () => {
               </Link>
             </div>
           </div>
+
+          {children ? children : (
+              
           <h4
             className="slogan"
             style={{
@@ -45,9 +51,12 @@ const Navbar = () => {
               paddingBottom: 30,
             }}
           >
-            A MAIOR DO
+             A MAIOR DO
             <b style={{ color: "#00a859" }}> NORTE!</b>
+           
           </h4>
+            )}
+
         </div>
       </div>
       <div className="site-navigation" style={{ zIndex: 900 }}>
@@ -126,9 +135,9 @@ const Navbar = () => {
                       </ul>
                     </li>
                     <li className="nav-item">
-                      <a className="nav-link" href="/contato">
+                      <Link className="nav-link" href="/contato">
                         contato
-                      </a>
+                      </Link>
                     </li>
                   </ul>
                 </div>

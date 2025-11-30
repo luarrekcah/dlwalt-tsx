@@ -4,6 +4,7 @@ import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import SectionFeatures from "@/components/SectionFeatures";
 import { cities } from "@/data/cities";
+import Link from "next/link";
 
 // =====================
 // METADATA DINÂMICO
@@ -70,7 +71,20 @@ export default async function CityPage(props: {
   return (
     <>
       <div className="body-inner">
-        <Navbar />
+        <Navbar>
+          <h4
+            className="slogan"
+            style={{
+              color: "#3266af",
+              textAlign: "center",
+              marginBottom: "-10px",
+              paddingBottom: 30,
+            }}
+          >
+            Energia Solar em <b style={{ color: "#00a859" }}> {city.name} </b> –
+            RO
+          </h4>
+        </Navbar>
         {/* HERO SECTION */}
         <div className="banner-carousel banner-carousel-1 mb-0">
           <div
@@ -92,8 +106,8 @@ export default async function CityPage(props: {
                       className="slide-sub-title"
                       data-animation-in="slideInRight"
                     >
-                      Energia Solar em {city.name} – RO
-                    </h3>{" "}
+                      9 anos de experiência
+                    </h3>
                     <p
                       data-animation-in="slideInRight"
                       style={{
@@ -103,19 +117,18 @@ export default async function CityPage(props: {
                         margin: 0,
                       }}
                     >
-                      9 anos de experiência levando economia real para{" "}
-                      {city.name} e região.
+                      Levando economia real para {city.name} e região.
                     </p>
                     <p data-animation-in="slideInLeft" data-duration-in="1.2">
-                      <a href="/servicos" className="slider btn btn-primary">
+                      <Link href="/servicos" className="slider btn btn-primary">
                         Nossos serviços
-                      </a>
-                      <a
+                      </Link>
+                      <Link
                         href="/contato"
                         className="slider btn btn-primary border"
                       >
                         Entrar em contato agora
-                      </a>
+                      </Link>
                     </p>
                   </div>
                 </div>
@@ -133,116 +146,124 @@ export default async function CityPage(props: {
                 {/* Título principal */}
                 <div className="text-center mb-5" data-aos="fade-up">
                   <h3 className="into-title text-white">
-                    Vale a pena energia solar em {city.name} – RO?
+                    Milhares já economizam com energia solar em {city.name}.
+                    Faça parte.
                   </h3>
 
-                  <p className="into-sub-title">
-                    Descubra por que milhares de pessoas estão economizando com
-                    energia solar em {city.name}.
+                  <p className="into-sub-title" style={{ fontSize: 25 }}>
+                    Quem instala em {city.name} economiza. Veja quanto você
+                    também pode economizar.
                   </p>
                 </div>
 
                 {/* Lista de benefícios */}
                 <div className="mb-5" data-aos="fade-up">
-                 
-            <div className="row g-4">
-              {/* CARD 1 */}
-              <div className="col-md-4" data-aos="fade-up">
-                <div
-                  className="p-4 rounded shadow-sm h-100"
-                  style={{ background: "#f8f8f6", color: "#333" }}
-                >
-                  <div className="d-flex align-items-start">
-                    <div
-                      className="d-flex align-items-center justify-content-center rounded-circle mr-3"
-                      style={{
-                        width: 55,
-                        height: 55,
-                        background: "#029EEF",
-                        color: "white",
-                        fontSize: 22,
-                        padding: 20,
-                      }}
-                    >
-                      <i className="fas fa-solar-panel"></i>
+                  <div className="row g-4">
+                    {/* CARD 1 */}
+                    <div className="col-md-4" data-aos="fade-up">
+                      <div
+                        className="p-4 rounded shadow-sm h-100"
+                        style={{ background: "#f8f8f6", color: "#333" }}
+                      >
+                        <div className="d-flex align-items-start">
+                          <div
+                            className="d-flex align-items-center justify-content-center rounded-circle mr-3"
+                            style={{
+                              width: 55,
+                              height: 55,
+                              background: "#029EEF",
+                              color: "white",
+                              fontSize: 22,
+                              padding: 20,
+                            }}
+                          >
+                            <i className="fas fa-solar-panel"></i>
+                          </div>
+
+                          <p
+                            className="mb-0"
+                            style={{ fontSize: "1.05rem", lineHeight: 1.4 }}
+                          >
+                            Mais de <b>{city.estimatedSystems}</b> sistemas
+                            fotovoltaicos já foram instalados em{" "}
+                            <b>{city.name} – RO</b>.
+                          </p>
+                        </div>
+                      </div>
                     </div>
 
-                    <p
-                      className="mb-0"
-                      style={{ fontSize: "1.05rem", lineHeight: 1.4 }}
-                    >
-                      Mais de <b>{city.estimatedSystems}</b> sistemas
-                      fotovoltaicos já foram instalados em{" "}
-                      <b>{city.name} – RO</b>.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* CARD 2 */}
-              <div className="col-md-4" data-aos="fade-up" data-aos-delay="100">
-                <div
-                  className="p-4 rounded shadow-sm h-100"
-                  style={{ background: "#f8f8f6", color: "#333" }}
-                >
-                  <div className="d-flex align-items-start">
+                    {/* CARD 2 */}
                     <div
-                      className="d-flex align-items-center justify-content-center rounded-circle mr-3"
-                      style={{
-                        width: 55,
-                        height: 55,
-                        background: "#029EEF",
-                        color: "white",
-                        fontSize: 22,
-                        padding: 20,
-                      }}
+                      className="col-md-4"
+                      data-aos="fade-up"
+                      data-aos-delay="100"
                     >
-                      <i className="fas fa-bolt"></i>
+                      <div
+                        className="p-4 rounded shadow-sm h-100"
+                        style={{ background: "#f8f8f6", color: "#333" }}
+                      >
+                        <div className="d-flex align-items-start">
+                          <div
+                            className="d-flex align-items-center justify-content-center rounded-circle mr-3"
+                            style={{
+                              width: 55,
+                              height: 55,
+                              background: "#029EEF",
+                              color: "white",
+                              fontSize: 22,
+                              padding: 20,
+                            }}
+                          >
+                            <i className="fas fa-bolt"></i>
+                          </div>
+
+                          <p
+                            className="mb-0"
+                            style={{ fontSize: "1.05rem", lineHeight: 1.4 }}
+                          >
+                            A principal distribuidora em <b>{city.name} – RO</b>{" "}
+                            é a Energisa.
+                          </p>
+                        </div>
+                      </div>
                     </div>
 
-                    <p
-                      className="mb-0"
-                      style={{ fontSize: "1.05rem", lineHeight: 1.4 }}
-                    >
-                      A principal distribuidora em <b>{city.name} – RO</b> é a
-                      Energisa.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* CARD 3 — DESTAQUE EM VERDE */}
-              <div className="col-md-4" data-aos="fade-up" data-aos-delay="200">
-                <div
-                  className="p-4 rounded shadow h-100"
-                  style={{ background: "#0c962eff", color: "white" }}
-                >
-                  <div className="d-flex align-items-start">
+                    {/* CARD 3 — DESTAQUE EM VERDE */}
                     <div
-                      className="d-flex align-items-center justify-content-center rounded-circle mr-3"
-                      style={{
-                        width: 55,
-                        height: 55,
-                        background: "rgba(255,255,255,0.25)",
-                        fontSize: 22,
-                        color: "#fff",
-                        padding: 20,
-                      }}
+                      className="col-md-4"
+                      data-aos="fade-up"
+                      data-aos-delay="200"
                     >
-                      <i className="fas fa-percent"></i>
-                    </div>
+                      <div
+                        className="p-4 rounded shadow h-100"
+                        style={{ background: "#0c962eff", color: "white" }}
+                      >
+                        <div className="d-flex align-items-start">
+                          <div
+                            className="d-flex align-items-center justify-content-center rounded-circle mr-3"
+                            style={{
+                              width: 55,
+                              height: 55,
+                              background: "rgba(255,255,255,0.25)",
+                              fontSize: 22,
+                              color: "#fff",
+                              padding: 20,
+                            }}
+                          >
+                            <i className="fas fa-percent"></i>
+                          </div>
 
-                    <p
-                      className="mb-0"
-                      style={{ fontSize: "1.1rem", lineHeight: 1.4 }}
-                    >
-                      Você pode economizar até <b>90%</b> na sua conta de
-                      energia solar.
-                    </p>
+                          <p
+                            className="mb-0"
+                            style={{ fontSize: "1.1rem", lineHeight: 1.4 }}
+                          >
+                            Você pode economizar até <b>90%</b> na sua conta de
+                            energia solar.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </div>
-            </div>
                 </div>
 
                 {/* Cidades atendidas */}
@@ -252,13 +273,13 @@ export default async function CityPage(props: {
                 >
                   <div className="card-body p-4">
                     <h4 className="card-title mb-3 text-white">
-                      Atendemos as principais cidades de Rondônia
+                      Atendemos em todo o estado de Rondônia!
                     </h4>
                     <p className="card-text mb-0 text-light">
-                      Porto Velho, Ariquemes, Ji-Paraná, Cacoal, Rolim de Moura,
-                      Jaru, Guajará-Mirim, Ouro Preto do Oeste, Pimenta Bueno,
-                      Machadinho d’Oeste, Espigão d’Oeste, Buritis, Nova Mamoré,
-                      Candeias do Jamari e Alta Floresta d’Oeste.
+                      {Object.values(cities)
+                        .map((c) => c.name)
+                        .join(" - RO, ")
+                        .replace(/, ([^,]*)$/, " e $1.")}
                     </p>
                   </div>
                 </div>
@@ -267,7 +288,10 @@ export default async function CityPage(props: {
           </div>
         </section>
 
-        <section className="py-5 text-light" style={{backgroundColor: '#029EEF'}}>
+        <section
+          className="py-5 text-light"
+          style={{ backgroundColor: "#029EEF" }}
+        >
           <div className="container">
             <div className="row justify-content-center">
               <div className="col-lg-8 text-center" data-aos="zoom-in">
@@ -283,7 +307,7 @@ export default async function CityPage(props: {
                   pronta para te atender.
                 </p>
 
-                <a
+                <Link
                   href="/contato"
                   className="btn btn-light btn-lg px-5 py-3 shadow-lg d-inline-flex align-items-center"
                 >
@@ -292,7 +316,7 @@ export default async function CityPage(props: {
                     style={{ color: "#029EEF" }}
                   ></i>
                   Solicitar orçamento agora
-                </a>
+                </Link>
 
                 <p className="mt-4 text-light-50">
                   Atendimento rápido • Sem compromisso • Consultoria
