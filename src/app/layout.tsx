@@ -11,11 +11,13 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <body>
-
-        {children}
+        <main role="main">{children}</main>
 
         {/* ==== PLUGINS JS (igual no seu HTML raiz) ==== */}
-        <Script src="/plugins/jQuery/jquery.min.js" strategy="beforeInteractive" />
+        <Script
+          src="/plugins/jQuery/jquery.min.js"
+          strategy="beforeInteractive"
+        />
         <Script src="/plugins/colorbox/jquery.colorbox.js" />
         <Script src="/plugins/slick/slick.min.js" />
         <Script src="/plugins/slick/slick-animation.min.js" />
@@ -23,19 +25,6 @@ export default function RootLayout({
         <Script src="/plugins/aos/aos.js" />
         <Script src="/plugins/shuffle/shuffle.min.js" />
         <Script src="/js/script.js" />
-
-        {/* Leaflet */}
-        <Script
-          src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
-          integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
-          crossOrigin=""
-        />
-
-        {/* MomentJS */}
-        <Script src="https://momentjs.com/downloads/moment-with-locales.min.js"  strategy="afterInteractive" />
-        <Script id="moment-locale">
-          {`moment.locale('pt-br');`}
-        </Script>
 
         {/* ======= GOOGLE TAG (gtag.js) ======= */}
         <Script

@@ -1,3 +1,4 @@
+import Link from "next/link";
 
 const HeaderCarrossel = () => {
   return (
@@ -37,12 +38,12 @@ const HeaderCarrossel = () => {
                 </p>
                 */}
                 <p data-animation-in="slideInLeft" data-duration-in="1.2">
-                  <a href="/servicos" className="slider btn btn-primary">
+                  <Link href="/servicos" className="slider btn btn-primary">
                     Nossos serviços
-                  </a>
-                  <a href="/contato" className="slider btn btn-primary border">
+                  </Link>
+                  <Link href="/contato" className="slider btn btn-primary border">
                     Entrar em contato agora
-                  </a>
+                  </Link>
                 </p>
               </div>
             </div>
@@ -70,12 +71,12 @@ const HeaderCarrossel = () => {
                   RONDÔNIA
                 </h3>
                 <p data-animation-in="slideInLeft" data-duration-in="1.2">
-                  <a href="/servicos" className="slider btn btn-primary">
+                  <Link href="/servicos" className="slider btn btn-primary">
                     Nossos serviços
-                  </a>
-                  <a href="/contato" className="slider btn btn-primary border">
+                  </Link>
+                  <Link href="/contato" className="slider btn btn-primary border">
                     Entrar em contato agora
-                  </a>
+                  </Link>
                 </p>
               </div>
             </div>
@@ -103,12 +104,12 @@ const HeaderCarrossel = () => {
                   Prático e rápido
                 </h3>
                 <p data-animation-in="slideInLeft" data-duration-in="1.2">
-                  <a href="/servicos" className="slider btn btn-primary">
+                  <Link href="/servicos" className="slider btn btn-primary">
                     Nossos serviços
-                  </a>
-                  <a href="/contato" className="slider btn btn-primary border">
+                  </Link>
+                  <Link href="/contato" className="slider btn btn-primary border">
                     Entrar em contato agora
-                  </a>
+                  </Link>
                 </p>
               </div>
             </div>
@@ -136,12 +137,12 @@ const HeaderCarrossel = () => {
                   estabelecimento
                 </h3>
                 <p data-animation-in="slideInLeft" data-duration-in="1.2">
-                  <a href="/servicos" className="slider btn btn-primary">
+                  <Link href="/servicos" className="slider btn btn-primary">
                     Nossos serviços
-                  </a>
-                  <a href="/contato" className="slider btn btn-primary border">
+                  </Link>
+                  <Link href="/contato" className="slider btn btn-primary border">
                     Entrar em contato agora
-                  </a>
+                  </Link>
                 </p>
               </div>
             </div>
