@@ -2650,7 +2650,7 @@ img.testimonial-thumb {
 
 @media (max-width: 767px) {
   #back-to-top {
-    right: 15px;
+    left: 15px;
   }
 }
 
