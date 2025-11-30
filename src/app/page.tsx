@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     siteName: "D | Walt Engenharia",
     images: [
       {
-        url: "/images/og-image.jpg",
+        url: "/images/og-image.webp",
         width: 1200,
         height: 630,
         alt: "D | Walt Engenharia - Energia Solar",
@@ -50,7 +50,7 @@ const Main = () => {
     "@type": "Organization",
     name: "D | Walt Engenharia",
     url: "https://www.dlwalt.com/",
-    logo: "/images/ogimages/index.jpg",
+    logo: "/images/ogimages/index.webp",
     sameAs: [
       "https://www.facebook.com/dlwalt",
       "https://www.instagram.com/dlwalt.engenharia/",

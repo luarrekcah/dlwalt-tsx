@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import React from "react";
 
 const SectionBYD = () => {
@@ -22,8 +23,8 @@ const SectionBYD = () => {
         </div>
         <div className="row">
           <div className="col-lg-6 text-center">
-            <img
-              src="/images/byd.jpg"
+            <Image
+              src="/images/byd.webp"
               alt=""
               width={1238 / 3}
               height={1600 / 3}

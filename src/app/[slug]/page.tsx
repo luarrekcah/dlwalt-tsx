@@ -38,7 +38,7 @@ export async function generateMetadata(props: {
       /*
      images: [
         {
-          url: `/images/cidades/${slug}.jpg`,
+          url: `/images/cidades/${slug}.webp`,
           width: 1200,
           height: 630,
           alt: `Energia solar em ${city.name}`,
@@ -94,7 +94,7 @@ export default async function CityPage(props: {
           <div
             className="banner-carousel-item"
             style={{
-              backgroundImage: "url(/images/header/header-1.jpg)",
+              backgroundImage: "url(/images/header/header-1.webp)",
             }}
           >
             <div className="slider-content">

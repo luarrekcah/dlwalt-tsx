@@ -11,7 +11,7 @@
   content: "";
   position: absolute;
   inset: 0;
-  background-image: url("/images/backgrounds/bg-panel.png");
+  background-image: url("/images/backgrounds/bg-panel.webp");
   background-size: cover;
   background-position: center;
   opacity: 0.35; /* opacidade da imagem */

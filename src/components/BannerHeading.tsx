@@ -5,7 +5,7 @@ const BannerHeading = ({ title }: { title: string }) => {
     <div
       id="banner-area"
       className="banner-area"
-      style={{ backgroundImage: "url(/images/banner/banner1.jpg)" }}
+      style={{ backgroundImage: "url(/images/banner/banner1.webp)" }}
     >
       <div className="banner-text">
         <div className="container">

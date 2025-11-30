@@ -33,7 +33,7 @@ const SectionTestimonial = () => {
             </h3>
             <div className="row">
               {/*<div class="col">
-      <img src="/images/celulares.png" width="150" alt="" srcset="" />
+      <Image src="/images/celulares.png" width={150} alt="" />
     </div>*/}
               <div className="col">
                 <Image

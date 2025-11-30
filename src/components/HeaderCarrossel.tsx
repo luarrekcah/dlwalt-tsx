@@ -7,7 +7,7 @@ const HeaderCarrossel = () => {
         className="banner-carousel-item"
         style={{
           backgroundImage:
-            "url(/images/header/header-1.jpg)",
+            "url(/images/header/header-1.webp)",
         }}
       >
         <div className="slider-content">
@@ -54,7 +54,7 @@ const HeaderCarrossel = () => {
         className="banner-carousel-item"
         style={{
           backgroundImage:
-            "url(/images/header/header-2.jpg)",
+            "url(/images/header/header-2.webp)",
         }}
       >
         <div className="slider-content">
@@ -87,7 +87,7 @@ const HeaderCarrossel = () => {
         className="banner-carousel-item"
         style={{
           backgroundImage:
-            "url(/images/header/header-3.jpg)",
+            "url(/images/header/header-3.webp)",
         }}
       >
         <div className="slider-content">
@@ -120,7 +120,7 @@ const HeaderCarrossel = () => {
         className="banner-carousel-item"
         style={{
           backgroundImage:
-            "url(/images/header/header-4.jpg)",
+            "url(/images/header/header-4.webp)",
         }}
       >
         <div className="slider-content">
