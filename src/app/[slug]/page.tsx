@@ -46,6 +46,10 @@ export async function generateMetadata(props: {
       ],
       */
     },
+    icons: {
+      icon: "/favicon.ico",
+      apple: "/logo192.png",
+    },
   };
 }
 
