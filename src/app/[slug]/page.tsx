@@ -24,7 +24,7 @@ export async function generateMetadata(props: {
 
   return {
     title: `Energia Solar em ${city.name} - RO | DWALT Energia`,
-    description: `Instalação de energia solar em ${city.name} - RO com engenharia própria, materiais de qualidade e suporte completo. Economize até 90% na conta de luz.`,
+    description: `Instalação de energia solar em ${city.name} - RO com engenharia própria, materiais de qualidade e suporte completo. Economize até 90% na conta de luz. Orçamento rápido e sem compromisso.`,
     keywords: [
       `energia solar ${city.name}`,
       `sistema fotovoltaico ${city.name}`,
@@ -32,7 +32,7 @@ export async function generateMetadata(props: {
     ],
     openGraph: {
       title: `Energia Solar em ${city.name} - RO | DWALT Energia`,
-      description: `Energia solar de alta performance em ${city.name}. Orçamento rápido e sem compromisso.`,
+      description: `Instalação de energia solar em ${city.name} - RO com engenharia própria, materiais de qualidade e suporte completo. Economize até 90% na conta de luz. Orçamento rápido e sem compromisso.`,
       url: `https://www.dwalt.net/${slug}`,
       /*
      images: [
