@@ -1,5 +1,9 @@
 
-const SectionFeatures = () => {
+interface City {
+  name: string;
+}
+
+const SectionFeatures = ({city = null}: {city?: City | null}) => {
   return (
     <section id="ts-features" className="ts-features">
       <div className="container">
@@ -8,11 +12,16 @@ const SectionFeatures = () => {
             <div className="ts-intro" data-aos="zoom-in-right">
               <h2 className="into-title">Sobre nós</h2>
               <h3 className="into-sub-title">POR QUE A D | WALT ENGENHARIA?</h3>
-              <p>
+              {city ? <p>
+                Somos uma empresa com alta experiência no mercado, com profissionais
+            capacitados para melhor lhe atender. Há mais de 9 anos levando
+            energia solar e economia real para {city.name} – RO e região.
+              </p> :  <p>
                 Somos uma empresa com alta experiência no mercado e com
                 profissionais capacitados para melhor lhe atender, tornando a
                 realidade melhor que a expectativa.
-              </p>
+              </p>}
+             
             </div>
             <div className="gap-20" />
             <div className="row" data-aos="zoom-out-up">
