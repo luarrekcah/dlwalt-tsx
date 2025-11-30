@@ -1,6 +1,9 @@
+"use client";
+
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React from "react";
 import LoadingServer from "./LoadingServer";
+import Image from "next/image";
 
 const Footer = () => {
   const [services, setServices] = React.useState<any[]>([]);
@@ -20,20 +23,21 @@ const Footer = () => {
           <div className="row justify-content-between">
             <div className="col-lg-4 col-md-6 footer-widget footer-about">
               <h3 className="widget-title">Sobre Nós</h3>
-              <img
+              <Image
                 loading="lazy"
-                width="200px"
+                width={200}
+                height={50}
                 className="footer-logo"
                 src="/logo.svg"
                 alt="D | Walt Logo"
               />
               <p>
-                Com mais de {yearDifference} anos de experiência no mercado, nós acreditamos em
-                um serviço de atendimento aos clientes de altíssima qualidade –
-                mas também somos da opinião de que todos os nossos clientes
-                merecem vivenciar uma experiência de compra inesquecível, e é
-                por isso que tentamos proporcionar produtos excelentes a um
-                preço acessível.
+                Com mais de {yearDifference} anos de experiência no mercado, nós
+                acreditamos em um serviço de atendimento aos clientes de
+                altíssima qualidade – mas também somos da opinião de que todos
+                os nossos clientes merecem vivenciar uma experiência de compra
+                inesquecível, e é por isso que tentamos proporcionar produtos
+                excelentes a um preço acessível.
               </p>
               <div className="footer-social">
                 <ul>
@@ -57,8 +61,8 @@ const Footer = () => {
               </div>
               <h3 className="widget-title">Endereço</h3>
               <p>
-                Av. Canaã, 2500 - Ariquemes - Rondônia /
-                CNPJ: 26.711.744/0001-08
+                Av. Canaã, 2500 - Ariquemes - Rondônia / CNPJ:
+                26.711.744/0001-08
               </p>
             </div>
             <div className="col-lg-4 col-md-6 footer-widget mt-5 mt-md-0">
@@ -75,7 +79,7 @@ const Footer = () => {
                 <br /> Domingo: <span className="text-right">Fechado</span>
               </div>
             </div>
-            {   /**
+            {/**
              * <div className="col-lg-3 col-md-6 mt-5 mt-lg-0 footer-widget">
               <h3 className="widget-title">Serviços</h3>
               {services.length === 0 ? (

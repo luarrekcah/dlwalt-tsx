@@ -1,4 +1,6 @@
-const BannerHeading = ({ title }: any) => {
+import Link from "next/link";
+
+const BannerHeading = ({ title }: { title: string }) => {
   return (
     <div
       id="banner-area"
@@ -14,7 +16,7 @@ const BannerHeading = ({ title }: any) => {
                 <nav aria-label="breadcrumb">
                   <ol className="breadcrumb justify-content-center">
                     <li className="breadcrumb-item">
-                      <a href="/">Página Principal</a>
+                      <Link href="/">Página Principal</Link>
                     </li>
                     <li className="breadcrumb-item active" aria-current="page">
                       {title}

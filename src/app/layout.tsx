@@ -32,7 +32,7 @@ export default function RootLayout({
         />
 
         {/* MomentJS */}
-        <Script src="https://momentjs.com/downloads/moment-with-locales.min.js" />
+        <Script src="https://momentjs.com/downloads/moment-with-locales.min.js"  strategy="afterInteractive" />
         <Script id="moment-locale">
           {`moment.locale('pt-br');`}
         </Script>

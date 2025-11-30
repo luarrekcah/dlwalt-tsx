@@ -1,4 +1,3 @@
-"use client";
 
 /* eslint-disable react/no-unescaped-entities */
 import Footer from "@/components/Footer";
@@ -26,6 +25,7 @@ export const metadata: Metadata = {
 
 const BVBank = () => {
   return (
+  <>
     <div className="body-inner">
       <Navbar />
       <section id="main-container" className="main-container">
@@ -39,6 +39,7 @@ const BVBank = () => {
       </section>
       <Footer />
     </div>
+    </>
   );
 };
 

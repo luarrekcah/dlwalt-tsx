@@ -1,3 +1,5 @@
+"use client"  ;
+
 import Link from "next/link";
 import SearchModal from "./SearchModal";
 import Image from "next/image";
