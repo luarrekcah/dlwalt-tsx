@@ -6,6 +6,8 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Integração Banco BV — Financiamento para Energia Solar | D | Walt Engenharia",
+  applicationName: "D | Walt Engenharia",
+  publisher: "D | Walt Engenharia",
   description:
     "Financie seu sistema de energia solar com condições exclusivas pelo Banco BV. Facilite seu investimento com parcelas acessíveis e aprovação rápida.",
   keywords: [

@@ -7,6 +7,8 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Política de Privacidade — D | Walt Engenharia",
+  applicationName: "D | Walt Engenharia",
+  publisher: "D | Walt Engenharia",
   description:
     "Veja como a D | Walt Engenharia coleta, utiliza e protege suas informações pessoais de acordo com a LGPD.",
   keywords: [

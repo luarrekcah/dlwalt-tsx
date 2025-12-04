@@ -6,6 +6,8 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Termos de Uso — D | Walt Engenharia",
+  applicationName: "D | Walt Engenharia",
+  publisher: "D | Walt Engenharia",
   description:
     "Termos e condições para utilização deste site e dos serviços da D | Walt Engenharia. Leia atentamente antes de prosseguir.",
   keywords: [

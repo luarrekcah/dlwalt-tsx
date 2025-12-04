@@ -5,6 +5,8 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Contato — D | Walt Engenharia",
+  applicationName: "D | Walt Engenharia",
+  publisher: "D | Walt Engenharia",
   description:
     "Entre em contato com a D | Walt Engenharia. Suporte completo, atendimento rápido e especializado. Tire dúvidas ou solicite um orçamento.",
   keywords: [

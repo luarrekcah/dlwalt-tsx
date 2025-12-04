@@ -11,6 +11,8 @@ import FloatingWpp from "@/components/FloatingWhatsapp";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.dwalt.net"),
+  applicationName: "D | Walt Engenharia",
+  publisher: "D | Walt Engenharia",
   title: {
     default: "D | Walt Engenharia — Energia Solar de Alta Performance",
     template: "%s | D | Walt Engenharia",

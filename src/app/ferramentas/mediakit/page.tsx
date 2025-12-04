@@ -6,6 +6,8 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Media Kit — D | Walt Engenharia",
+  applicationName: "D | Walt Engenharia",
+  publisher: "D | Walt Engenharia",
   description:
     "Logotipos, diretrizes de marca e materiais oficiais da D | Walt Engenharia. Baixe o media kit atualizado para uso institucional.",
   keywords: [
