@@ -39,8 +39,7 @@ const Users = () => {
   }
 
   return (
-    <Layout>
-      <div className="container-fluid">
+   <div className="container-fluid">
         <div className="row mb-3">
           <div className="col-6">
             <h3>Gerenciamento de Usuários</h3>
@@ -89,7 +88,6 @@ const Users = () => {
           </tbody>
         </table>
       </div>
-    </Layout>
   );
 };
 

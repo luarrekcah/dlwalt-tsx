@@ -34,11 +34,7 @@ const PostEdit = async (props: { params: { id: string } }) => {
  */
 
   return (
-    <>
-      <Layout>
-        <PostComponent post={post} />
-      </Layout>
-    </>
+    <PostComponent post={post} />
   );
 };
 

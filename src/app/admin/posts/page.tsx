@@ -27,8 +27,7 @@ const Posts = () => {
     setPosts((prev) => prev.filter((p) => p.id !== id));
   }
   return (
-    <Layout>
-      <div className="container-fluid">
+  <div className="container-fluid">
         <div className="row mb-3">
           <div className="col-6">
             <h3>Gerenciamento de Posts</h3>
@@ -74,7 +73,6 @@ const Posts = () => {
           </tbody>
         </table>
       </div>
-    </Layout>
   );
 };
 

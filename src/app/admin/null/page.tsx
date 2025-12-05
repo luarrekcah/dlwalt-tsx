@@ -7,8 +7,7 @@ const Null = () => {
     visits: 1024,
   };
   return (
-    <Layout>
-      <div className="container-fluid">
+   <div className="container-fluid">
         <div className="row">
           <div className="col-12">
             <h2 className="mt-3">Visão Geral</h2>
@@ -53,7 +52,6 @@ const Null = () => {
           </div>
         </div>
       </div>
-    </Layout>
   );
 };
 
