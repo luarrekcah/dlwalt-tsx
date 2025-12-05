@@ -22,3 +22,12 @@
   position: relative;
   z-index: 1; /* conteúdo fica por cima */
 }
+
+.sidebar .nav-link {
+  padding-left: 12px;
+}
+
+.sidebar .nav-link .icon-wrapper {
+  width: 22px;
+  opacity: 0.85;
+}
