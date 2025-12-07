@@ -68,7 +68,7 @@ export async function generateMetadata(props: {
         },
         */
         {
-          url: "https://www.dwalt.net/images/og-image.webp",
+          url: "https://www.dwalt.net/images/ogimages/index.webp",
           width: 1200,
           height: 630,
           alt: `Energia Solar — D | Walt Engenharia`,
@@ -82,7 +82,7 @@ export async function generateMetadata(props: {
       card: "summary_large_image",
       title: `Energia Solar em ${city.name} - RO | D | Walt Engenharia`,
       description: `Economize até 90% na conta de energia com sistemas fotovoltaicos em ${city.name} - RO.`,
-      images: ["https://www.dwalt.net/images/og-image.webp"],
+      images: ["https://www.dwalt.net/images/ogimages/index.webp"],
     },
     // ================
     // ROBOTS

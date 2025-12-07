@@ -42,7 +42,7 @@ export const metadata: Metadata = {
       "Economize até 95% com sistemas de energia solar para casas e empresas em Rondônia.",
     images: [
       {
-        url: "https://www.dwalt.net/images/og-image.webp",
+        url: "https://www.dwalt.net/images/ogimages/index.webp",
         width: 1200,
         height: 630,
         alt: "Energia Solar — D Walt Engenharia",
@@ -54,7 +54,7 @@ export const metadata: Metadata = {
     title: "D | Walt Engenharia — Energia Solar de Alta Performance",
     description:
       "Instalação de energia solar para sua casa ou empresa com economia real.",
-    images: ["https://www.dwalt.net/images/og-image.webp"],
+    images: ["https://www.dwalt.net/images/ogimages/index.webp"],
   },
   robots: {
     index: true,
@@ -80,8 +80,8 @@ const Main = () => {
     "@type": "LocalBusiness",
     name: "D | Walt Engenharia",
     url: "https://www.dwalt.net/",
-    image: "https://www.dwalt.net/images/og-image.webp",
-    logo: "https://www.dwalt.net/images/og-image.webp",
+    image: "https://www.dwalt.net/images/ogimages/index.webp",
+    logo: "https://www.dwalt.net/images/ogimages/index.webp",
     telephone: "+55 69 99369-5702",
     address: {
       "@type": "PostalAddress",
