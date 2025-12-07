@@ -2,6 +2,7 @@
 /* eslint-disable jsx-a11y/alt-text */
 import "@/styles/globals.css";
 import Script from "next/script";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 export default function RootLayout({
   children,
@@ -12,6 +13,7 @@ export default function RootLayout({
     <html lang="pt-BR">
       <body>
         <main role="main">{children}</main>
+        <SpeedInsights />
 
         {/* ==== PLUGINS JS (igual no seu HTML raiz) ==== */}
         <Script
