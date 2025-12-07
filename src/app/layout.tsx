@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable jsx-a11y/alt-text */
+import { SpeedInsights } from "@vercel/speed-insights/next"
 import "@/styles/globals.css";
 import Script from "next/script";
 
@@ -12,7 +13,7 @@ export default function RootLayout({
     <html lang="pt-BR">
       <body>
         <main role="main">{children}</main>
-
+         <SpeedInsights />
         {/* ==== PLUGINS JS (igual no seu HTML raiz) ==== */}
         <Script
           src="/plugins/jQuery/jquery.min.js"
