@@ -1,18 +1,19 @@
-import Layout from "@/components/admin/Layout";
+"use client";
+
+import { useAuth } from "@/context/AuthContext";
 
 const Dashboard = () => {
+  const { user, loading } = useAuth();
+
+  if (loading) return <p>Carregando...</p>;
+
   const stats = {
-    users: 120,
-    posts: 45,
-    visits: 1024,
+    users: 0,
+    posts: 0
   };
   return (
     <div className="container-fluid">
-      <div className="row">
-        <div className="col-12">
-          <h2 className="mt-3">Visão Geral</h2>
-        </div>
-      </div>
+      <h2 className="mt-3">Bem-vindo, {user?.name}</h2>
 
       <div className="row mt-4">
         <div className="col-md-4 mb-3">
@@ -27,14 +28,9 @@ const Dashboard = () => {
             <p className="display-4">{stats?.posts}</p>
           </div>
         </div>
-        <div className="col-md-4 mb-3">
-          <div className="card p-3">
-            <h5>Visitas</h5>
-            <p className="display-4">{stats?.visits}</p>
-          </div>
-        </div>
       </div>
-
+{/**
+ * 
       <div className="row mt-4">
         <div className="col-12">
           <h4>Atividade recente</h4>
@@ -50,6 +46,7 @@ const Dashboard = () => {
           </ul>
         </div>
       </div>
+ */}
     </div>
   );
 };

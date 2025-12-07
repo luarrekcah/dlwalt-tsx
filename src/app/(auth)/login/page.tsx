@@ -1,20 +1,30 @@
 "use client";
+import api from "@/lib/api";
 import { useState } from "react";
+import Cookies from "js-cookie";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
-  function submit(e: React.FormEvent) {
+  async function submit(e: React.FormEvent) {
     e.preventDefault();
     if (!email || !password) return setError("Preencha todos os campos.");
 
-    // Mock login
-    if (email === "admin@example.com" && password === "123456") {
-      // router.push("/admin");
-    } else {
-      setError("Credenciais inválidas.");
+    try {
+      const result = await api.post("/auth/login", { email, password });
+
+      const { accessToken, refreshToken } = result.data.data;
+
+      // Salvar tokens nos cookies
+      Cookies.set("token", accessToken, { expires: 1 }); // 1 dia
+      Cookies.set("refresh", refreshToken, { expires: 7 });
+
+      // Redirecionar
+      window.location.href = "/admin/dashboard";
+    } catch (error: any) {
+      alert(error.response?.data?.message || "Erro ao fazer login");
     }
   }
 

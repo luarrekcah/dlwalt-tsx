@@ -1,5 +1,6 @@
 
 import Sidebar from "@/components/admin/Sidebar";
+import { AuthProvider } from "@/context/AuthContext";
 import "@/styles/globals.css";
 import { Metadata } from "next";
 
@@ -22,11 +23,13 @@ export default function AdminLayout({
   children: React.ReactNode;
 }) {
   return (
+    <AuthProvider>
     <div className="admin-root d-flex">
       <Sidebar />
       <div className="admin-content flex-grow-1 p-4">
         {children}
       </div>
     </div>
+    </AuthProvider>
   );
 }
