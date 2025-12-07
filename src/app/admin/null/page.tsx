@@ -1,4 +1,4 @@
-import Layout from "@/components/admin/Layout";
+
 
 const Null = () => {
     const stats = {

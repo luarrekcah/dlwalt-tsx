@@ -1,4 +1,4 @@
-import Layout from "@/components/admin/Layout";
+
 import PostComponent from "@/components/admin/PostComponent";
 import { Post } from "@/types";
 

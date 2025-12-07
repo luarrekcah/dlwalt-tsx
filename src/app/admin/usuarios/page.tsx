@@ -1,6 +1,5 @@
 "use client";
 
-import Layout from "@/components/admin/Layout";
 import { User } from "@/types";
 import { useState } from "react";
 

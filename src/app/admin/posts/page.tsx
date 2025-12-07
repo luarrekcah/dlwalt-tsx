@@ -1,6 +1,6 @@
 "use client";
 
-import Layout from "@/components/admin/Layout";
+
 import { Post } from "@/types";
 import Link from "next/link";
 import { useState } from "react";
