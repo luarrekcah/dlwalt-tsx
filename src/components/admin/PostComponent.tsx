@@ -1,37 +1,89 @@
+/* eslint-disable react-hooks/set-state-in-effect */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
+
 import api from "@/lib/api";
 import { Post } from "@/types";
 import { goBack } from "@/utils/client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import toast from "react-hot-toast";
 
+import { EditorState, ContentState, convertToRaw } from "draft-js";
+import { Editor } from "react-draft-wysiwyg";
+
+import draftToHtml from "draftjs-to-html";
+import htmlToDraft from "html-to-draftjs";
+
+import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
+
 const PostComponent = ({ post }: { post: Post }) => {
+  // Campos normais
   const [title, setTitle] = useState(post?.title || "");
-  const [content, setContent] = useState(post?.content || "");
   const [status, setStatus] = useState(post?.status || "draft");
+
+  // EditorState
+  const [editorState, setEditorState] = useState(EditorState.createEmpty());
+
+  // Carrega conteúdo HTML ao editar um post
+  useEffect(() => {
+    if (post?.content) {
+      const blocks = htmlToDraft(post.content);
+      const content = ContentState.createFromBlockArray(
+        blocks.contentBlocks,
+        blocks.entityMap
+      );
+      setEditorState(EditorState.createWithContent(content));
+    }
+  }, [post]);
 
   async function save() {
     try {
+      // Converte o conteúdo do editor para HTML
+      const htmlContent = draftToHtml(
+        convertToRaw(editorState.getCurrentContent())
+      );
+
       const payload = {
         title,
-        content,
+        content: htmlContent,
         status,
       };
 
-      let response;
-
       if (post?.id) {
-        // Atualiza
-        response = await api.put(`/posts/${post.id}`, payload);
+        await api.put(`/posts/${post.id}`, payload);
       } else {
-        // Cria novo
-        response = await api.post("/posts", payload);
+        await api.post("/posts", payload);
       }
-      console.log("Resposta:", response.data);
+
       goBack();
-    } catch (err) {
-      console.error(err);
+    } catch (error) {
+      console.error(error);
+      throw error;
     }
+  }
+
+  function uploadImageCallBack(file: File) {
+    return new Promise(async (resolve, reject) => {
+      try {
+        const formData = new FormData();
+        formData.append("image", file);
+
+        const response = await api.post("/upload", formData, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        });
+
+        resolve({
+          data: {
+            link: response.data.data.url,
+          },
+        });
+      } catch (err: any) {
+        console.error("Erro upload:", err);
+        reject(err);
+      }
+    });
   }
 
   return (
@@ -47,11 +99,19 @@ const PostComponent = ({ post }: { post: Post }) => {
 
       <div className="form-group mt-3">
         <label>Conteúdo</label>
-        <textarea
-          className="form-control"
-          rows={10}
-          value={content}
-          onChange={(e) => setContent(e.target.value)}
+
+        <Editor
+          editorState={editorState}
+          onEditorStateChange={setEditorState}
+          wrapperClassName="border rounded"
+          editorClassName="editor-inner"
+          toolbarClassName="toolbar-top"
+          toolbar={{
+            image: {
+              uploadCallback: uploadImageCallBack,
+              alt: { present: true, mandatory: true },
+            },
+          }}
         />
       </div>
 
@@ -68,20 +128,18 @@ const PostComponent = ({ post }: { post: Post }) => {
         </label>
       </div>
 
-      <div className="mt-3">
-        <button
-          className="btn btn-primary"
-          onClick={() => {
-            toast.promise(save, {
-              loading: "Salvando...",
-              success: "Salvo com sucesso!",
-              error: "Ocorreu um erro ao salvar o post.",
-            });
-          }}
-        >
-          Salvar
-        </button>
-      </div>
+      <button
+        className="btn btn-primary mt-3"
+        onClick={() =>
+          toast.promise(save(), {
+            loading: "Salvando...",
+            success: "Post salvo com sucesso!",
+            error: "Erro ao salvar o post.",
+          })
+        }
+      >
+        Salvar
+      </button>
     </div>
   );
 };
