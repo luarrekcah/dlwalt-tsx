@@ -5,6 +5,8 @@ declare global {
   }
 
   const fbq: (...args: any[]) => void;
+
+  const toast: any;
 }
 
 export {};

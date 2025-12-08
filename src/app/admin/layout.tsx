@@ -1,8 +1,8 @@
-
 import Sidebar from "@/components/admin/Sidebar";
 import { AuthProvider } from "@/context/AuthContext";
 import "@/styles/globals.css";
 import { Metadata } from "next";
+import { Toaster } from "react-hot-toast";
 
 export const metadata: Metadata = {
   robots: {
@@ -24,12 +24,11 @@ export default function AdminLayout({
 }) {
   return (
     <AuthProvider>
-    <div className="admin-root d-flex">
-      <Sidebar />
-      <div className="admin-content flex-grow-1 p-4">
-        {children}
+      <div className="admin-root d-flex">
+        <Sidebar />
+        <div className="admin-content flex-grow-1 p-4">{children}</div>
+        <Toaster position="top-center" reverseOrder={false} />
       </div>
-    </div>
     </AuthProvider>
   );
 }

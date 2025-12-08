@@ -36,11 +36,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     }
 
     try {
-      const result = await api.get("/user/me", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const result = await api.get("/user/me");
       setUser(result.data.data.user);
     } catch (error) {
       console.log("Erro ao carregar usuário", error);
@@ -54,7 +50,8 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     loadUser();
   }, []);
 
-  function logout() {
+  async function logout() {
+    await api.get("/auth/logout");
     Cookies.remove("token");
     Cookies.remove("refresh");
     window.location.href = "/login";

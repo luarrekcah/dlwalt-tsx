@@ -26,9 +26,20 @@ export type User = {
 };
 
 export type Post = {
-  id: string;
+  id: number;
   title: string;
-  author: string;
+  slug: string;
+  status: string;
+  excerpt: string;
+  thumbnailUrl: string;
+  author: Author;
   published: boolean;
   content: string;
+  views: number;
+  publishedAd: string;
 };
+
+export type Author = {
+  id: number;
+  name: string;
+}

@@ -24,7 +24,7 @@ const Login = () => {
       // Redirecionar
       window.location.href = "/admin/dashboard";
     } catch (error: any) {
-      alert(error.response?.data?.message || "Erro ao fazer login");
+      toast.error(error.response?.data?.message || "Erro ao fazer login")
     }
   }
 

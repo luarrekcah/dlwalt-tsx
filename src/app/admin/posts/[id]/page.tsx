@@ -1,37 +1,23 @@
 
 import PostComponent from "@/components/admin/PostComponent";
+import api from "@/lib/api";
 import { Post } from "@/types";
-
-const mockPosts: Post[] = [
-  {
-    id: "p1",
-    title: "Como instalar painéis solares",
-    author: "João Silva",
-    published: true,
-    content: "Conteúdo do post...",
-  },
-  {
-    id: "p2",
-    title: "Dicas de manutenção",
-    author: "Maria Souza",
-    published: false,
-    content: "Rascunho...",
-  },
-];
+import { cookies } from "next/headers";
 
 const PostEdit = async (props: { params: { id: string } }) => {
-  const { id } = await props.params;
-  const post: Post = mockPosts.find((p) => p.id === id)!;
+  let { id } = await props.params;
+  const token = (await cookies()).get("token")?.value;
 
-  /**
- *   if (!post) {
-    return (
-      <Layout>
-        <div className="alert alert-danger mt-4">Post não encontrado.</div>
-      </Layout>
-    );
-  }
- */
+  if(id === 'new') id = '';
+
+  const {data} = await api.get(`/posts/${id}`, {
+     headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`
+    },
+  });
+
+  const post: Post = data.data
 
   return (
     <PostComponent post={post} />
