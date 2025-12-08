@@ -9,17 +9,25 @@ import { useState, useEffect } from "react";
 import toast from "react-hot-toast";
 
 import { EditorState, ContentState, convertToRaw } from "draft-js";
-import { Editor } from "react-draft-wysiwyg";
+import dynamic from "next/dynamic";
+
+const Editor = dynamic(
+  () => import("react-draft-wysiwyg").then((mod) => mod.Editor),
+  { ssr: false }
+);
 
 import draftToHtml from "draftjs-to-html";
 import htmlToDraft from "html-to-draftjs";
 
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
+import Image from "next/image";
 
 const PostComponent = ({ post }: { post: Post }) => {
   // Campos normais
   const [title, setTitle] = useState(post?.title || "");
   const [status, setStatus] = useState(post?.status || "draft");
+
+  const [thumbnailUrl, setThumbnailUrl] = useState(post?.thumbnailUrl || "");
 
   // EditorState
   const [editorState, setEditorState] = useState(EditorState.createEmpty());
@@ -47,6 +55,7 @@ const PostComponent = ({ post }: { post: Post }) => {
         title,
         content: htmlContent,
         status,
+        thumbnailUrl
       };
 
       if (post?.id) {
@@ -68,7 +77,7 @@ const PostComponent = ({ post }: { post: Post }) => {
         const formData = new FormData();
         formData.append("image", file);
 
-        const response = await api.post("/upload", formData, {
+        const response = await api.post("/upload?folder=posts", formData, {
           headers: {
             "Content-Type": "multipart/form-data",
           },
@@ -86,6 +95,27 @@ const PostComponent = ({ post }: { post: Post }) => {
     });
   }
 
+    async function handleThumbnailUpload(e: any) {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    try {
+      const formData = new FormData();
+      formData.append("image", file);
+
+      const res = await api.post("/upload?folder=posts", formData, {
+        headers: { "Content-Type": "multipart/form-data" },
+      });
+
+      setThumbnailUrl(res.data.data.url);
+      toast.success("Thumbnail enviada!");
+
+    } catch (err) {
+      console.error(err);
+      toast.error("Erro ao enviar thumbnail.");
+    }
+  }
+
   return (
     <div className="container-fluid">
       <div className="form-group">
@@ -95,6 +125,26 @@ const PostComponent = ({ post }: { post: Post }) => {
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
+      </div>
+
+       <div className="form-group mt-3">
+        <label>Thumbnail</label>
+        <input
+          type="file"
+          className="form-control"
+          accept="image/*"
+          onChange={handleThumbnailUpload}
+        />
+
+        {thumbnailUrl && (
+          <Image
+            src={thumbnailUrl}
+            alt="Thumbnail"
+            width={500}
+            height={200}
+            style={{ maxWidth: "200px", marginTop: "10px", borderRadius: "8px" }}
+          />
+        )}
       </div>
 
       <div className="form-group mt-3">

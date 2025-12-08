@@ -28,6 +28,7 @@ export default function AdminLayout({
         <Sidebar />
         <div className="admin-content flex-grow-1 p-4">{children}</div>
         <Toaster position="top-center" reverseOrder={false} />
+        
       </div>
     </AuthProvider>
   );
