@@ -5,43 +5,6 @@ import Image from "next/image";
 import BlogSidebar from "./BlogSidebar";
 
 const BlogSingle = ({ post }: { post: Post }) => {
-  const url = window.location.href;
-  const title = post.title;
-
-  const share = (network: string) => {
-    let shareUrl = "";
-
-    switch (network) {
-      case "facebook":
-        shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
-          url
-        )}`;
-        break;
-
-      case "twitter":
-        shareUrl = `https://twitter.com/intent/tweet?url=${encodeURIComponent(
-          url
-        )}&text=${encodeURIComponent(title)}`;
-        break;
-
-      case "linkedin":
-        shareUrl = `https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(
-          url
-        )}&title=${encodeURIComponent(title)}`;
-        break;
-
-      case "whatsapp":
-        shareUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(
-          title + " " + url
-        )}`;
-        break;
-
-      default:
-        return;
-    }
-
-    window.open(shareUrl, "_blank", "noopener,noreferrer,width=600,height=400");
-  };
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -95,7 +58,7 @@ const BlogSingle = ({ post }: { post: Post }) => {
                   <div className="post-meta">
                     <span className="post-author">
                       <i className="far fa-user"></i>
-                      <a href="#"> {post.author.name}</a>
+                      <a href="#"> {post.author?.name || "D | Walt Engenharia"}</a>
                     </span>
                     <span className="post-meta-date">
                       <i className="far fa-calendar"></i>{" "}
@@ -123,7 +86,8 @@ const BlogSingle = ({ post }: { post: Post }) => {
                     <a href="#">Planning</a>
                   </div>
                    */}
-                  <div className="share-items">
+                  {/**
+                   * <div className="share-items">
                     <ul className="post-social-icons list-unstyled">
                       <li className="social-icons-head">Compartilhar:</li>
                       <li>
@@ -133,6 +97,7 @@ const BlogSingle = ({ post }: { post: Post }) => {
                       </li>
                     </ul>
                   </div>
+                   */}
                 </div>
               </div>
             </div>

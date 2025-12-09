@@ -87,7 +87,6 @@ export async function generateMetadata({ params }: {params: Params}): Promise<Me
 export default async function BlogPost(props: {
   params: Promise<{ slug: string }>;
 }) {
-
   const { slug } = await props.params;
   let post: Post | null = null;
 
