@@ -8,6 +8,7 @@ import SectionFeatures from "@/components/SectionFeatures";
 import SectionServices from "@/components/SectionServices";
 import SectionTestimonial from "@/components/SectionTestimonial";
 import FloatingWpp from "@/components/FloatingWhatsapp";
+import SectionBlog from "@/components/SectionBlog";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.dwalt.net"),
@@ -121,6 +122,7 @@ const Main = () => {
         <SectionFeatures />
         <SectionServices />
         {/**<SectionProjects data={projects} /> */}
+        <SectionBlog />
         <SectionTestimonial />
         {/*SECTIONS*/}
         <FloatingWpp />

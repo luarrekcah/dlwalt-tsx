@@ -36,10 +36,11 @@ export type Post = {
   published: boolean;
   content: string;
   views: number;
-  publishedAd: string;
+  publishedAt: string;
 };
 
 export type Author = {
   id: number;
   name: string;
+  avatarUrl: string;
 }
