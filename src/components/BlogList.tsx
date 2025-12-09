@@ -27,7 +27,7 @@ const PostCard = ({ post }: { post: Post }) => {
             width={400}
             height={250}
             loading="lazy"
-            src={post.thumbnailUrl || "/images/news/news1.jpg"}
+            src={post.thumbnailUrl || "/images/backgrounds/bg-panel.webp"}
             className="img-fluid rounded"
             alt={post.title}
           />

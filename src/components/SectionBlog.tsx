@@ -45,7 +45,7 @@ const SectionBlog = async () => {
                       src={
                         post.thumbnailUrl
                           ? post.thumbnailUrl
-                          : "/images/news/news1.jpg"
+                          : "/images/backgrounds/bg-panel.webp"
                       }
                       alt={post.title}
                     />
