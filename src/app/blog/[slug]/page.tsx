@@ -5,10 +5,11 @@ import Navbar from "@/components/Navbar";
 import api from "@/lib/api";
 import { Metadata } from "next";
 import { Post } from "@/types";
+import { Params } from "next/dist/server/request/params";
 
 // Função para gerar metadata dinamicamente
 
-export async function generateMetadata({ params }): Promise<Metadata> {
+export async function generateMetadata({ params }: {params: Params}): Promise<Metadata> {
   const { slug } = await params;
 
   try {

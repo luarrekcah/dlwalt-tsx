@@ -61,7 +61,7 @@ const BlogSidebar = () => {
           <p>Carregando posts...</p>
         ) : (
           <ul className="list-unstyled">
-            {posts.map((p: Post, i: number) => {
+            {posts!.map((p: Post, i: number) => {
               return <RecentPost key={i} post={p} />;
             })}
           </ul>
