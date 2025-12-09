@@ -27,6 +27,13 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
 
+  async function logout() {
+    await api.get("/auth/logout");
+    Cookies.remove("token");
+    Cookies.remove("refresh");
+    window.location.href = "/login";
+  }
+
   async function loadUser() {
     const token = Cookies.get("token");
 
@@ -40,6 +47,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       setUser(result.data.data.user);
     } catch (error) {
       console.log("Erro ao carregar usuário", error);
+      await logout();
       setUser(null);
     }
 
@@ -49,13 +57,6 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   useEffect(() => {
     loadUser();
   }, []);
-
-  async function logout() {
-    await api.get("/auth/logout");
-    Cookies.remove("token");
-    Cookies.remove("refresh");
-    window.location.href = "/login";
-  }
 
   return (
     <AuthContext.Provider value={{ user, loading, logout }}>
