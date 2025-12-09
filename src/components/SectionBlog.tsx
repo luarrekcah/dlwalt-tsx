@@ -13,8 +13,6 @@ async function getPosts() {
 const SectionBlog = async () => {
   const posts = await getPosts();
 
-  console.log("POSTSSS: ", posts);
-
   return (
     <section id="news" className="news">
       <div className="container">

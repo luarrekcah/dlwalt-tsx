@@ -4,7 +4,7 @@ import api from "@/lib/api";
 import { Post } from "@/types";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import toast from 'react-hot-toast'
+import toast from "react-hot-toast";
 
 const Posts = () => {
   const [posts, setPosts] = useState<Post[]>([]);
@@ -30,7 +30,7 @@ const Posts = () => {
         },
       });
 
-      console.log(data)
+      console.log(data);
 
       setPosts(data.data.data);
       setTotal(data.data.total);
@@ -48,19 +48,24 @@ const Posts = () => {
   const totalPages = Math.ceil(total / limit);
 
   async function removePost(id: number) {
-    const isConfirmed = confirm('Quer mesmo apagar esse post?');
+    const isConfirmed = confirm("Quer mesmo apagar esse post?");
 
-    if(isConfirmed) {
-      await api.delete(`/posts/${id}`);
-      setPosts((prev) => prev.filter((p) => p.id !== id));
+    console.log(id);
+
+    if (isConfirmed) {
+      try {
+        await api.delete(`/posts/${id}`);
+        setPosts((prev) => prev.filter((p) => p.id !== id));
+      } catch (error) {
+        throw new Error("Ocorreu um erro ao apagar o post");
+      }
     } else {
-      throw new Error('Usuário cancelou a ação')
+      throw new Error("Usuário cancelou a ação");
     }
   }
 
   return (
     <div className="container-fluid">
-
       {/* Título */}
       <div className="row mb-3">
         <div className="col-6">
@@ -155,11 +160,13 @@ const Posts = () => {
 
                     <button
                       className="btn btn-sm btn-danger"
-                      onClick={() => toast.promise(removePost(p.id), {
-                        loading: 'Aguardando...',
-                        success: 'Post deletado!',
-                        error: "Nenhuma ação realizada."
-                      })}
+                      onClick={() =>
+                        toast.promise(removePost(p.id), {
+                          loading: "Aguardando...",
+                          success: "Post deletado!",
+                          error: "Nenhuma ação realizada.",
+                        })
+                      }
                     >
                       Remover
                     </button>
@@ -181,7 +188,9 @@ const Posts = () => {
           ← Anterior
         </button>
 
-        <span>Página {page} de {totalPages}</span>
+        <span>
+          Página {page} de {totalPages}
+        </span>
 
         <button
           className="btn btn-outline-primary"

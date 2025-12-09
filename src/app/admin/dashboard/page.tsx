@@ -1,15 +1,31 @@
 "use client";
 
 import { useAuth } from "@/context/AuthContext";
+import api from "@/lib/api";
+import { useEffect, useState } from "react";
 
 const Dashboard = () => {
   const { user, loading } = useAuth();
+  const [users, setUsers] = useState([]);
+  const [posts, setPosts] = useState([]);
+
+  const loadData = async () => {
+    const usersResponse = await api.get("/user");
+    setUsers(usersResponse.data.data);
+
+    const postsResponse = await api.get("/posts");
+    setPosts(postsResponse.data.data.data);
+  };
+
+  useEffect(() => {
+    loadData();
+  }, []);
 
   if (loading) return <p>Carregando...</p>;
 
   const stats = {
-    users: 0,
-    posts: 0
+    users: users.length,
+    posts: posts.length,
   };
   return (
     <div className="container-fluid">
@@ -29,7 +45,7 @@ const Dashboard = () => {
           </div>
         </div>
       </div>
-{/**
+      {/**
  * 
       <div className="row mt-4">
         <div className="col-12">
