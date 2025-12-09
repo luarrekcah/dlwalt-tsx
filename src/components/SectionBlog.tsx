@@ -42,11 +42,7 @@ const SectionBlog = async () => {
                       height={300}
                       loading="lazy"
                       className="img-fluid"
-                      src={
-                        post.thumbnailUrl
-                          ? post.thumbnailUrl
-                          : "/images/backgrounds/bg-panel.webp"
-                      }
+                      src={post.thumbnailUrl}
                       alt={post.title}
                     />
                   </a>
@@ -55,7 +51,10 @@ const SectionBlog = async () => {
                 {/* TÍTULO E DATA */}
                 <div className="post-body">
                   <h4 className="post-title">
-                    <Link href={`/blog/${post.slug}`} className="d-inline-block">
+                    <Link
+                      href={`/blog/${post.slug}`}
+                      className="d-inline-block"
+                    >
                       {post.title}
                     </Link>
                   </h4>
