@@ -9,7 +9,12 @@ const Users = () => {
   const [users, setUsers] = useState<User[]>([]);
   const [query, setQuery] = useState("");
   const [showModal, setShowModal] = useState(false);
-  const [form, setForm] = useState({ name: "", email: "", password: "", confirmPassword: "" });
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+  });
 
   const filtered = users.filter(
     (u) =>
@@ -90,12 +95,16 @@ const Users = () => {
               <td>{u.name}</td>
               <td>{u.email}</td>
               <td>
-                <button
-                  className="btn btn-sm btn-danger"
-                  onClick={() => removeUser(u.id)}
-                >
-                  Remover
-                </button>
+                {Number(u.id) === 1 ? (
+                  <p>Esse usuário não pode ser deletado.</p>
+                ) : (
+                  <button
+                    className="btn btn-sm btn-danger"
+                    onClick={() => removeUser(u.id)}
+                  >
+                    Remover
+                  </button>
+                )}
               </td>
             </tr>
           ))}
@@ -111,10 +120,7 @@ const Users = () => {
             <div className="modal-content">
               <div className="modal-header">
                 <h5 className="modal-title">Adicionar Usuário</h5>
-                <button
-                  className="close"
-                  onClick={() => setShowModal(false)}
-                >
+                <button className="close" onClick={() => setShowModal(false)}>
                   ×
                 </button>
               </div>
@@ -134,7 +140,9 @@ const Users = () => {
                   <input
                     className="form-control"
                     value={form.email}
-                    onChange={(e) => setForm({ ...form, email: e.target.value })}
+                    onChange={(e) =>
+                      setForm({ ...form, email: e.target.value })
+                    }
                   />
                 </div>
 
@@ -144,7 +152,9 @@ const Users = () => {
                     className="form-control"
                     type="password"
                     value={form.password}
-                    onChange={(e) => setForm({ ...form, password: e.target.value })}
+                    onChange={(e) =>
+                      setForm({ ...form, password: e.target.value })
+                    }
                   />
                 </div>
 
@@ -154,13 +164,18 @@ const Users = () => {
                     className="form-control"
                     type="password"
                     value={form.confirmPassword}
-                    onChange={(e) => setForm({ ...form, confirmPassword: e.target.value })}
+                    onChange={(e) =>
+                      setForm({ ...form, confirmPassword: e.target.value })
+                    }
                   />
                 </div>
               </div>
 
               <div className="modal-footer">
-                <button className="btn btn-secondary" onClick={() => setShowModal(false)}>
+                <button
+                  className="btn btn-secondary"
+                  onClick={() => setShowModal(false)}
+                >
                   Cancelar
                 </button>
                 <button className="btn btn-success" onClick={addUser}>
