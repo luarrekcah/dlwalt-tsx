@@ -3,6 +3,7 @@
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import "@/styles/globals.css";
 import Script from "next/script";
+import { Toaster } from "react-hot-toast";
 
 export default function RootLayout({
   children,
@@ -77,6 +78,7 @@ export default function RootLayout({
             src="https://www.facebook.com/tr?id=25094130833530947&ev=PageView&noscript=1"
           />
         </noscript>
+        <Toaster position="top-center" reverseOrder={false} />
       </body>
     </html>
   );
