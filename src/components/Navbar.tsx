@@ -363,9 +363,10 @@ const FinanciamentoModal = () => {
       </div>
       {/* MODAL DE LOADING */}
       <div
+        className="modal fade"
         id="loadingModal"
-        className="modal fade show d-block"
-        style={{ background: "rgba(0,0,0,0.4)" }}
+        data-backdrop="static"
+        data-keyboard="false"
       >
         <div className="modal-dialog modal-sm modal-dialog-centered">
           <div className="modal-content text-center p-4">
@@ -380,6 +381,7 @@ const FinanciamentoModal = () => {
           </div>
         </div>
       </div>
+
 
       {/* MODAL DE SUCESSO */}
       <div className="modal fade" id="successModal">
