@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import Link from "next/link";
@@ -6,19 +7,62 @@ import Image from "next/image";
 import { useState } from "react";
 import api from "@/lib/api";
 import toast from "react-hot-toast";
+import { InputMask } from "@react-input/mask";
+import { InputNumberFormat, unformat } from "@react-input/number-format";
 interface NavbarProps {
   children?: React.ReactNode;
+}
+
+function validarCPF(cpf: string) {
+  cpf = cpf.replace(/[^\d]+/g, "");
+
+  if (cpf.length !== 11 || /^(\d)\1+$/.test(cpf)) return false;
+
+  let soma = 0;
+  let resto;
+
+  for (let i = 1; i <= 9; i++)
+    soma += parseInt(cpf.substring(i - 1, i)) * (11 - i);
+
+  resto = (soma * 10) % 11;
+  if (resto === 10 || resto === 11) resto = 0;
+  if (resto !== parseInt(cpf.substring(9, 10))) return false;
+
+  soma = 0;
+  for (let i = 1; i <= 10; i++)
+    soma += parseInt(cpf.substring(i - 1, i)) * (12 - i);
+
+  resto = (soma * 10) % 11;
+  if (resto === 10 || resto === 11) resto = 0;
+
+  return resto === parseInt(cpf.substring(10, 11));
 }
 
 declare let $: any;
 
 const FinanciamentoModal = () => {
   const [temEntrada, setTemEntrada] = useState("false");
+  const [monthlyIncome, setMonthlyIncome] = useState("0");
+  const [downPaymentValue, setDownPaymentValue] = useState("0");
+  const [energyBillValue, setEnergyBillValue] = useState("0");
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     const form = e.target as HTMLFormElement;
-    const data = Object.fromEntries(new FormData(form).entries());
+    let data = Object.fromEntries(new FormData(form).entries());
+
+    data = {
+      ...data,
+      monthlyIncome,
+      downPaymentValue,
+      energyBillValue,
+    };
+
+    if (!validarCPF(data.cpf as string)) {
+      toast.error("CPF inválido");
+      return;
+    }
 
     // 1. ABRE O MODAL DE LOADING
     $("#loadingModal").modal("show");
@@ -79,13 +123,23 @@ const FinanciamentoModal = () => {
                   {/* VALOR ENERGIA */}
                   <div className="col-md-6 form-group">
                     <label>Valor da conta de energia</label>
-                    <input
+
+                    <InputNumberFormat
+                      locales={"pt-BR"}
+                      format="currency"
+                      currency="BRL"
                       name="energyBillValue"
                       className="form-control"
+                      onChange={(event) => {
+                        const value = event.target.value;
+                        const number = unformat(value, "pt-BR");
+                        setEnergyBillValue(number);
+                      }}
                       required
                     />
                   </div>
 
+                  {/* IMÓVEL */}
                   <div className="col-md-6 form-group">
                     <label>Imóvel</label>
                     <select name="propertyType" className="form-control">
@@ -103,18 +157,32 @@ const FinanciamentoModal = () => {
                   {/* TELEFONE */}
                   <div className="col-md-6 form-group">
                     <label>Telefone</label>
-                    <input name="phone" className="form-control" required />
+
+                    <InputMask
+                      mask="(__) _____-____"
+                      replacement={{ _: /\d/ }}
+                      name="phone"
+                      className="form-control"
+                      required
+                    />
                   </div>
 
                   {/* CPF */}
                   <div className="col-md-6 form-group">
                     <label>CPF</label>
-                    <input name="cpf" className="form-control" required />
+                    <InputMask
+                      mask="___.___.___-__"
+                      replacement={{ _: /\d/ }}
+                      name="cpf"
+                      className="form-control"
+                      required
+                    />
                   </div>
 
                   {/* RG */}
                   <div className="col-md-6 form-group">
                     <label>RG</label>
+
                     <input name="rg" className="form-control" required />
                   </div>
 
@@ -152,9 +220,17 @@ const FinanciamentoModal = () => {
                   {/* RENDA */}
                   <div className="col-md-6 form-group">
                     <label>Renda mensal</label>
-                    <input
+                    <InputNumberFormat
+                      locales={"pt-BR"}
+                      format="currency"
+                      currency="BRL"
                       name="monthlyIncome"
                       className="form-control"
+                      onChange={(event) => {
+                        const value = event.target.value;
+                        const number = unformat(value, "pt-BR");
+                        setMonthlyIncome(number);
+                      }}
                       required
                     />
                   </div>
@@ -176,7 +252,19 @@ const FinanciamentoModal = () => {
                   {temEntrada === "true" && (
                     <div className="col-md-6 form-group">
                       <label>Valor de entrada</label>
-                      <input name="downPaymentValue" className="form-control" />
+                      <InputNumberFormat
+                        locales={"pt-BR"}
+                        format="currency"
+                        currency="BRL"
+                        name="downPaymentValue"
+                        className="form-control"
+                        onChange={(event) => {
+                          const value = event.target.value;
+                          const number = unformat(value, "pt-BR");
+                          setDownPaymentValue(number);
+                        }}
+                        required
+                      />
                     </div>
                   )}
                 </div>
@@ -186,9 +274,17 @@ const FinanciamentoModal = () => {
                 <h5>Endereço</h5>
 
                 <div className="row">
+                  {/* CEP */}
                   <div className="col-md-4 form-group">
                     <label>CEP</label>
-                    <input name="zipcode" className="form-control" required />
+
+                    <InputMask
+                      mask="_____-___"
+                      replacement={{ _: /\d/ }}
+                      name="zipcode"
+                      className="form-control"
+                      required
+                    />
                   </div>
 
                   <div className="col-md-8 form-group">
