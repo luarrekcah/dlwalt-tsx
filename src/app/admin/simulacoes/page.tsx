@@ -3,7 +3,8 @@
 import api from "@/lib/api";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
-import Link from "next/link";
+import * as XLSX from "xlsx";
+import { saveAs } from "file-saver";
 
 type CreditAnalysisType = {
   id: number;
@@ -54,6 +55,73 @@ const Simulacoes = () => {
   const [showViewModal, setShowViewModal] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);
   const [selected, setSelected] = useState<CreditAnalysisType | null>(null);
+  async function exportExcel() {
+    try {
+      toast.loading("Gerando planilha...", { id: "excel" });
+
+      // Busca TODOS os registros usando os filtros atuais
+      const { data } = await api.get("/financial/credit-analysis", {
+        params: { page: 1, limit: 999999, q, status },
+      });
+
+      const registros = data.data.data;
+
+      if (!registros || registros.length === 0) {
+        toast.error("Nenhum registro para exportar", { id: "excel" });
+        return;
+      }
+
+      // Monta todos os campos EXCETO id e status
+      const excelData = registros.map((i: CreditAnalysisType) => ({
+        Nome: i.fullName,
+        CPF: i.cpf,
+        RG: i.rg || "",
+        "Nome da Mãe": i.motherName,
+        "Data de Nascimento": new Date(i.birthDate).toLocaleDateString("pt-BR"),
+        Telefone: i.phone,
+        Profissão: i.profession || "",
+        "Renda Mensal": i.monthlyIncome,
+
+        "Valor Conta de Luz": i.energyBillValue,
+        "Possui Entrada": i.hasDownPayment ? "Sim" : "Não",
+        "Valor da Entrada": i.downPaymentValue ?? "",
+
+        CEP: i.zipcode,
+        Rua: i.street,
+        Número: i.houseNumber,
+        Cidade: i.city,
+        Estado: i.state,
+        "Tipo de Propriedade": i.propertyType === "own" ? "Própria" : "Alugada",
+
+        "Data da Solicitação": new Date(i.createdAt).toLocaleDateString(
+          "pt-BR"
+        ),
+      }));
+
+      // Converte para planilha
+      const worksheet = XLSX.utils.json_to_sheet(excelData);
+      const workbook = XLSX.utils.book_new();
+
+      XLSX.utils.book_append_sheet(workbook, worksheet, "Simulações");
+
+      // Gera arquivo
+      const excelBuffer = XLSX.write(workbook, {
+        bookType: "xlsx",
+        type: "array",
+      });
+
+      const blob = new Blob([excelBuffer], {
+        type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      });
+
+      saveAs(blob, "simulacoes.xlsx");
+
+      toast.success("Planilha gerada com sucesso!", { id: "excel" });
+    } catch (error) {
+      console.error("Erro ao exportar excel:", error);
+      toast.error("Erro ao exportar planilha", { id: "excel" });
+    }
+  }
 
   async function loadCreditAnalysis() {
     try {
@@ -127,6 +195,12 @@ const Simulacoes = () => {
       <div className="row mb-3">
         <div className="col-6">
           <h3>Simulações de Crédito</h3>
+        </div>
+
+        <div className="col-6 d-flex justify-content-end">
+          <button className="btn btn-success" onClick={exportExcel}>
+            Exportar Excel
+          </button>
         </div>
       </div>
 
@@ -264,7 +338,6 @@ const Simulacoes = () => {
           style={{ background: "#0004" }}
         >
           <div className="modal-dialog modal-lg modal-dialog-scrollable">
-
             <div className="modal-content">
               <div className="modal-header">
                 <h5 className="modal-title">Detalhes da Simulação</h5>
