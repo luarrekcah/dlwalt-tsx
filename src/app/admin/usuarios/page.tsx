@@ -95,7 +95,7 @@ const Users = () => {
               <td>{u.name}</td>
               <td>{u.email}</td>
               <td>
-                {Number(u.id) === 1 ? (
+                {u.email === "contato@dwalt.net" ? (
                   <p>Esse usuário não pode ser deletado.</p>
                 ) : (
                   <button
