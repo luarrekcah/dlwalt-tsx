@@ -109,9 +109,9 @@ const FinanciamentoModal = () => {
         <div className="modal-dialog modal-lg" role="document">
           <div className="modal-content">
             <div className="modal-header">
-              <h5 className="modal-title">
+              <h4 className="modal-title text-primary">
                 Vamos enviar a proposta para análise de crédito
-              </h5>
+              </h4>
               <button type="button" className="close" data-dismiss="modal">
                 <span>&times;</span>
               </button>
@@ -311,8 +311,11 @@ const FinanciamentoModal = () => {
                     <input name="state" className="form-control" required />
                   </div>
                 </div>
+                <small>
+                  Ao fornecer seus dados para análise você aceita nosso termo de
+                  uso e política de privacidade.
+                </small>
               </div>
-
               <div className="modal-footer">
                 <button
                   type="button"
