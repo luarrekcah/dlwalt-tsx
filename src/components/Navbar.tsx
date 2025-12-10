@@ -13,6 +13,34 @@ interface NavbarProps {
   children?: React.ReactNode;
 }
 
+async function handleCepChange(e: React.ChangeEvent<HTMLInputElement>) {
+  const cep = e.target.value.replace(/\D/g, "");
+
+  if (cep.length !== 8) return; // só busca quando tiver 8 dígitos
+
+  try {
+    const res = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
+    const data = await res.json();
+
+    if (data.erro) {
+      toast.error("CEP não encontrado");
+      return;
+    }
+
+    // Preenche automaticamente os campos
+    (document.querySelector("[name='street']") as HTMLInputElement).value =
+      data.logradouro || "";
+
+    (document.querySelector("[name='city']") as HTMLInputElement).value =
+      data.localidade || "";
+
+    (document.querySelector("[name='state']") as HTMLInputElement).value =
+      data.uf || "";
+  } catch (err) {
+    toast.error("Erro ao buscar CEP");
+  }
+}
+
 function validarCPF(cpf: string) {
   cpf = cpf.replace(/[^\d]+/g, "");
 
@@ -283,6 +311,7 @@ const FinanciamentoModal = () => {
                       replacement={{ _: /\d/ }}
                       name="zipcode"
                       className="form-control"
+                      onBlur={handleCepChange}
                       required
                     />
                   </div>
@@ -333,22 +362,24 @@ const FinanciamentoModal = () => {
         </div>
       </div>
       {/* MODAL DE LOADING */}
-  <div
-  id="loadingModal"
-  className="modal fade show d-block"
-  style={{ background: "rgba(0,0,0,0.4)" }}
->
-  <div className="modal-dialog modal-sm modal-dialog-centered">
-    <div className="modal-content text-center p-4">
-      <div className="d-flex flex-column justify-content-center align-items-center">
-        <div className="spinner-border text-primary mb-3" role="status"></div>
-        <h5>Enviando proposta...</h5>
-        <p>Aguarde alguns segundos</p>
+      <div
+        id="loadingModal"
+        className="modal fade show d-block"
+        style={{ background: "rgba(0,0,0,0.4)" }}
+      >
+        <div className="modal-dialog modal-sm modal-dialog-centered">
+          <div className="modal-content text-center p-4">
+            <div className="d-flex flex-column justify-content-center align-items-center">
+              <div
+                className="spinner-border text-primary mb-3"
+                role="status"
+              ></div>
+              <h5>Enviando proposta...</h5>
+              <p>Aguarde alguns segundos</p>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-</div>
-
 
       {/* MODAL DE SUCESSO */}
       <div className="modal fade" id="successModal">
