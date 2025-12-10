@@ -333,23 +333,22 @@ const FinanciamentoModal = () => {
         </div>
       </div>
       {/* MODAL DE LOADING */}
-      <div
-        className="modal fade"
-        id="loadingModal"
-        data-backdrop="static"
-        data-keyboard="false"
-      >
-        <div className="modal-dialog modal-sm modal-dialog-centered">
-          <div className="modal-content text-center p-4">
-            <div
-              className="spinner-border text-primary mb-3"
-              role="status"
-            ></div>
-            <h5>Enviando proposta...</h5>
-            <p>Aguarde alguns segundos</p>
-          </div>
-        </div>
+  <div
+  id="loadingModal"
+  className="modal fade show d-block"
+  style={{ background: "rgba(0,0,0,0.4)" }}
+>
+  <div className="modal-dialog modal-sm modal-dialog-centered">
+    <div className="modal-content text-center p-4">
+      <div className="d-flex flex-column justify-content-center align-items-center">
+        <div className="spinner-border text-primary mb-3" role="status"></div>
+        <h5>Enviando proposta...</h5>
+        <p>Aguarde alguns segundos</p>
       </div>
+    </div>
+  </div>
+</div>
+
 
       {/* MODAL DE SUCESSO */}
       <div className="modal fade" id="successModal">
