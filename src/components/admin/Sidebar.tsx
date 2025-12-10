@@ -16,8 +16,7 @@ const Sidebar = () => {
           icon: "fas fa-chart-line",
         },
         { label: "Posts", href: "/admin/posts", icon: "fas fa-file-alt" },
-        { label: "Simulações", href: "/admin/simulacoes", icon: "fas fa-calculator", 
-          notFinished: true, },
+        { label: "Simulações", href: "/admin/simulacoes", icon: "fas fa-calculator",  },
         {
           label: "Projetos",
           href: "/admin/projetos",
