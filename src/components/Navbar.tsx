@@ -484,10 +484,7 @@ const Navbar = ({ children }: NavbarProps) => {
                     </li>
                     <li className="nav-item">
                       <Link
-                        className="nav-link"
-                        href="#"
-                        data-toggle="modal"
-                        data-target="#financiamentoModal"
+                        className="nav-link" href="/financiamento"
                       >
                         Financiamento
                       </Link>
@@ -553,7 +550,12 @@ const Navbar = ({ children }: NavbarProps) => {
                     </li>
                     <li className="nav-item">
                       <Link className="nav-link" href="/contato">
-                        contato
+                        Contato
+                      </Link>
+                    </li>
+                    <li className="nav-item">
+                      <Link className="nav-link" href="http://afiliados.dwalt.net" target="_blank">
+                        Acesso Afiliado
                       </Link>
                     </li>
                   </ul>
