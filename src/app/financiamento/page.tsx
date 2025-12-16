@@ -37,7 +37,9 @@ const Financiamento = () => {
             <div className="row flex flex-col gap-12">
               {/* FORMULÁRIO */}
               <div className="mt-12">
-                <h2 className="text-3xl font-bold text-center mb-6">Solicite sua simulação gratuita</h2>
+                <h2 className="text-3xl font-bold text-center mb-6">Simule seu financiamento de energia solar agora!</h2>
+
+              <p className="text-3xl font-bold text-center mb-6">Receba diretamente no seu celular o valor de cada parcela do seu financiamento solar.</p>
                 <FinanciamentoComponent />
               </div>
             </div>
