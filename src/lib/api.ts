@@ -6,7 +6,7 @@ import Cookies from "js-cookie";
 const api = axios.create({
   baseURL:
     process.env.NODE_ENV === "development"
-      ? "http://localhost:3000/api"
+      ? "https://api.dwalt.net/api"//"http://localhost:3000/api"
       : "https://api.dwalt.net/api",
   headers: {
     "Content-Type": "application/json",

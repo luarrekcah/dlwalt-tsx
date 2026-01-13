@@ -499,6 +499,11 @@ const Navbar = ({ children }: NavbarProps) => {
                         Blog
                       </Link>
                     </li>
+                    <li className="nav-item">
+                      <Link className="nav-link" href="/calculadora-solar">
+                        Calculadora
+                      </Link>
+                    </li>
                     <li className="nav-item dropdown">
                       <Link
                         href="/#"
