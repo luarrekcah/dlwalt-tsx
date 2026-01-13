@@ -204,6 +204,93 @@ export default function CalculatorClient({ affiliateParent }: { affiliateParent?
                                 )}
                             </div>
 
+                            {/* SEO CONTENT SECTION */}
+                            <div className="container mt-5" style={{ maxWidth: "800px" }}>
+                                <article className="mb-5">
+                                    <h3 className="mb-3">Como funciona a Calculadora Solar?</h3>
+                                    <p>
+                                        A <strong>Calculadora Solar da D Walt</strong> utiliza dados atualizados de irradiação solar
+                                        média de cada estado brasileiro para estimar o potencial de geração de energia fotovoltaica
+                                        no seu telhado. Ao informar sua cidade e seu consumo mensal em kWh (quilowatts-hora), nossa
+                                        ferramenta calcula automaticamente:
+                                    </p>
+                                    <ul>
+                                        <li>O <strong>tamanho do sistema</strong> (potência em kWp) necessário para suprir sua demanda.</li>
+                                        <li>A <strong>economia estimada</strong> mensal e anual na conta de luz.</li>
+                                        <li>O valor aproximado do <strong>investimento inicial</strong>.</li>
+                                        <li>O tempo de retorno (payback) do investimento.</li>
+                                    </ul>
+                                </article>
+
+                                <article className="mb-5">
+                                    <h3 className="mb-3">Por que investir em Energia Solar?</h3>
+                                    <p>
+                                        Investir em um sistema fotovoltaico é uma das melhores decisões financeiras para residências e empresas.
+                                        Confira as principais vantagens:
+                                    </p>
+                                    <div className="row mt-4">
+                                        <div className="col-md-6 mb-3">
+                                            <div className="card h-100 p-3 shadow-sm border-0">
+                                                <h5 className="font-weight-bold text-success">Economia Imediata</h5>
+                                                <p className="small mb-0">Reduza sua conta de energia em até 95% logo no primeiro mês de funcionamento.</p>
+                                            </div>
+                                        </div>
+                                        <div className="col-md-6 mb-3">
+                                            <div className="card h-100 p-3 shadow-sm border-0">
+                                                <h5 className="font-weight-bold text-success">Investimento Seguro</h5>
+                                                <p className="small mb-0">Proteja-se da inflação energética e valorize seu imóvel com uma tecnologia durável (25+ anos).</p>
+                                            </div>
+                                        </div>
+                                        <div className="col-md-6 mb-3">
+                                            <div className="card h-100 p-3 shadow-sm border-0">
+                                                <h5 className="font-weight-bold text-success">Sustentabilidade</h5>
+                                                <p className="small mb-0">Gera energia limpa, renovável e silenciosa, contribuindo para o meio ambiente.</p>
+                                            </div>
+                                        </div>
+                                        <div className="col-md-6 mb-3">
+                                            <div className="card h-100 p-3 shadow-sm border-0">
+                                                <h5 className="font-weight-bold text-success">Baixa Manutenção</h5>
+                                                <p className="small mb-0">Os painéis requerem pouca manutenção, basicamente apenas limpeza periódica.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </article>
+
+                                <article className="mb-5">
+                                    <h3 className="mb-3">Perguntas Frequentes (FAQ)</h3>
+                                    <div className="accordion" id="faqAccordion">
+                                        <div className="card border-0 mb-2">
+                                            <div className="card-header bg-light p-0" id="headingOne">
+                                                <h5 className="mb-0">
+                                                    <button className="btn btn-link btn-block text-left text-dark font-weight-bold p-3" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                                        Quanto custa instalar energia solar?
+                                                    </button>
+                                                </h5>
+                                            </div>
+                                            <div id="collapseOne" className="collapse show" aria-labelledby="headingOne" data-parent="#faqAccordion">
+                                                <div className="card-body">
+                                                    O custo varia conforme o consumo e a região. Nossa calculadora fornece uma estimativa precisa baseada no seu consumo mensal. Em geral, o retorno do investimento ocorre entre 3 a 5 anos.
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className="card border-0 mb-2">
+                                            <div className="card-header bg-light p-0" id="headingTwo">
+                                                <h5 className="mb-0">
+                                                    <button className="btn btn-link btn-block text-left text-dark font-weight-bold p-3" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                                        A energia solar funciona em dias nublados?
+                                                    </button>
+                                                </h5>
+                                            </div>
+                                            <div id="collapseTwo" className="collapse" aria-labelledby="headingTwo" data-parent="#faqAccordion">
+                                                <div className="card-body">
+                                                    Sim! Os painéis fotovoltaicos funcionam com a radiação solar, não apenas com a luz direta do sol. Embora a produção seja menor em dias nublados ou chuvosos, o sistema continua gerando energia.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </article>
+                            </div>
+
                             {/* MODAL LEAD */}
                             <div
                                 className="modal fade"
