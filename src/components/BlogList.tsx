@@ -4,6 +4,7 @@ import api from "@/lib/api";
 import { Post } from "@/types";
 import Image from "next/image";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import BlogSidebar from "./BlogSidebar";
 
@@ -69,11 +70,9 @@ const PostCard = ({ post }: { post: Post }) => {
 const BlogPagination = ({
   page,
   totalPages,
-  onChangePage,
 }: {
   page: number;
   totalPages: number;
-  onChangePage: (newPage: number) => void;
 }) => {
   if (totalPages <= 1) return null;
 
@@ -83,23 +82,39 @@ const BlogPagination = ({
     <nav className="paging" aria-label="Page navigation example">
       <ul className="pagination justify-content-center">
         <li className={`page-item ${page === 1 ? "disabled" : ""}`}>
-          <button className="page-link" onClick={() => onChangePage(page - 1)}>
-            <i className="fas fa-angle-double-left"></i>
-          </button>
+          {page === 1 ? (
+            <span className="page-link">
+              <i className="fas fa-angle-double-left"></i>
+            </span>
+          ) : (
+            <Link className="page-link" href={`/blog?page=${page - 1}`} scroll={true}>
+              <i className="fas fa-angle-double-left"></i>
+            </Link>
+          )}
         </li>
 
         {pages.map((p) => (
           <li key={p} className={`page-item ${p === page ? "active" : ""}`}>
-            <button className="page-link" onClick={() => onChangePage(p)}>
-              {p}
-            </button>
+            {p === page ? (
+              <span className="page-link">{p}</span>
+            ) : (
+              <Link className="page-link" href={`/blog?page=${p}`} scroll={true}>
+                {p}
+              </Link>
+            )}
           </li>
         ))}
 
         <li className={`page-item ${page === totalPages ? "disabled" : ""}`}>
-          <button className="page-link" onClick={() => onChangePage(page + 1)}>
-            <i className="fas fa-angle-double-right"></i>
-          </button>
+          {page === totalPages ? (
+            <span className="page-link">
+              <i className="fas fa-angle-double-right"></i>
+            </span>
+          ) : (
+            <Link className="page-link" href={`/blog?page=${page + 1}`} scroll={true}>
+              <i className="fas fa-angle-double-right"></i>
+            </Link>
+          )}
         </li>
       </ul>
     </nav>
@@ -107,6 +122,10 @@ const BlogPagination = ({
 };
 
 const BlogList = () => {
+  const searchParams = useSearchParams();
+  const pageParam = searchParams.get("page");
+  const currentPage = pageParam ? parseInt(pageParam, 10) : 1;
+
   const [postsData, setPostsData] = useState<PaginatedPosts>({
     total: 0,
     page: 1,
@@ -115,33 +134,27 @@ const BlogList = () => {
   });
   const [loading, setLoading] = useState(false);
 
-  const loadPosts = async (page = 1) => {
-    setLoading(true);
-    try {
-      const { data } = await api.get(
-        `/posts?page=${page}&limit=${postsData.limit}`
-      );
-      setPostsData(data.data);
-    } catch (err) {
-      console.error("Erro ao carregar posts:", err);
-    }
-    setLoading(false);
-  };
-
   useEffect(() => {
-    loadPosts(postsData.page);
-  }, []);
+    const loadPosts = async (page: number) => {
+      setLoading(true);
+      try {
+        const { data } = await api.get(
+          `/posts?page=${page}&limit=6`
+        );
+        setPostsData(data.data);
+      } catch (err) {
+        console.error("Erro ao carregar posts:", err);
+      }
+      setLoading(false);
+    };
 
-  const handleChangePage = (newPage: number) => {
-    if (newPage < 1 || newPage > Math.ceil(postsData.total / postsData.limit))
-      return;
-    loadPosts(newPage);
-  };
+    loadPosts(currentPage);
+  }, [currentPage]);
 
   return (
     <>
       <div className="col-lg-4 order-1 order-lg-0">
-       <BlogSidebar />
+        <BlogSidebar />
       </div>
 
       <div className="col-lg-8 mb-5 mb-lg-0 order-0 order-lg-1">
@@ -156,9 +169,8 @@ const BlogList = () => {
         ))}
 
         <BlogPagination
-          page={postsData.page}
+          page={currentPage}
           totalPages={Math.ceil(postsData.total / postsData.limit)}
-          onChangePage={handleChangePage}
         />
       </div>
     </>

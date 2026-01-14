@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
     const image = post.thumbnailUrl || `${company.url}/default-og.jpg`;
 
     return {
-      title: `${post.title} | ${company.name}`,
+      title: post.title, // Template do layout adicionará "| Dwalt Energia"
       description: cleanDescription,
       keywords: [
         post.title,
@@ -112,6 +112,37 @@ export default async function BlogPost(props: {
 
   return (
     <div className="body-inner">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Article",
+            headline: post.title,
+            description: post.content
+              .replace(/(<([^>]+)>)/gi, "")
+              .slice(0, 160),
+            image: post.thumbnailUrl || `${company.url}/default-og.jpg`,
+            author: {
+              "@type": "Person",
+              name: post.author?.name || company.name,
+            },
+            publisher: {
+              "@type": "Organization",
+              name: company.name,
+              logo: {
+                "@type": "ImageObject",
+                url: `${company.url}/logo192.png`,
+              },
+            },
+            datePublished: post.publishedAt,
+            mainEntityOfPage: {
+              "@type": "WebPage",
+              "@id": `${company.url}/blog/${post.slug}`,
+            },
+          }),
+        }}
+      />
       <Navbar />
       <BlogSingle post={post} />
       <Footer />

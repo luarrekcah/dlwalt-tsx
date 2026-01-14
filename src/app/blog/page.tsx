@@ -1,4 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
+import { Suspense } from "react";
 import BlogList from "@/components/BlogList";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
@@ -34,6 +35,26 @@ const Blog = () => {
   return (
     <>
       <div className="body-inner">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Blog",
+              name: `Blog Solar | ${company.name}`,
+              description: "Fique por dentro das novidades, dicas e informações sobre energia solar.",
+              url: `${company.url}/blog`,
+              publisher: {
+                "@type": "Organization",
+                name: company.name,
+                logo: {
+                  "@type": "ImageObject",
+                  url: `${company.url}/logo192.png`,
+                },
+              },
+            }),
+          }}
+        />
         <Navbar />
         <div
           id="banner-area"
@@ -68,7 +89,9 @@ const Blog = () => {
         <section id="main-container" className="main-container">
           <div className="container">
             <div className="row">
-              <BlogList />
+              <Suspense fallback={<p>Carregando blog...</p>}>
+                <BlogList />
+              </Suspense>
             </div>
           </div>
         </section>
