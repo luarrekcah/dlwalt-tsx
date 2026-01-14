@@ -1,6 +1,6 @@
 export const company = {
-    name: "DWALT Energia",
-    shortName: "DWALT",
+    name: "Dwalt Energia",
+    shortName: "Dwalt",
     description:
         "Economize até 95% na conta de luz com energia solar de alta performance. Projetos residenciais e empresariais, instalação rápida, suporte especializado e máxima eficiência.",
     url: "https://www.dwalt.net",
@@ -39,8 +39,8 @@ export const company = {
     },
     seo: {
         title: {
-            default: "DWALT Energia — Energia Solar de Alta Performance",
-            template: "DWALT Energia | %s",
+            default: "Dwalt Energia — Energia Solar de Alta Performance",
+            template: "%s | Dwalt Energia",
         },
         keywords: [
             "energia solar",
@@ -50,12 +50,12 @@ export const company = {
             "instalação de energia solar",
             "energia solar residência",
             "empresa energia solar",
-            "DWALT Energia",
+            "Dwalt Energia",
             "D | Walt Energia",
             "D | Walt Engenharia",
         ],
         defaultImage: "https://www.dwalt.net/images/ogimages/index.webp",
         locale: "pt_BR",
-        siteName: "DWALT Energia",
+        siteName: "Dwalt Energia",
     },
 };

@@ -13,12 +13,10 @@ import SectionBlog from "@/components/SectionBlog";
 import { company } from "@/data/company";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(company.url),
-  applicationName: company.name,
-  publisher: company.name,
-  title: company.seo.title,
+  title: {
+    absolute: company.seo.title.default,
+  },
   description: company.description,
-  keywords: company.seo.keywords,
   alternates: {
     canonical: "/",
   },
@@ -43,22 +41,6 @@ export const metadata: Metadata = {
     title: company.seo.title.default,
     description: "Instalação de energia solar para sua casa ou empresa com economia real.",
     images: [company.seo.defaultImage],
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-      "max-video-preview": -1,
-    },
-  },
-  authors: [{ name: company.name }],
-  icons: {
-    icon: "/favicon.ico",
-    apple: "/logo192.png",
   },
 };
 

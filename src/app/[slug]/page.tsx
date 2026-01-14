@@ -13,10 +13,9 @@ import Link from "next/link";
 export async function generateMetadata(props: {
   params: Promise<{ slug: string }>;
 }) {
-  const { slug } = await props.params; // <<<<<< CORREÇÃO
+  const { slug } = await props.params;
 
-  // @ts-ignore
-  const city = cities[slug];
+  const city = cities[slug as keyof typeof cities];
 
   if (!city) {
     return {
@@ -24,13 +23,14 @@ export async function generateMetadata(props: {
       robots: { index: false, follow: false },
     };
   }
+  // ... (rest of metadata function is fine, just fixing the city access)
 
   const pageUrl = `${company.url}/${slug}`;
 
   return {
     metadataBase: new URL(company.url),
     title: {
-      default: `Energia Solar em ${city.name} - RO | ${company.name}`,
+      default: `Energia Solar em ${city.name} - RO`,
       template: `%s | ${company.name}`,
     },
     description: `Instalação de energia solar em ${city.name} - RO com engenharia própria, materiais de alta qualidade e suporte completo. Economize até 90% na conta de luz com sistemas fotovoltaicos de alta performance.`,
@@ -116,8 +116,7 @@ export default async function CityPage(props: {
 }) {
   const { slug } = await props.params;
 
-  // @ts-ignore
-  const city = cities[slug];
+  const city = cities[slug as keyof typeof cities];
 
   if (!city) {
     return (
@@ -131,8 +130,8 @@ export default async function CityPage(props: {
     <>
       <div className="body-inner">
         <Navbar>
-          <h4
-            className="slogan"
+          <h1
+            className="slogan h4"
             style={{
               color: "#3266af",
               textAlign: "center",
@@ -142,10 +141,10 @@ export default async function CityPage(props: {
           >
             Energia Solar em <b style={{ color: "#00a859" }}> {city.name} </b> –
             RO
-          </h4>
+          </h1>
         </Navbar>
         {/* HERO SECTION */}
-        <div className="banner-carousel banner-carousel-1 mb-0">
+        <section className="banner-carousel banner-carousel-1 mb-0">
           <div
             className="banner-carousel-item"
             style={{
@@ -194,7 +193,7 @@ export default async function CityPage(props: {
               </div>
             </div>
           </div>
-        </div>
+        </section>
         {/* ABOUT US SECTION */}
 
         <SectionFeatures city={city} />
@@ -389,7 +388,7 @@ export default async function CityPage(props: {
         {/*SECTIONS*/}
         <FloatingWpp />
         <Footer />
-      </div>
+      </div >
     </>
   );
 }

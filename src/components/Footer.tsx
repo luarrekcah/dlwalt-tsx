@@ -67,7 +67,6 @@ const Footer = () => {
                   <h5 className="text-white mb-1" style={{ fontSize: "1rem" }}>{unit.name}</h5>
                   <p className="mb-1">
                     {unit.address}
-                    {unit.cnpj && <> <br /> CNPJ: {unit.cnpj} </>}
                   </p>
                 </div>
               ))}
@@ -115,7 +114,7 @@ const Footer = () => {
             <div className="col-md-6">
               <div className="copyright-info text-center text-md-left">
                 <span>
-                  Copyright {company.name} © Todos os Direitos Reservados
+                  Copyright {company.name} © Todos os Direitos Reservados CNPJ 26.711.744/0001-08
                 </span>
               </div>
             </div>

@@ -4,7 +4,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-    title: "Calculadora Solar Fotovoltaica | Simule sua Economia - D Walt Energia",
+    title: "Calculadora Solar Fotovoltaica | Simule sua Economia",
     description:
         "Descubra quanto você pode economizar com energia solar. Nossa calculadora solar fotovoltaica gratuita estima custos do sistema e retorno do investimento (payback).",
     keywords: [
@@ -16,9 +16,9 @@ export const metadata: Metadata = {
         "painel solar preço",
         "d walt energia",
     ],
-    authors: [{ name: "D Walt Energia Solar" }],
-    creator: "D Walt Energia Solar",
-    publisher: "D Walt Energia Solar",
+    authors: [{ name: "DWALT Energia" }],
+    creator: "DWALT Energia",
+    publisher: "DWALT Energia",
     robots: {
         index: true,
         follow: true,
@@ -31,20 +31,20 @@ export const metadata: Metadata = {
         },
     },
     alternates: {
-        canonical: "https://www.dwalt.net/calculadora-solar", // Ajuste conforme domínio final
+        canonical: "https://www.dwalt.net/calculadora-solar",
     },
     openGraph: {
-        title: "Calculadora Solar Gratuita | Simule seu Projeto Fotovoltaico",
+        title: "Calculadora Solar Gratuita | Simule seu Projeto Fotovoltaico | DWALT Energia",
         description:
             "Faça uma simulação instantânea e descubra o tamanho do sistema ideal e a economia gerada pela energia solar na sua casa ou empresa.",
         url: "https://www.dwalt.net/calculadora-solar",
-        siteName: "D Walt Energia Solar",
+        siteName: "DWALT Energia",
         images: [
             {
-                url: "/images/og-calculator.jpg", // Certifique-se de ter uma imagem padrão ou use uma genérica
+                url: "/images/og-calculator.jpg",
                 width: 1200,
                 height: 630,
-                alt: "Calculadora de Energia Solar D Walt",
+                alt: "Calculadora de Energia Solar DWALT",
             },
         ],
         locale: "pt_BR",
@@ -55,7 +55,7 @@ export const metadata: Metadata = {
         title: "Calculadora Solar Gratuita | Economize Energia",
         description:
             "Simule agora seu projeto de energia solar e pare de pagar caro na conta de luz.",
-        images: ["/images/og-calculator.jpg"], // Mesmo caminho do OG
+        images: ["/images/og-calculator.jpg"],
     },
 };
 

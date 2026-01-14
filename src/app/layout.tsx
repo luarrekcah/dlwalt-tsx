@@ -1,20 +1,99 @@
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable jsx-a11y/alt-text */
-import { SpeedInsights } from "@vercel/speed-insights/next"
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import "@/styles/globals.css";
 import Script from "next/script";
 import { Toaster } from "react-hot-toast";
+import { Metadata } from "next";
+import { company } from "@/data/company";
+
+export const metadata: Metadata = {
+  metadataBase: new URL(company.url),
+  title: {
+    default: company.seo.title.default,
+    template: company.seo.title.template,
+  },
+  description: company.description,
+  keywords: company.seo.keywords,
+  authors: [{ name: company.name }],
+  creator: company.name,
+  publisher: company.name,
+  icons: {
+    icon: "/favicon.ico",
+    apple: "/logo192.png",
+  },
+  openGraph: {
+    type: "website",
+    locale: company.seo.locale,
+    url: company.url,
+    siteName: company.seo.siteName,
+    title: company.seo.title.default,
+    description: company.description,
+    images: [
+      {
+        url: company.seo.defaultImage,
+        width: 1200,
+        height: 630,
+        alt: `Energia Solar — ${company.name}`,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: company.seo.title.default,
+    description: company.description,
+    images: [company.seo.defaultImage],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
+  alternates: {
+    canonical: "./",
+  },
+};
 
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: company.name,
+    url: company.url,
+    potentialAction: {
+      "@type": "SearchAction",
+      target: {
+        "@type": "EntryPoint",
+        urlTemplate: `${company.url}/search?q={search_term_string}`,
+      },
+      "query-input": "required name=search_term_string",
+    },
+  };
+
   return (
     <html lang="pt-BR">
       <body>
-        <main role="main">{children}</main>
-         <SpeedInsights />
+        <main role="main">
+          {children}
+        </main>
+
+        {/* JSON-LD for WebSite */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+
+        <SpeedInsights />
         {/* ==== PLUGINS JS (igual no seu HTML raiz) ==== */}
         <Script
           src="/plugins/jQuery/jquery.min.js"
