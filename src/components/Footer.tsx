@@ -114,7 +114,10 @@ const Footer = () => {
             <div className="col-md-6">
               <div className="copyright-info text-center text-md-left">
                 <span>
-                  Copyright {company.name} © Todos os Direitos Reservados CNPJ 26.711.744/0001-08
+                  &copy; {new Date().getFullYear()} {company.name} – Todos os
+                  Direitos Reservados. <br className="d-md-none" />
+                  <span className="d-none d-md-inline mx-2">|</span>
+                  CNPJ: {company.cnpj}
                 </span>
               </div>
             </div>
