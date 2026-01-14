@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { company } from "@/data/company";
 
 const Sidebar = () => {
   const pathname = usePathname();
@@ -16,7 +17,7 @@ const Sidebar = () => {
           icon: "fas fa-chart-line",
         },
         { label: "Posts", href: "/admin/posts", icon: "fas fa-file-alt" },
-        { label: "Simulações", href: "/admin/simulacoes", icon: "fas fa-calculator",  },
+        { label: "Simulações", href: "/admin/simulacoes", icon: "fas fa-calculator", },
         {
           label: "Projetos",
           href: "/admin/projetos",
@@ -69,7 +70,7 @@ const Sidebar = () => {
       className="sidebar bg-light p-3"
       style={{ width: 240, minHeight: "100vh" }}
     >
-      <h4>D | Walt Engenharia</h4>
+      <h4>{company.name}</h4>
       <ul className="nav flex-column p-0">
         {items.map((group, index) => (
           <div key={group.group}>
@@ -83,25 +84,24 @@ const Sidebar = () => {
 
               return (
                 <li className="nav-item mb-1" key={href}>
-                 <Link
-  href={notFinished ? "/admin/idealizacao" : href}
-  className={`nav-link d-flex align-items-center ${
-    active ? "bg-primary text-white" : "text-dark"
-  }`}
-  style={{ borderRadius: 20 }}
->
-  <span className="icon-wrapper d-flex justify-content-center align-items-center me-2">
-    <i className={icon}></i>
-  </span>
+                  <Link
+                    href={notFinished ? "/admin/idealizacao" : href}
+                    className={`nav-link d-flex align-items-center ${active ? "bg-primary text-white" : "text-dark"
+                      }`}
+                    style={{ borderRadius: 20 }}
+                  >
+                    <span className="icon-wrapper d-flex justify-content-center align-items-center me-2">
+                      <i className={icon}></i>
+                    </span>
 
-  <span className="flex-grow-1">{label}</span>
+                    <span className="flex-grow-1">{label}</span>
 
-  {notFinished && (
-    <span className="badge bg-warning text-dark ms-2">
-      IDEALIZAÇÃO
-    </span>
-  )}
-</Link>
+                    {notFinished && (
+                      <span className="badge bg-warning text-dark ms-2">
+                        IDEALIZAÇÃO
+                      </span>
+                    )}
+                  </Link>
 
                 </li>
               );

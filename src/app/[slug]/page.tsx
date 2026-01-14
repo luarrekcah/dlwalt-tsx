@@ -4,6 +4,7 @@ import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import SectionFeatures from "@/components/SectionFeatures";
 import { cities } from "@/data/cities";
+import { company } from "@/data/company";
 import Link from "next/link";
 
 // =====================
@@ -19,20 +20,19 @@ export async function generateMetadata(props: {
 
   if (!city) {
     return {
-      title: "Cidade não encontrada | D | Walt Engenharia",
+      title: `Cidade não encontrada | ${company.name}`,
       robots: { index: false, follow: false },
     };
   }
 
-  const pageUrl = `https://www.dwalt.net/${slug}`;
+  const pageUrl = `${company.url}/${slug}`;
 
   return {
-    metadataBase: new URL("https://www.dwalt.net"),
+    metadataBase: new URL(company.url),
     title: {
-      default: `Energia Solar em ${city.name} - RO | D | Walt Engenharia`,
-      template: `%s | D | Walt Engenharia`,
+      default: `Energia Solar em ${city.name} - RO | ${company.name}`,
+      template: `%s | ${company.name}`,
     },
-    // title: `Energia Solar em ${city.name} - RO | D | Walt Engenharia`,
     description: `Instalação de energia solar em ${city.name} - RO com engenharia própria, materiais de alta qualidade e suporte completo. Economize até 90% na conta de luz com sistemas fotovoltaicos de alta performance.`,
     keywords: [
       `energia solar em ${city.name}`,
@@ -40,7 +40,7 @@ export async function generateMetadata(props: {
       `sistema fotovoltaico ${city.name}`,
       `instalação energia solar ${city.name}`,
       `empresa energia solar ${city.name}`,
-      `DWALT Engenharia ${city.name}`,
+      `DWALT Energia ${city.name}`,
       `energia limpa ${city.name}`,
       `economizar energia ${city.name}`,
     ],
@@ -52,11 +52,11 @@ export async function generateMetadata(props: {
     // ================
     openGraph: {
       type: "article",
-      locale: "pt_BR",
+      locale: company.seo.locale,
       url: pageUrl,
-      title: `Energia Solar em ${city.name} - RO | D | Walt Engenharia`,
+      title: `Energia Solar em ${city.name} - RO | ${company.name}`,
       description: `Energia solar em ${city.name} com instalação rápida, materiais premium e suporte especializado. Solicite orçamento e economize até 90%.`,
-      siteName: "D | Walt Engenharia",
+      siteName: company.name,
       images: [
         /*
         Se você quiser habilitar imagens por cidade, basta remover o comentário.
@@ -68,10 +68,10 @@ export async function generateMetadata(props: {
         },
         */
         {
-          url: "https://www.dwalt.net/images/ogimages/index.webp",
+          url: company.seo.defaultImage,
           width: 1200,
           height: 630,
-          alt: `Energia Solar — D | Walt Engenharia`,
+          alt: `Energia Solar — ${company.name}`,
         },
       ],
     },
@@ -80,9 +80,9 @@ export async function generateMetadata(props: {
     // ================
     twitter: {
       card: "summary_large_image",
-      title: `Energia Solar em ${city.name} - RO | D | Walt Engenharia`,
+      title: `Energia Solar em ${city.name} - RO | ${company.name}`,
       description: `Economize até 90% na conta de energia com sistemas fotovoltaicos em ${city.name} - RO.`,
-      images: ["https://www.dwalt.net/images/ogimages/index.webp"],
+      images: [company.seo.defaultImage],
     },
     // ================
     // ROBOTS

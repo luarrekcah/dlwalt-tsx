@@ -2,26 +2,27 @@ import BannerHeading from "@/components/BannerHeading";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import { units } from "@/data/units";
+import { company } from "@/data/company";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Contato — D | Walt Engenharia",
-  applicationName: "D | Walt Engenharia",
-  publisher: "D | Walt Engenharia",
+  title: `Contato — ${company.name}`,
+  applicationName: company.name,
+  publisher: company.name,
   description:
-    "Entre em contato com a D | Walt Engenharia. Suporte completo, atendimento rápido e especializado. Tire dúvidas ou solicite um orçamento.",
+    `Entre em contato com a ${company.name}. Suporte completo, atendimento rápido e especializado. Tire dúvidas ou solicite um orçamento.`,
   keywords: [
-    "contato D Walt Engenharia",
+    `contato ${company.shortName} Engenharia`,
     "suporte energia solar",
     "consultoria energia solar",
     "orçamento energia solar",
   ],
   openGraph: {
-    title: "Contato — D | Walt Engenharia",
+    title: `Contato — ${company.name}`,
     description:
       "Fale com nossa equipe e tire todas as suas dúvidas sobre energia solar.",
-    url: "https://www.dwalt.net/contato",
-    siteName: "D | Walt Engenharia",
+    url: `${company.url}/contato`,
+    siteName: company.name,
   },
 };
 

@@ -3,6 +3,7 @@
 import { Post } from "@/types";
 import Image from "next/image";
 import BlogSidebar from "./BlogSidebar";
+import { company } from "@/data/company";
 
 const BlogSingle = ({ post }: { post: Post }) => {
 
@@ -20,15 +21,15 @@ const BlogSingle = ({ post }: { post: Post }) => {
     },
     publisher: {
       "@type": "Organization",
-      name: "D | Walt Engenharia",
+      name: company.name,
       logo: {
         "@type": "ImageObject",
-        url: "https://www.dwalt.net/logo.png",
+        url: `${company.url}/logo.png`,
       },
     },
     mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": `https://www.dwalt.net/blog/${post.slug}`,
+      "@id": `${company.url}/blog/${post.slug}`,
     },
   };
 
@@ -58,16 +59,16 @@ const BlogSingle = ({ post }: { post: Post }) => {
                   <div className="post-meta">
                     <span className="post-author">
                       <i className="far fa-user"></i>
-                      <a href="#"> {post.author?.name || "D | Walt Engenharia"}</a>
+                      <a href="#"> {post.author?.name || company.name}</a>
                     </span>
                     <span className="post-meta-date">
                       <i className="far fa-calendar"></i>{" "}
                       {post.publishedAt
                         ? new Intl.DateTimeFormat("pt-BR", {
-                            day: "2-digit",
-                            month: "long",
-                            year: "numeric",
-                          }).format(new Date(post.publishedAt))
+                          day: "2-digit",
+                          month: "long",
+                          year: "numeric",
+                        }).format(new Date(post.publishedAt))
                         : "-"}
                     </span>
                   </div>

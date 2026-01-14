@@ -17,7 +17,7 @@ const SectionBYD = () => {
               PROMOÇÃO DE ANIVERSÁRIO
             </h2>
             <h3 className="section-sub-title" data-aos="fade-up-left">
-              8 anos de D | Walt!
+              {new Date().getFullYear() - 2016} anos de DWALT!
             </h3>
           </div>
         </div>

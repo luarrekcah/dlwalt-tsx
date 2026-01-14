@@ -9,6 +9,7 @@ import api from "@/lib/api";
 import toast from "react-hot-toast";
 import { InputMask } from "@react-input/mask";
 import { InputNumberFormat, unformat } from "@react-input/number-format";
+import { company } from "@/data/company";
 interface NavbarProps {
   children?: React.ReactNode;
 }
@@ -414,8 +415,8 @@ const Navbar = ({ children }: NavbarProps) => {
           backgroundColor: "#f9f9f9",
         }}
       >
-        <a href="https://wa.me/+5569993695702">
-          <i className="fa fa-mobile" /> Fale Conosco +55 69 99369-5702
+        <a href={company.contact.whatsapp.link}>
+          <i className="fa fa-mobile" /> Fale Conosco {company.contact.phone.display}
         </a>
       </div>
 
@@ -433,7 +434,7 @@ const Navbar = ({ children }: NavbarProps) => {
               <Link className="d-block" href="/">
                 <Image
                   src="/logo.svg"
-                  alt="D Walt Logo"
+                  alt={`${company.shortName} Logo`}
                   width={150}
                   height={50}
                 />

@@ -6,6 +6,7 @@
 import Image from "next/image";
 import React from "react";
 import { FloatingWhatsApp } from "react-floating-whatsapp";
+import { company } from "@/data/company";
 
 const FloatingWpp = () => {
   const whatsRef = React.useRef<HTMLDivElement>(null);
@@ -61,7 +62,7 @@ const FloatingWpp = () => {
 
         {/* Botão WhatsApp */}
         <a
-          href="https://wa.me/5569993695702?text=Olá!%20Quero%20realizar%20um%20orçamento"
+          href={`${company.contact.whatsapp.link}?text=Olá!%20Quero%20realizar%20um%20orçamento`}
           target="_blank"
           rel="noopener noreferrer"
           onClick={() => handleWhatsClick("ClicouWhatsApp")}
@@ -88,8 +89,8 @@ const FloatingWpp = () => {
   } else {
     return (
       <FloatingWhatsApp
-        phoneNumber="+5569993695702"
-        accountName="Atendimento D | Walt"
+        phoneNumber={`+${company.contact.whatsapp.raw}`}
+        accountName={`Atendimento ${company.shortName}`}
         placeholder="Olá! Preciso de um orçamento de 500kW"
         chatMessage="Vamos realizar seu orçamento agora mesmo?"
         statusMessage="Geralmente responde em 5 minutos"

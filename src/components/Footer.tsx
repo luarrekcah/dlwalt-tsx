@@ -5,6 +5,7 @@ import React from "react";
 import LoadingServer from "./LoadingServer";
 import Image from "next/image";
 import { units } from "@/data/units";
+import { company } from "@/data/company";
 
 const Footer = () => {
   const [services, setServices] = React.useState<any[]>([]);
@@ -30,7 +31,7 @@ const Footer = () => {
                 height={50}
                 className="footer-logo"
                 src="/logo.svg"
-                alt="D | Walt Logo"
+                alt={`${company.shortName} Logo`}
               />
               <p>
                 Com mais de {yearDifference} anos de experiência no mercado, nós
@@ -44,7 +45,7 @@ const Footer = () => {
                 <ul>
                   <li>
                     <a
-                      href="https://www.facebook.com/Dwaltenergiaoficial/"
+                      href={company.social.facebook}
                       aria-label="Facebook"
                     >
                       <i className="fab fa-facebook-f" />
@@ -52,7 +53,7 @@ const Footer = () => {
                   </li>
                   <li>
                     <a
-                      href="https://www.instagram.com/dlwalt_energia"
+                      href={company.social.instagram}
                       aria-label="Instagram"
                     >
                       <i className="fab fa-instagram" />
@@ -114,7 +115,7 @@ const Footer = () => {
             <div className="col-md-6">
               <div className="copyright-info text-center text-md-left">
                 <span>
-                  Copyright D Walt Engenharia © Todos os Direitos Reservados
+                  Copyright {company.name} © Todos os Direitos Reservados
                 </span>
               </div>
             </div>

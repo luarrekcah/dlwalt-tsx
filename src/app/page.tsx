@@ -10,52 +10,39 @@ import SectionTestimonial from "@/components/SectionTestimonial";
 import FloatingWpp from "@/components/FloatingWhatsapp";
 import SectionBlog from "@/components/SectionBlog";
 
+import { company } from "@/data/company";
+
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.dwalt.net"),
-  applicationName: "D | Walt Engenharia",
-  publisher: "D | Walt Engenharia",
-  title: {
-    default: "D | Walt Engenharia — Energia Solar de Alta Performance",
-    template: "%s | D | Walt Engenharia",
-  },
-  description:
-    "Economize até 95% na conta de luz com energia solar de alta performance. Projetos residenciais e empresariais, instalação rápida, suporte especializado e máxima eficiência.",
-  keywords: [
-    "energia solar",
-    "painéis solares",
-    "energia fotovoltaica",
-    "energia solar Rondônia",
-    "instalação de energia solar",
-    "energia solar residência",
-    "empresa energia solar",
-    "D Walt Engenharia",
-  ],
+  metadataBase: new URL(company.url),
+  applicationName: company.name,
+  publisher: company.name,
+  title: company.seo.title,
+  description: company.description,
+  keywords: company.seo.keywords,
   alternates: {
-    canonical: "https://www.dwalt.net/",
+    canonical: "/",
   },
   openGraph: {
     type: "website",
-    locale: "pt_BR",
-    url: "https://www.dwalt.net/",
-    siteName: "D | Walt Engenharia",
+    locale: company.seo.locale,
+    url: "/",
+    siteName: company.seo.siteName,
     title: "Energia Solar de Alta Performance",
-    description:
-      "Economize até 95% com sistemas de energia solar para casas e empresas em Rondônia.",
+    description: "Economize até 95% com sistemas de energia solar para casas e empresas em Rondônia.",
     images: [
       {
-        url: "https://www.dwalt.net/images/ogimages/index.webp",
+        url: company.seo.defaultImage,
         width: 1200,
         height: 630,
-        alt: "Energia Solar — D Walt Engenharia",
+        alt: `Energia Solar — ${company.name}`,
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "D | Walt Engenharia — Energia Solar de Alta Performance",
-    description:
-      "Instalação de energia solar para sua casa ou empresa com economia real.",
-    images: ["https://www.dwalt.net/images/ogimages/index.webp"],
+    title: company.seo.title.default,
+    description: "Instalação de energia solar para sua casa ou empresa com economia real.",
+    images: [company.seo.defaultImage],
   },
   robots: {
     index: true,
@@ -68,7 +55,7 @@ export const metadata: Metadata = {
       "max-video-preview": -1,
     },
   },
-  authors: [{ name: "D | Walt Engenharia" }],
+  authors: [{ name: company.name }],
   icons: {
     icon: "/favicon.ico",
     apple: "/logo192.png",
@@ -79,30 +66,29 @@ const Main = () => {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
-    name: "D | Walt Engenharia",
-    url: "https://www.dwalt.net/",
-    image: "https://www.dwalt.net/images/ogimages/index.webp",
-    logo: "https://www.dwalt.net/images/ogimages/index.webp",
-    telephone: "+55 69 99369-5702",
+    name: company.name,
+    url: company.url,
+    image: company.seo.defaultImage,
+    logo: company.seo.defaultImage,
+    telephone: company.contact.phone.display,
     address: {
       "@type": "PostalAddress",
-      streetAddress: "Av. Canaã, 2500 - St. 03",
-      addressLocality: "Ariquemes",
-      addressRegion: "RO",
-      postalCode: "76870-164",
-      addressCountry: "BR",
+      streetAddress: company.address.street,
+      addressLocality: company.address.city,
+      addressRegion: company.address.state,
+      postalCode: company.address.zip,
+      addressCountry: company.address.country,
     },
     geo: {
       "@type": "GeoCoordinates",
-      latitude: -9.913696862508708,
-      longitude: -63.043418643413105,
+      latitude: company.address.geo.latitude,
+      longitude: company.address.geo.longitude,
     },
     sameAs: [
-      "https://www.facebook.com/Dwaltenergiaoficial/",
-      "https://www.instagram.com/dlwalt_energia",
+      company.social.facebook,
+      company.social.instagram,
     ],
-    description:
-      "Projetos de energia solar com alta eficiência para residências e empresas. Instalação rápido e suporte especializado.",
+    description: "Projetos de energia solar com alta eficiência para residências e empresas. Instalação rápido e suporte especializado.",
     areaServed: "Rondônia",
     priceRange: "$$",
   };

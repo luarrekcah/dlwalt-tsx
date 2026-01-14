@@ -4,10 +4,12 @@ import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import { Metadata } from "next";
 
+import { company } from "@/data/company";
+
 export const metadata: Metadata = {
-  title: "Financiamento para Energia Solar | D | Walt Engenharia",
-  applicationName: "D | Walt Engenharia",
-  publisher: "D | Walt Engenharia",
+  title: `Financiamento para Energia Solar | ${company.name}`,
+  applicationName: company.name,
+  publisher: company.name,
   description:
     "Financie seu sistema de energia solar com condições exclusivas. Facilite seu investimento com parcelas acessíveis, aprovação rápida e total suporte técnico.",
   keywords: [
@@ -22,7 +24,7 @@ export const metadata: Metadata = {
     title: "Financiamento para Energia Solar | Condições Exclusivas",
     description:
       "Descubra como financiar seu sistema de energia solar com condições especiais, economia imediata e parceiros financeiros confiáveis.",
-    url: "https://www.dwalt.net/financiamento",
+    url: `${company.url}/financiamento`,
   },
 };
 
@@ -39,7 +41,7 @@ const Financiamento = () => {
               <div className="mt-12">
                 <h2 className="text-3xl font-bold text-center mb-6">Simule seu financiamento de energia solar agora!</h2>
 
-              <p className="text-3xl font-bold text-center mb-6">Receba diretamente no seu celular o valor de cada parcela do seu financiamento solar.</p>
+                <p className="text-3xl font-bold text-center mb-6">Receba diretamente no seu celular o valor de cada parcela do seu financiamento solar.</p>
                 <FinanciamentoComponent />
               </div>
             </div>

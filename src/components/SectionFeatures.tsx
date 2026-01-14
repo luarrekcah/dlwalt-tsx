@@ -1,3 +1,5 @@
+import {company} from "@/data/company"
+
 interface City {
   name: string;
 }
@@ -11,7 +13,7 @@ const SectionFeatures = ({ city = null }: { city?: City | null }) => {
             <div className="ts-intro" data-aos="zoom-in-right">
               <h2 className="into-title">Sobre nós</h2>
               <h3 className="into-sub-title">
-                POR QUE A D | WALT ENGENHARIA {city ? `EM ${city.name}?` : "?"}
+                POR QUE A {company.name} {city ? `EM ${city.name}?` : "?"}
               </h3>
               {city ? (
                 <p>

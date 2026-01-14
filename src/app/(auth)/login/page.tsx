@@ -2,6 +2,7 @@
 import api from "@/lib/api";
 import { useState } from "react";
 import Cookies from "js-cookie";
+import { company } from "@/data/company";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -35,7 +36,7 @@ const Login = () => {
         style={{ minHeight: "100vh" }}
       >
         <div className="card p-4" style={{ width: 380 }}>
-          <h3 className="text-center mb-3">D | Walt Engenharia</h3>
+          <h3 className="text-center mb-3">{company.name}</h3>
 
           {error && <div className="alert alert-danger py-2">{error}</div>}
 

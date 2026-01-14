@@ -6,10 +6,11 @@ import api from "@/lib/api";
 import { Metadata } from "next";
 import { Post } from "@/types";
 import { Params } from "next/dist/server/request/params";
+import { company } from "@/data/company";
 
 // Função para gerar metadata dinamicamente
 
-export async function generateMetadata({ params }: {params: Params}): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
   const { slug } = await params;
 
   try {
@@ -21,17 +22,17 @@ export async function generateMetadata({ params }: {params: Params}): Promise<Me
       .replace(/\s+/g, " ")
       .slice(0, 160);
 
-    const canonicalUrl = `https://www.dwalt.net/blog/${post.slug}`;
-    const image = post.thumbnailUrl || "https://www.dwalt.net/default-og.jpg";
+    const canonicalUrl = `${company.url}/blog/${post.slug}`;
+    const image = post.thumbnailUrl || `${company.url}/default-og.jpg`;
 
     return {
-      title: `${post.title} | D | Walt Engenharia`,
+      title: `${post.title} | ${company.name}`,
       description: cleanDescription,
       keywords: [
         post.title,
         "energia solar",
         "sustentabilidade",
-        "D Walt Engenharia",
+        company.name,
         "blog energia solar",
       ],
 
@@ -43,7 +44,7 @@ export async function generateMetadata({ params }: {params: Params}): Promise<Me
         title: post.title,
         description: cleanDescription,
         url: canonicalUrl,
-        siteName: "D | Walt Engenharia",
+        siteName: company.name,
         type: "article",
         publishedTime: post.publishedAt,
         authors: [post.author?.name],
@@ -79,7 +80,7 @@ export async function generateMetadata({ params }: {params: Params}): Promise<Me
   } catch (err) {
     console.error("Erro ao gerar metadata:", err);
     return {
-      title: "Postagem | D | Walt Engenharia",
+      title: `Postagem | ${company.name}`,
     };
   }
 }

@@ -4,27 +4,28 @@ import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import { Metadata } from "next";
 import Link from "next/link";
+import { company } from "@/data/company";
 
 export const metadata: Metadata = {
-  title: "Blog Solar | D | Walt Engenharia",
-  applicationName: "D | Walt Engenharia",
-  publisher: "D | Walt Engenharia",
+  title: `Blog Solar | ${company.name}`,
+  applicationName: company.name,
+  publisher: company.name,
   description:
-    "Fique por dentro das novidades, dicas e informações sobre energia solar, sustentabilidade e projetos fotovoltaicos da D | Walt Engenharia.",
+    `Fique por dentro das novidades, dicas e informações sobre energia solar, sustentabilidade e projetos fotovoltaicos da ${company.name}.`,
   keywords: [
     "blog energia solar",
     "dicas energia solar",
     "notícias energia solar",
     "sustentabilidade",
     "fotovoltaico",
-    "D Walt Engenharia",
+    company.name,
   ],
   openGraph: {
-    title: "Blog Solar | D | Walt Engenharia",
+    title: `Blog Solar | ${company.name}`,
     description:
       "Explore artigos, notícias e conteúdos exclusivos sobre energia solar, sustentabilidade e soluções fotovoltaicas.",
-    url: "https://www.dwalt.net/blog",
-    siteName: "D | Walt Engenharia",
+    url: `${company.url}/blog`,
+    siteName: company.name,
     type: "website",
   },
 };

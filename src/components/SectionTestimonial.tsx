@@ -13,10 +13,10 @@ const SectionTestimonial = () => {
           <div className="col-lg-6 mt-5 mt-lg-0">
             <h3 className="column-title" data-aos="zoom-out-down">Já conhece o nosso app?</h3>
             <p  data-aos="zoom-out-left">
-              Esse é um dos <b>diferenciais</b> que só a D | Walt oferece.
+              Esse é um dos <b>diferenciais</b> que só a DWALT oferece.
             </p>
             <h3 data-aos="flip-down">
-              <b>D | Walt Connect: Cliente</b>
+              <b>DWALT Connect: Cliente</b>
             </h3>
             <p  data-aos="fade-down-left">Nele você pode:</p>
             <ul style={{paddingLeft: 0}}>
