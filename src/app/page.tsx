@@ -98,7 +98,7 @@ const Main = () => {
       longitude: -63.043418643413105,
     },
     sameAs: [
-      "https://www.facebook.com/dlwalt",
+      "https://www.facebook.com/Dwaltenergiaoficial/",
       "https://www.instagram.com/dlwalt_energia",
     ],
     description:

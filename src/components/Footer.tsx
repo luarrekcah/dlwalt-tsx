@@ -44,7 +44,7 @@ const Footer = () => {
                 <ul>
                   <li>
                     <a
-                      href="https://www.facebook.com/dlwalt"
+                      href="https://www.facebook.com/Dwaltenergiaoficial/"
                       aria-label="Facebook"
                     >
                       <i className="fab fa-facebook-f" />
