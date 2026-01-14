@@ -15,7 +15,7 @@ const HeaderCarrossel = () => {
             <div className="row align-items-center h-100">
               <div className="col-md-12 text-center">
                 <h2 className="slide-title" data-animation-in="slideInLeft">
-                  9 anos de excelência em
+                  {new Date().getFullYear() - 2016} anos de excelência em
                 </h2>
                 <h3
                   className="slide-sub-title"

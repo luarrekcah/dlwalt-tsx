@@ -4,6 +4,7 @@
 import React from "react";
 import LoadingServer from "./LoadingServer";
 import Image from "next/image";
+import { units } from "@/data/units";
 
 const Footer = () => {
   const [services, setServices] = React.useState<any[]>([]);
@@ -60,10 +61,15 @@ const Footer = () => {
                 </ul>
               </div>
               <h3 className="widget-title">Endereço</h3>
-              <p>
-                Av. Canaã, 2500 - Ariquemes - Rondônia / CNPJ:
-                26.711.744/0001-08
-              </p>
+              {units.map((unit, index) => (
+                <div key={index} className="mb-3">
+                  <h5 className="text-white mb-1" style={{ fontSize: "1rem" }}>{unit.name}</h5>
+                  <p className="mb-1">
+                    {unit.address}
+                    {unit.cnpj && <> <br /> CNPJ: {unit.cnpj} </>}
+                  </p>
+                </div>
+              ))}
             </div>
             <div className="col-lg-4 col-md-6 footer-widget mt-5 mt-md-0">
               <h3 className="widget-title">Horário de Funcionamento</h3>

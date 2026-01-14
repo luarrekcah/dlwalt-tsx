@@ -17,7 +17,7 @@ const SectionFeatures = ({ city = null }: { city?: City | null }) => {
                 <p>
                   Somos uma empresa com alta experiência no mercado, com
                   profissionais capacitados para melhor lhe atender. Há mais de
-                  9 anos levando energia solar e economia real para {city.name}{" "}
+                  {new Date().getFullYear() - 2016} anos levando energia solar e economia real para {city.name}{" "}
                   – RO e região.
                 </p>
               ) : (

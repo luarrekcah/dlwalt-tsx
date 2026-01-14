@@ -165,7 +165,7 @@ export default async function CityPage(props: {
                       className="slide-sub-title"
                       data-animation-in="slideInRight"
                     >
-                      9 anos de experiência
+                      {new Date().getFullYear() - 2016} anos de experiência
                     </h3>
                     <p
                       data-animation-in="slideInRight"
