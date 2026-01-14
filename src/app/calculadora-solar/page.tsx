@@ -4,7 +4,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-    title: "Calculadora Solar Fotovoltaica | Simule sua Economia - D Walt",
+    title: "Calculadora Solar Fotovoltaica | Simule sua Economia - D Walt Energia",
     description:
         "Descubra quanto você pode economizar com energia solar. Nossa calculadora solar fotovoltaica gratuita estima custos do sistema e retorno do investimento (payback).",
     keywords: [
