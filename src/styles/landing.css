@@ -1,28 +1,30 @@
-
 /* Landing Page Specific Styles */
 :root {
   --lp-primary: #009eef;
   --lp-secondary: #00a859;
   --lp-dark: #212121;
-  --lp-light: #f9f9f9;
+  --lp-light: #f8f9fa;
   --lp-text: #555;
   --lp-white: #ffffff;
 }
 
 .landing-page-wrapper {
-  font-family: 'Montserrat', sans-serif; /* Ensuring specific font for LPs */
+  font-family: 'Montserrat', sans-serif;
   color: var(--lp-text);
   overflow-x: hidden;
+  position: relative;
 }
 
 /* Navbar Simplified */
 .lp-navbar {
-  background: white;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
   padding: 15px 0;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
   position: sticky;
   top: 0;
   z-index: 1000;
+  transition: all 0.3s ease;
 }
 
 .lp-navbar .container {
@@ -32,55 +34,64 @@
 }
 
 .lp-btn-cta {
-  background: var(--lp-primary);
+  background: linear-gradient(135deg, var(--lp-primary) 0%, #007bbd 100%);
   color: white;
-  padding: 10px 25px;
+  padding: 12px 30px;
   border-radius: 50px;
   font-weight: 700;
   text-transform: uppercase;
   font-size: 14px;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(0, 158, 239, 0.3);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 15px rgba(0, 158, 239, 0.4);
+  letter-spacing: 0.5px;
 }
 
 .lp-btn-cta:hover {
-  background: #007bbd;
-  transform: translateY(-2px);
+  transform: translateY(-3px) scale(1.02);
   color: white;
   text-decoration: none;
+  box-shadow: 0 8px 25px rgba(0, 158, 239, 0.5);
 }
 
 .lp-btn-whatsapp {
-  background: #25d366;
+  background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
   color: white;
-  padding: 10px 25px;
+  padding: 12px 30px;
   border-radius: 50px;
   font-weight: 700;
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  transition: all 0.3s ease;
+  gap: 10px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
 }
 
 .lp-btn-whatsapp:hover {
-  background: #1ebc57;
+  transform: translateY(-3px) scale(1.02);
   color: white;
   text-decoration: none;
-  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(37, 211, 102, 0.5);
+}
+
+/* Parallax Utilities */
+.parallax-bg {
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
 }
 
 /* Hero Section */
 .lp-hero {
   position: relative;
-  padding: 150px 0 100px; /* More padding for impact */
-  background-size: cover;
-  background-position: center;
+  padding: 180px 0 120px;
   color: white;
-  /* Dark overlay integrated */
-  background-color: #333; 
-  background-blend-mode: overlay;
+  background-color: #1a1a1a;
+  /* fallback */
 }
 
+/* Parallax Overlay - Improved */
 .lp-hero::before {
   content: '';
   position: absolute;
@@ -88,7 +99,10 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 100%);
+  background: linear-gradient(90deg,
+      rgba(0, 0, 0, 0.85) 0%,
+      rgba(0, 0, 0, 0.6) 50%,
+      rgba(0, 0, 0, 0.3) 100%);
   z-index: 1;
 }
 
@@ -98,47 +112,54 @@
 }
 
 .lp-hero h1 {
-  font-size: 3.5rem;
+  font-size: 3.8rem;
   font-weight: 800;
-  line-height: 1.2;
-  margin-bottom: 20px;
+  line-height: 1.1;
+  margin-bottom: 25px;
   color: white;
+  text-shadow: 2px 2px 40px rgba(0, 0, 0, 0.3);
 }
 
 .lp-hero p {
-  font-size: 1.25rem;
-  margin-bottom: 30px;
-  color: rgba(255,255,255,0.9);
-  max-width: 600px;
+  font-size: 1.3rem;
+  margin-bottom: 40px;
+  color: rgba(255, 255, 255, 0.95);
+  max-width: 650px;
+  line-height: 1.6;
 }
 
-/* Feature Cards */
+/* Features Grid */
 .lp-features-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 30px;
-  margin-top: -50px; /* Overlap effect */
+  margin-top: -60px;
   position: relative;
   z-index: 3;
 }
 
 .lp-feature-card {
-  background: white;
-  padding: 40px 30px;
-  border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-  transition: transform 0.3s ease;
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(10px);
+  padding: 45px 35px;
+  border-radius: 16px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+  transition: all 0.4s ease;
   border-bottom: 4px solid var(--lp-primary);
+  height: 100%;
 }
 
 .lp-feature-card:hover {
-  transform: translateY(-10px);
+  transform: translateY(-15px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
 }
 
 .lp-feature-icon {
   font-size: 3rem;
-  color: var(--lp-primary);
-  margin-bottom: 20px;
+  background: -webkit-linear-gradient(var(--lp-primary), #007bbd);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 25px;
   display: block;
 }
 
@@ -146,67 +167,150 @@
   font-size: 1.5rem;
   margin-bottom: 15px;
   color: var(--lp-dark);
+  font-weight: 700;
 }
 
-/* Benefits Section */
+.lp-feature-card p {
+  font-size: 1rem;
+  color: #666;
+  line-height: 1.6;
+}
+
+/* Sections */
 .lp-section-light {
   background: var(--lp-white);
   padding: 100px 0;
 }
 
 .lp-section-gray {
-  background: #f4f6f8;
+  background: #f8f9fa;
   padding: 100px 0;
+  position: relative;
 }
 
+/* Glassmorphism Card */
+.glass-card {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 3rem;
+  border-radius: 20px;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+}
+
+/* Headings */
 .lp-heading-center {
   text-align: center;
   max-width: 800px;
-  margin: 0 auto 60px;
+  margin: 0 auto 70px;
 }
 
 .lp-heading-center h2 {
-  font-size: 2.5rem;
-  margin-bottom: 15px;
+  font-size: 2.8rem;
+  margin-bottom: 20px;
   color: var(--lp-dark);
+  font-weight: 800;
+  letter-spacing: -1px;
 }
 
-.lp-heading-center .highlight {
+.highlight {
   color: var(--lp-primary);
+  position: relative;
+  display: inline-block;
 }
 
 /* CTA Strip */
 .lp-cta-strip {
-  background: var(--lp-primary);
+  background: linear-gradient(135deg, #2b32b2 0%, #1488cc 100%);
   color: white;
-  padding: 60px 0;
+  padding: 80px 0;
   text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.lp-cta-strip::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+.lp-cta-strip .container {
+  position: relative;
+  z-index: 2;
 }
 
 .lp-cta-strip h2 {
   color: white;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
+  font-size: 2.5rem;
+  font-weight: 800;
+}
+
+.lp-cta-strip .btn-light {
+  background: white;
+  color: var(--lp-primary);
+  border: none;
+  padding: 15px 40px;
+  font-size: 1.1rem;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.lp-cta-strip .btn-light:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
 }
 
 /* Footer Simplified */
 .lp-footer {
-  background: #1a1a1a;
-  color: #999;
-  padding: 50px 0 20px;
-  font-size: 0.9rem;
+  background: #111;
+  color: #888;
+  padding: 60px 0 30px;
+  font-size: 0.95rem;
 }
 
-.lp-footer h4 {
-  color: white;
-  margin-bottom: 20px;
+/* Check List Modern */
+.check-list-modern li {
+  background: white;
+  padding: 15px 20px;
+  margin-bottom: 12px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+  display: flex;
+  align-items: center;
+  transition: transform 0.2s ease;
+}
+
+.check-list-modern li:hover {
+  transform: translateX(5px);
+}
+
+.check-list-modern i {
+  color: var(--lp-primary);
+  margin-right: 15px;
+  font-size: 1.2rem;
 }
 
 /* Responsive */
 @media (max-width: 768px) {
+  .lp-hero {
+    padding: 140px 0 80px;
+  }
+
   .lp-hero h1 {
     font-size: 2.5rem;
   }
+
   .lp-features-grid {
-    margin-top: 30px;
+    margin-top: 40px;
+  }
+
+  .lp-feature-card {
+    padding: 30px 20px;
   }
 }

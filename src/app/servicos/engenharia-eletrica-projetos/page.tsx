@@ -8,18 +8,17 @@ import FloatingWpp from "@/components/FloatingWhatsapp";
 import { company } from "@/data/company";
 
 export const metadata: Metadata = {
-    title: `Engenharia Elétrica e Projetos | Soluções Técnicas | ${company.name}`,
-    description: "Projetos elétricos residenciais, comerciais e industriais. Engenharia especializada, laudos e consultoria técnica em Rondônia.",
+    title: `Engenharia Elétrica Especializada | Laudos e Projetos | ${company.name}`,
+    description: "Precisa de regularizar sua obra ou aumentar a carga? Projetos elétricos, laudos de vistoria e subestações com quem entende do assunto.",
     keywords: [
         "engenharia elétrica",
         "projetos elétricos",
         "laudo técnico elétrico",
-        "consultoria energia",
-        "projeto fotovoltaico engenheiro",
-        "Dwalt Engenharia",
+        "aumento de carga",
+        "subestação de energia",
     ],
     openGraph: {
-        title: `Engenharia Elétrica e Projetos - Segurança e Técnica | ${company.name}`,
+        title: `Engenharia Elétrica - Segurança e Técnica | ${company.name}`,
         description: "Soluções completas em engenharia elétrica. Projetos, laudos e execuções com responsabilidade técnica.",
         url: `${company.url}/servicos/engenharia-eletrica-projetos`,
         type: "website",
@@ -50,14 +49,15 @@ export default function EngenhariaEletrica() {
             <div className="landing-page-wrapper">
                 <LandingNavbar />
 
-                {/* HERO SECTION */}
-                <section className="lp-hero" style={{ backgroundImage: "url(/images/banner/banner2.jpg)" }}>
+                {/* HERO SECTION - HOOK */}
+                <section className="lp-hero parallax-bg" style={{ backgroundImage: "url(/images/banner/banner2.jpg)" }}>
                     <div className="container">
                         <div className="row">
-                            <div className="col-lg-8">
-                                <h1>Engenharia Elétrica de<br />Alta Complexidade</h1>
-                                <p>Soluções técnicas completas para sua obra. Projetos, laudos, subestações e consultoria com quem entende do assunto.</p>
-                                <div className="d-flex gap-3 flex-wrap">
+                            <div className="col-lg-8" data-aos="fade-up" data-aos-duration="1000">
+                                <span className="badge badge-info text-uppercase mb-3 px-3 py-2" style={{ letterSpacing: '1px' }}>Soluções Técnicas</span>
+                                <h1 className="display-3 fw-bold">Engenharia Elétrica<br />sem burocracia</h1>
+                                <p className="lead mt-3">Projetos, laudos e execuções de alta complexidade. Resolvemos sua demanda técnica com agilidade e responsabilidade (ART).</p>
+                                <div className="d-flex gap-3 flex-wrap mt-4">
                                     <Link href="/contato" className="lp-btn-cta">
                                         Solicitar Proposta
                                     </Link>
@@ -70,63 +70,68 @@ export default function EngenhariaEletrica() {
                     </div>
                 </section>
 
-                {/* FEATURES GRID */}
-                <section className="lp-section-light pt-0">
+                {/* PAIN SECTION - AGITATION */}
+                <section className="lp-section-light">
                     <div className="container">
-                        <div className="lp-features-grid">
-                            <div className="lp-feature-card">
-                                <i className="fas fa-pencil-ruler lp-feature-icon"></i>
-                                <h3>Projetos Elétricos</h3>
-                                <p>Dimensionamento seguro e eficiente para residências, condomínios, indústrias e comércios, seguindo a NBR 5410.</p>
+                        <div className="row justify-content-center">
+                            <div className="col-lg-8 text-center" data-aos="fade-up">
+                                <h2 className="mb-4 text-dark font-weight-bold">Obras travadas por falta de documentação?</h2>
+                                <p className="lead text-muted">A falta de um projeto elétrico adequado ou laudos em dia pode gerar multas, embargos e, pior, acidentes graves. Não deixe a burocracia parar seu negócio.</p>
                             </div>
-                            <div className="lp-feature-card">
-                                <i className="fas fa-clipboard-check lp-feature-icon"></i>
-                                <h3>Laudos Técnicos</h3>
-                                <p>Vistoria e emissão de laudos para regularização junto aos bombeiros (SPDA), seguradoras e concessionárias.</p>
+                        </div>
+                        <div className="lp-features-grid mt-5">
+                            <div className="lp-feature-card" data-aos="fade-up" data-aos-delay="100">
+                                <i className="fas fa-file-signature lp-feature-icon"></i>
+                                <h3>Regularização</h3>
+                                <p>Emitimos laudos e ARTs para regularização junto aos Bombeiros, Seguradoras e Concessionária de Energia.</p>
                             </div>
-                            <div className="lp-feature-card">
+                            <div className="lp-feature-card" data-aos="fade-up" data-aos-delay="200">
                                 <i className="fas fa-bolt lp-feature-icon"></i>
-                                <h3>Subestações</h3>
-                                <p>Projeto, execução e manutenção de subestações de média tensão para grandes consumidores de energia.</p>
+                                <h3>Segurança Elétrica</h3>
+                                <p>Instalações antigas ou mal dimensionadas são a causa #1 de incêndios. Proteja seu patrimônio.</p>
                             </div>
                         </div>
                     </div>
                 </section>
 
-                {/* WHY US SECTION */}
+                {/* SOLUTION SECTION - THE BRIDGE */}
                 <section className="lp-section-gray">
                     <div className="container">
                         <div className="row align-items-center">
-                            <div className="col-lg-6 mb-4 mb-lg-0 order-lg-2">
-                                <div className="p-5 bg-white shadow-lg rounded">
-                                    <h3 className="mb-4">Responsabilidade Técnica</h3>
-                                    <p>Toda obra elétrica exige um responsável técnico (ART). Na Dwalt, garantimos a segurança jurídica e física do seu empreendimento.</p>
-                                    <p className="mb-0">Não arrisque seu patrimônio com instalações amadoras. Contrate engenharia de verdade.</p>
+                            <div className="col-lg-6 mb-4 mb-lg-0 order-lg-2" data-aos="fade-left">
+                                <div className="glass-card">
+                                    <h3 className="mb-4 font-weight-bold">Responsabilidade Técnica</h3>
+                                    <p>Na Dwalt, você trata direto com engenheiros experientes. Garantimos a aprovação do seu projeto e a segurança da execução.</p>
+                                    <div className="mt-4">
+                                        <Link href="/contato" className="btn btn-outline-primary btn-block rounded-pill">
+                                            Conhecer a Equipe
+                                        </Link>
+                                    </div>
                                 </div>
                             </div>
-                            <div className="col-lg-6 order-lg-1">
-                                <h2 className="mb-4 text-dark">Além da Energia Solar</h2>
-                                <ul className="list-unstyled">
-                                    <li className="d-flex mb-3 align-items-center">
-                                        <i className="fas fa-check-circle text-primary mr-3"></i>
-                                        <span>Eficiência Energética e Correção de Fator de Potência</span>
+                            <div className="col-lg-6 order-lg-1" data-aos="fade-right">
+                                <h2 className="mb-4 text-dark font-weight-bold">Expertise além do Solar</h2>
+                                <ul className="list-unstyled check-list-modern">
+                                    <li>
+                                        <i className="fas fa-check-circle"></i>
+                                        <span className="h6 mb-0">Subestações de Média Tensão</span>
                                     </li>
-                                    <li className="d-flex mb-3 align-items-center">
-                                        <i className="fas fa-check-circle text-primary mr-3"></i>
-                                        <span>Padrão de Entrada de Energia (Individual e Coletivo)</span>
+                                    <li>
+                                        <i className="fas fa-check-circle"></i>
+                                        <span className="h6 mb-0">Correção de Fator de Potência</span>
                                     </li>
-                                    <li className="d-flex mb-3 align-items-center">
-                                        <i className="fas fa-check-circle text-primary mr-3"></i>
-                                        <span>Automação Residencial e Industrial</span>
+                                    <li>
+                                        <i className="fas fa-check-circle"></i>
+                                        <span className="h6 mb-0">Padrão de Entrada e Aumento de Carga</span>
                                     </li>
-                                    <li className="d-flex mb-3 align-items-center">
-                                        <i className="fas fa-check-circle text-primary mr-3"></i>
-                                        <span>Consultoria para Mercado Livre de Energia</span>
+                                    <li>
+                                        <i className="fas fa-check-circle"></i>
+                                        <span className="h6 mb-0">Consultoria para Mercado Livre</span>
                                     </li>
                                 </ul>
                                 <div className="mt-5">
                                     <a href={company.contact.whatsapp.link} className="lp-btn-cta">
-                                        Consultar Engenheiro
+                                        Consultar Engenheiro Agora
                                     </a>
                                 </div>
                             </div>
@@ -134,12 +139,12 @@ export default function EngenhariaEletrica() {
                     </div>
                 </section>
 
-                {/* CTA STRIP */}
-                <section className="lp-cta-strip">
-                    <div className="container">
-                        <h2>Precisa regularizar sua obra?</h2>
-                        <p className="lead mb-4">Entre em contato para emissão de laudos e projetos aprovados.</p>
-                        <Link href="/contato" className="btn btn-light btn-lg font-weight-bold display-4">
+                {/* CTA STRIP - OFFER */}
+                <section className="lp-cta-strip parallax-bg" style={{ backgroundImage: "url(/images/banner/banner4.jpg)" }}>
+                    <div className="container" data-aos="zoom-in">
+                        <h2>Precisa de um projeto urgente?</h2>
+                        <p className="lead mb-4 text-white-50">Evite atrasos na sua obra. Nossa equipe entrega com agilidade.</p>
+                        <Link href="/contato" className="btn btn-light btn-lg font-weight-bold display-4 rounded-pill px-5">
                             Solicitar Orçamento
                         </Link>
                     </div>
