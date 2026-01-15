@@ -45,6 +45,26 @@ export default async function sitemap() {
       url: "https://www.dwalt.net/ferramentas/mediakit",
       lastModified: new Date(),
     },
+    {
+      url: "https://www.dwalt.net/servicos/energia-solar-residencial",
+      lastModified: new Date(),
+    },
+    {
+      url: "https://www.dwalt.net/servicos/energia-solar-empresarial",
+      lastModified: new Date(),
+    },
+    {
+      url: "https://www.dwalt.net/servicos/instalacao-energia-solar",
+      lastModified: new Date(),
+    },
+    {
+      url: "https://www.dwalt.net/servicos/limpeza-manutencao-solar",
+      lastModified: new Date(),
+    },
+    {
+      url: "https://www.dwalt.net/servicos/engenharia-eletrica-projetos",
+      lastModified: new Date(),
+    },
     ...cityRoutes,
     ...blogRoutes,
   ];

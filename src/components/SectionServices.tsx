@@ -6,7 +6,7 @@ const SectionServices = () => {
       <div className="container">
         <div className="row text-center">
           <div className="col-12">
-            <h2 className="section-title"  data-aos="fade-up-right">Nós somos especialistas</h2>
+            <h2 className="section-title" data-aos="fade-up-right">Nós somos especialistas</h2>
             <h3 className="section-sub-title" data-aos="fade-up-left">No que fazemos</h3>
           </div>
         </div>
@@ -24,11 +24,11 @@ const SectionServices = () => {
               </div>
               <div className="ts-service-box-info">
                 <h3 className="service-box-title">
-                  <a href="/servicos/orcamento-e-proposta-de-sistema-fotovoltaico">
-                    Orçamento e Proposta de Sistema Fotovoltaico
+                  <a href="/servicos/energia-solar-residencial">
+                    Energia Solar Residencial
                   </a>
                 </h3>
-                <p>Rápido e gratuito.</p>
+                <p>Economia para sua casa.</p>
               </div>
             </div>
             <div data-aos="fade-right" className="ts-service-box d-flex">
@@ -42,11 +42,11 @@ const SectionServices = () => {
               </div>
               <div className="ts-service-box-info">
                 <h3 className="service-box-title">
-                  <a href="/servicos/manutencao-de-sistema-fotovoltaico">
-                    Manutenção de Sistema Fotovoltaico
+                  <a href="/servicos/limpeza-manutencao-solar">
+                    Manutenção e Limpeza
                   </a>
                 </h3>
-                <p>Exclusivo para clientes D Walt.</p>
+                <p>Maximize sua geração.</p>
               </div>
             </div>
             <div data-aos="fade-right" className="ts-service-box d-flex">
@@ -61,11 +61,11 @@ const SectionServices = () => {
               </div>
               <div className="ts-service-box-info">
                 <h3 className="service-box-title">
-                  <a href="/servicos/instalacao-de-sistema-fotovoltaico">
-                    Instalação de Sistema Fotovoltaico
+                  <a href="/servicos/instalacao-energia-solar">
+                    Instalação Fotovoltaica
                   </a>
                 </h3>
-                <p>Proposta, aprovação e instalação.</p>
+                <p>Segurança e qualidade.</p>
               </div>
             </div>
           </div>
@@ -96,13 +96,12 @@ const SectionServices = () => {
               </div>
               <div className="ts-service-box-info">
                 <h3 className="service-box-title">
-                  <a href="/servicos/assistencia-de-sistema-fotovoltaico">
-                    Assistência ao Sistema Fotovoltaico
+                  <a href="/servicos/energia-solar-empresarial">
+                    Energia Solar Empresarial
                   </a>
                 </h3>
                 <p>
-                  Acompanhamos a geração do seu sistema, fornecendo assistência
-                  à dúvidas e entregando relatório de produção.
+                  Reduza custos e aumente o lucro do seu negócio.
                 </p>
               </div>
             </div>
@@ -118,13 +117,12 @@ const SectionServices = () => {
               </div>
               <div className="ts-service-box-info">
                 <h3 className="service-box-title">
-                  <a href="/servicos/engenharia-eletrica">
+                  <a href="/servicos/engenharia-eletrica-projetos">
                     Engenharia Elétrica
                   </a>
                 </h3>
                 <p>
-                  Temos engenheiros capacitados para qualquer
-                  área da engenharia elétrica.
+                  Projetos, laudos e consultoria técnica especializada.
                 </p>
               </div>
             </div>
@@ -140,10 +138,9 @@ const SectionServices = () => {
               </div>
               <div className="ts-service-box-info">
                 <h3 className="service-box-title">
-                  <a href="/servicos/contrucao-civil">Construção Civil</a>
+                  <a href="/contato">Fale com Especialista</a>
                 </h3>
-                <p>Temos engenheiros capacitados para qualquer
-                  área da engenharia civil.</p>
+                <p>Tire suas dúvidas agora mesmo.</p>
               </div>
             </div>
           </div>
