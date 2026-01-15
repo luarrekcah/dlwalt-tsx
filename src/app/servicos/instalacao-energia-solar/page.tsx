@@ -8,7 +8,7 @@ import FloatingWpp from "@/components/FloatingWhatsapp";
 import { company } from "@/data/company";
 
 export const metadata: Metadata = {
-    title: `Instalação Solar Certificada | Evite Dores de Cabeça | ${company.name}`,
+    title: `Instalação Solar Certificada | Evite Dores de Cabeça`,
     description: "Não arrisque seu investimento. A Dwalt possui equipe própria e certificada para instalação de energia solar. Segurança total e homologação garantida.",
     keywords: [
         "instalação energia solar",
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
         "Dwalt Engenharia",
     ],
     openGraph: {
-        title: `Instalação Solar - Segurança e Qualidade | ${company.name}`,
+        title: `Instalação Solar - Segurança e Qualidade`,
         description: "Equipe especializada e normas de segurança rigorosas. Sua usina instalada sem dores de cabeça.",
         url: `${company.url}/servicos/instalacao-energia-solar`,
         type: "website",

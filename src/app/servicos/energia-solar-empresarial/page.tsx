@@ -8,7 +8,7 @@ import FloatingWpp from "@/components/FloatingWhatsapp";
 import { company } from "@/data/company";
 
 export const metadata: Metadata = {
-    title: `Energia Solar para Empresas | Lucro Líquido Real | ${company.name}`,
+    title: `Energia Solar para Empresas | Lucro Líquido Real`,
     description: "Transforme sua conta de energia em lucro. Reduza o custo fixo da sua empresa e aumente sua margem competitiva com a Dwalt Energia.",
     keywords: [
         "energia solar empresarial",
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
         "Dwalt Energia Solar",
     ],
     openGraph: {
-        title: `Energia Solar Empresarial - Aumente seu Lucro | ${company.name}`,
+        title: `Energia Solar Empresarial - Aumente seu Lucro`,
         description: "Invista em eficiência. Sistemas fotovoltaicos para empresas que querem cortar custos fixos e crescer.",
         url: `${company.url}/servicos/energia-solar-empresarial`,
         type: "website",

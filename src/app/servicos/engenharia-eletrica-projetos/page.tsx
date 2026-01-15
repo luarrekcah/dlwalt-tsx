@@ -8,7 +8,7 @@ import FloatingWpp from "@/components/FloatingWhatsapp";
 import { company } from "@/data/company";
 
 export const metadata: Metadata = {
-    title: `Engenharia Elétrica Especializada | Laudos e Projetos | ${company.name}`,
+    title: `Engenharia Elétrica Especializada | Laudos e Projetos`,
     description: "Precisa de regularizar sua obra ou aumentar a carga? Projetos elétricos, laudos de vistoria e subestações com quem entende do assunto.",
     keywords: [
         "engenharia elétrica",
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
         "subestação de energia",
     ],
     openGraph: {
-        title: `Engenharia Elétrica - Segurança e Técnica | ${company.name}`,
+        title: `Engenharia Elétrica - Segurança e Técnica`,
         description: "Soluções completas em engenharia elétrica. Projetos, laudos e execuções com responsabilidade técnica.",
         url: `${company.url}/servicos/engenharia-eletrica-projetos`,
         type: "website",

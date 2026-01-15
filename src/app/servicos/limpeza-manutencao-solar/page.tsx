@@ -8,7 +8,7 @@ import FloatingWpp from "@/components/FloatingWhatsapp";
 import { company } from "@/data/company";
 
 export const metadata: Metadata = {
-    title: `Limpeza Solar Profissional | Recupere sua Economia | ${company.name}`,
+    title: `Limpeza Solar Profissional | Recupere sua Economia`,
     description: "Seu sistema está gerando menos? A sujeira pode estar roubando até 25% da sua energia. Agende uma limpeza técnica hoje.",
     keywords: [
         "limpeza de painéis solares",
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
         "assistência técnica inverter",
     ],
     openGraph: {
-        title: `Manutenção Solar - Pare de Perder Dinheiro | ${company.name}`,
+        title: `Manutenção Solar - Pare de Perder Dinheiro`,
         description: "Recupere a eficiência total do seu gerador solar com nossa limpeza profissional. Segurança e produtos específicos.",
         url: `${company.url}/servicos/limpeza-manutencao-solar`,
         type: "website",

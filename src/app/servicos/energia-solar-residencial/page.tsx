@@ -8,7 +8,7 @@ import FloatingWpp from "@/components/FloatingWhatsapp";
 import { company } from "@/data/company";
 
 export const metadata: Metadata = {
-    title: `Energia Solar Residencial | Diga Adeus à Conta de Luz | ${company.name}`,
+    title: `Energia Solar Residencial | Diga Adeus à Conta de Luz`,
     description: "Cansado de pagar caro na conta de luz? Descubra como zerar sua fatura com energia solar residencial. Simule sua economia com a Dwalt Energia.",
     keywords: [
         "energia solar residencial",
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
         "Dwalt Energia",
     ],
     openGraph: {
-        title: `Energia Solar Residencial - Economize em Casa | ${company.name}`,
+        title: `Energia Solar Residencial - Economize em Casa`,
         description: "Transforme sua casa com energia solar. Economia de até 95% na conta de luz e valorização do seu patrimônio.",
         url: `${company.url}/servicos/energia-solar-residencial`,
         type: "website",
