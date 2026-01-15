@@ -15,6 +15,24 @@
   position: relative;
 }
 
+/* Utility for gap (Bootstrap 4 fallback) */
+.gap-3 {
+  gap: 1rem;
+}
+
+@media (max-width: 576px) {
+  .gap-3 {
+    gap: 0.5rem;
+  }
+
+  .lp-btn-cta,
+  .lp-btn-whatsapp {
+    width: 100%;
+    margin-bottom: 10px;
+    justify-content: center;
+  }
+}
+
 /* Navbar Simplified */
 .lp-navbar {
   background: rgba(255, 255, 255, 0.95);
