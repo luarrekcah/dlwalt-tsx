@@ -34,7 +34,7 @@ export const company = {
             "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3930.2430854375043!2d-63.045994724969916!3d-9.913701490187336!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x93cc90c1e2c420cf%3A0xfd5a1fbeea15df07!2sDWALT%20Energia%20Solar%20%7C%20Ariquemes%20%E2%80%93%20RO!5e0!3m2!1spt-BR!2sbr!4v1768353479963!5m2!1spt-BR!2sbr",
     },
     social: {
-        instagram: "https://www.instagram.com/dlwalt_energia",
+        instagram: "https://www.instagram.com/dwalt_energia",
         facebook: "https://www.facebook.com/Dwaltenergiaoficial/",
     },
     seo: {

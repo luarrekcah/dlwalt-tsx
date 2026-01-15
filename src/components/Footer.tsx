@@ -47,6 +47,8 @@ const Footer = () => {
                     <a
                       href={company.social.facebook}
                       aria-label="Facebook"
+                      target="_blank"
+                      rel="noopener noreferrer"
                     >
                       <i className="fab fa-facebook-f" />
                     </a>
@@ -55,6 +57,8 @@ const Footer = () => {
                     <a
                       href={company.social.instagram}
                       aria-label="Instagram"
+                      target="_blank"
+                      rel="noopener noreferrer"
                     >
                       <i className="fab fa-instagram" />
                     </a>

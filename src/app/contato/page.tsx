@@ -52,7 +52,7 @@ const Contact = () => {
                         <i className="fas fa-map-marker-alt mr-0" />
                       </span>
                       <div className="ts-service-box-content">
-                        <h4>Endereço</h4>
+                        <h4>Endereços</h4>
                         <p>
                           {unit.address}
                           {unit.cnpj && <><br />CNPJ: {unit.cnpj}</>}
