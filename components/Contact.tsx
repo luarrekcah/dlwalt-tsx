@@ -1,70 +1,124 @@
 import { Button } from "./ui/button";
+import { Mail, MapPin, Phone, Send, Instagram, Facebook, Youtube, MessageCircle } from "lucide-react";
+import { COMPANY_INFO } from "@/lib/data/company";
 
 export function Contact() {
     return (
-        <section id="contact" className="py-24 bg-primary text-primary-foreground">
-            <div className="container mx-auto px-4">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <section id="contact" className="relative py-24 bg-black text-white overflow-hidden">
+            {/* Background Effects */}
+            <div className="absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-primary/20 rounded-full blur-[120px] pointer-events-none" />
+            <div className="absolute bottom-0 right-0 translate-x-1/2 translate-y-1/2 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-[120px] pointer-events-none" />
+
+            <div className="container mx-auto px-4 relative z-10">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
+                    {/* Info Column */}
                     <div>
-                        <h2 className="text-3xl font-bold tracking-tight mb-6 sm:text-5xl">
-                            Pronto para zerar sua conta de luz?
+                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium mb-6">
+                            <MessageCircle className="w-4 h-4" />
+                            Fale Conosco
+                        </div>
+                        <h2 className="text-4xl lg:text-5xl font-bold tracking-tight mb-6">
+                            Pronto para zerar sua <br />
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-yellow-300">
+                                conta de luz?
+                            </span>
                         </h2>
-                        <p className="text-primary-foreground/90 text-xl leading-relaxed mb-8 max-w-lg">
+                        <p className="text-gray-400 text-lg leading-relaxed mb-12 max-w-lg">
                             Solicite um orçamento gratuito. Nossa equipe de engenheiros fará uma análise
-                            personalizada do seu consumo e telhado.
+                            personalizada do seu perfil de consumo.
                         </p>
-                        <div className="flex flex-col gap-4">
-                            <div className="flex items-center gap-4">
-                                <div className="h-12 w-1 bg-white/30 rounded-full" />
+
+                        <div className="space-y-8">
+                            <div className="flex items-start gap-4 group">
+                                <div className="p-3 rounded-xl bg-white/5 border border-white/10 group-hover:border-primary/50 group-hover:bg-primary/10 transition-colors">
+                                    <Phone className="w-6 h-6 text-primary" />
+                                </div>
                                 <div>
-                                    <p className="font-bold text-2xl">Mais de 2.5 MWp</p>
-                                    <p className="text-sm opacity-80">De potência instalada</p>
+                                    <p className="font-bold text-lg text-white mb-1">Telefone / WhatsApp</p>
+                                    <a href={`https://wa.me/${COMPANY_INFO.contact.whatsapp}`} target="_blank" className="text-gray-400 hover:text-primary transition-colors">
+                                        {COMPANY_INFO.contact.phone}
+                                    </a>
                                 </div>
                             </div>
-                            <div className="flex items-center gap-4">
-                                <div className="h-12 w-1 bg-white/30 rounded-full" />
+
+                            <div className="flex items-start gap-4 group">
+                                <div className="p-3 rounded-xl bg-white/5 border border-white/10 group-hover:border-primary/50 group-hover:bg-primary/10 transition-colors">
+                                    <Mail className="w-6 h-6 text-primary" />
+                                </div>
                                 <div>
-                                    <p className="font-bold text-2xl">Atendemos em todo Estado</p>
-                                    <p className="text-sm opacity-80">Logística eficiente</p>
+                                    <p className="font-bold text-lg text-white mb-1">E-mail</p>
+                                    <a href={`mailto:${COMPANY_INFO.contact.email}`} className="text-gray-400 hover:text-primary transition-colors">
+                                        {COMPANY_INFO.contact.email}
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div className="flex items-start gap-4 group">
+                                <div className="p-3 rounded-xl bg-white/5 border border-white/10 group-hover:border-primary/50 group-hover:bg-primary/10 transition-colors">
+                                    <MapPin className="w-6 h-6 text-primary" />
+                                </div>
+                                <div>
+                                    <p className="font-bold text-lg text-white mb-1">Matriz</p>
+                                    <p className="text-gray-400 text-sm max-w-xs">{COMPANY_INFO.units[0].address}</p>
                                 </div>
                             </div>
                         </div>
+
+                        <div className="mt-12 pt-8 border-t border-white/10 flex gap-4">
+                            <a href={COMPANY_INFO.social.instagram} target="_blank" className="p-3 rounded-full bg-white/5 hover:bg-white/10 hover:text-pink-500 transition-colors">
+                                <Instagram className="w-5 h-5" />
+                            </a>
+                            <a href={COMPANY_INFO.social.facebook} target="_blank" className="p-3 rounded-full bg-white/5 hover:bg-white/10 hover:text-blue-500 transition-colors">
+                                <Facebook className="w-5 h-5" />
+                            </a>
+                            <a href={COMPANY_INFO.social.youtube} target="_blank" className="p-3 rounded-full bg-white/5 hover:bg-white/10 hover:text-red-500 transition-colors">
+                                <Youtube className="w-5 h-5" />
+                            </a>
+                        </div>
                     </div>
 
-                    <div className="bg-white p-8 rounded-2xl shadow-xl text-foreground">
-                        <form className="space-y-6">
+                    {/* Form Column */}
+                    <div className="bg-white/5 border border-white/10 p-8 md:p-10 rounded-3xl backdrop-blur-md shadow-2xl relative">
+                        <div className="absolute top-0 right-0 p-8 opacity-20">
+                            <Send className="w-24 h-24 text-white rotate-12" />
+                        </div>
+
+                        <h3 className="text-2xl font-bold text-white mb-2">Solicite uma Proposta</h3>
+                        <p className="text-gray-400 text-sm mb-8">Preencha o formulário e entraremos em contato em até 24h.</p>
+
+                        <form className="space-y-5 relative z-10">
                             <div>
-                                <label htmlFor="name" className="block text-sm font-medium mb-2">Nome Completo</label>
+                                <label htmlFor="name" className="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Nome Completo</label>
                                 <input
                                     type="text"
                                     id="name"
-                                    className="w-full px-4 py-3 rounded-lg border border-input bg-background focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all"
-                                    placeholder="Seu nome"
+                                    className="w-full px-4 py-3 rounded-xl border border-white/10 bg-black/50 text-white focus:ring-2 focus:ring-primary/50 focus:border-primary outline-none transition-all placeholder:text-gray-600"
+                                    placeholder="Digite seu nome"
                                 />
                             </div>
                             <div>
-                                <label htmlFor="email" className="block text-sm font-medium mb-2">Email</label>
+                                <label htmlFor="email" className="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Email</label>
                                 <input
                                     type="email"
                                     id="email"
-                                    className="w-full px-4 py-3 rounded-lg border border-input bg-background focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all"
+                                    className="w-full px-4 py-3 rounded-xl border border-white/10 bg-black/50 text-white focus:ring-2 focus:ring-primary/50 focus:border-primary outline-none transition-all placeholder:text-gray-600"
                                     placeholder="seu@email.com"
                                 />
                             </div>
                             <div>
-                                <label htmlFor="phone" className="block text-sm font-medium mb-2">Telefone / WhatsApp</label>
+                                <label htmlFor="phone" className="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Telefone</label>
                                 <input
                                     type="tel"
                                     id="phone"
-                                    className="w-full px-4 py-3 rounded-lg border border-input bg-background focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all"
-                                    placeholder="(31) 99999-9999"
+                                    className="w-full px-4 py-3 rounded-xl border border-white/10 bg-black/50 text-white focus:ring-2 focus:ring-primary/50 focus:border-primary outline-none transition-all placeholder:text-gray-600"
+                                    placeholder="(99) 99999-9999"
                                 />
                             </div>
-                            <Button size="lg" className="w-full text-lg font-semibold">
-                                Solicitar Orçamento Grátis
+                            <Button size="lg" className="w-full h-14 text-lg font-bold bg-primary text-black hover:bg-primary/90 mt-4 rounded-xl shadow-lg shadow-primary/25">
+                                Enviar Solicitação
                             </Button>
-                            <p className="text-xs text-center text-muted-foreground mt-4">
-                                Seus dados estão seguros conosco.
+                            <p className="text-[10px] text-center text-gray-500 mt-4">
+                                Ao enviar, você concorda com nossa <a href="/politica-de-privacidade" className="underline hover:text-primary">Política de Privacidade</a>.
                             </p>
                         </form>
                     </div>
