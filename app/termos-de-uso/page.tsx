@@ -16,7 +16,7 @@ export default function TermsOfUsePage() {
                         </div>
                         <h1 className="text-4xl md:text-6xl font-bold">
                             Termos de <br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-yellow-300">Uso</span>
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-100">Uso</span>
                         </h1>
                     </div>
 

@@ -21,7 +21,7 @@ export default function ProjectsPage() {
                         </div>
                         <h1 className="text-4xl md:text-6xl font-bold">
                             Nossa Qualidade <br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-yellow-300">Em Detalhes</span>
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-300">Em Detalhes</span>
                         </h1>
                         <p className="text-lg text-gray-400 max-w-2xl mx-auto">
                             Explore nossos projetos realizados e veja como estamos transformando a energia de residências e empresas em Rondônia.

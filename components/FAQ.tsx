@@ -19,7 +19,7 @@ export function FAQ() {
                         </div>
                         <h2 className="text-4xl font-bold mb-6 leading-tight">
                             Tire suas dúvidas sobre <br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-yellow-300">
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-300">
                                 Energia Solar
                             </span>
                         </h2>

@@ -57,7 +57,7 @@ export function Testimonials() {
                     </div>
                     <h2 className="text-3xl md:text-5xl font-bold text-white">
                         Histórias de quem já <br />
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-yellow-300">
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-300">
                             gera a própria energia
                         </span>
                     </h2>

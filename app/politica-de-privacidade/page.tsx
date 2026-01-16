@@ -16,7 +16,7 @@ export default function PrivacyPolicyPage() {
                         </div>
                         <h1 className="text-4xl md:text-6xl font-bold">
                             Política de <br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-yellow-300">Privacidade</span>
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-100">Privacidade</span>
                         </h1>
                     </div>
 

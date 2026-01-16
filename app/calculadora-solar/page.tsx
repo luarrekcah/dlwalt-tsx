@@ -55,7 +55,7 @@ export default function SolarCalculatorPage() {
                         </div>
                         <h1 className="text-4xl md:text-6xl font-bold">
                             Descubra seu Potencial de <br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-yellow-300">Economia Solar</span>
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-300">Economia Solar</span>
                         </h1>
                         <p className="text-lg text-gray-400 max-w-2xl mx-auto">
                             Utilize nossa calculadora para estimar o tamanho do sistema ideal para sua casa ou empresa e veja quanto você pode economizar.
@@ -66,7 +66,7 @@ export default function SolarCalculatorPage() {
                         {/* Simulator Form */}
                         <div className="lg:col-span-5 bg-white/5 border border-white/10 rounded-3xl p-8 backdrop-blur-md">
                             <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
-                                <Sun className="text-primary" />
+                                <Sun className="text-yellow-500" />
                                 Seus Dados
                             </h2>
                             <form onSubmit={calculate} className="space-y-6">
@@ -104,7 +104,7 @@ export default function SolarCalculatorPage() {
                                     </select>
                                 </div>
 
-                                <Button type="submit" size="lg" className="w-full h-14 text-lg font-bold rounded-xl bg-gradient-to-r from-primary to-yellow-500 hover:opacity-90 transition-opacity text-black">
+                                <Button type="submit" size="lg" className="w-full h-14 text-lg font-bold rounded-xl bg-gradient-to-r from-primary to-blue-600 hover:opacity-90 transition-opacity text-white">
                                     Calcular Agora
                                     <ArrowRight className="ml-2 w-5 h-5" />
                                 </Button>

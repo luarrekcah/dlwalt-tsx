@@ -22,7 +22,7 @@ export default function UnitsPage() {
                         </div>
                         <h1 className="text-4xl md:text-6xl font-bold mb-6">
                             Onde Encontrar a <br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-yellow-300">DWalt Energia</span>
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-100">DWalt Energia</span>
                         </h1>
                         <p className="text-lg text-gray-400 max-w-2xl mx-auto">
                             Estamos estrategicamente posicionados para atender você com agilidade e excelência.

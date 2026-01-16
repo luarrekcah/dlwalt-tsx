@@ -58,7 +58,7 @@ export function Header() {
             <div className="container mx-auto flex items-center justify-between px-4">
                 <Link href="/" className="flex items-center gap-2 relative z-50">
                     <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary text-primary-foreground font-bold">
-                        <Sun className="h-6 w-6" />
+                        <Sun className="h-6 w-6 text-yellow-500" />
                     </div>
                     <span className={cn(
                         "text-xl font-bold tracking-tight md:text-2xl transition-colors",

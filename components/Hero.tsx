@@ -44,7 +44,7 @@ export function Hero() {
                     transition={{ duration: 0.8, delay: 0.2 }}
                     className="mb-6 flex items-center justify-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 backdrop-blur-sm"
                 >
-                    <Sun className="h-4 w-4 text-primary" />
+                    <Sun className="h-4 w-4 text-yellow-500" />
                     <span className="text-sm font-medium text-white">
                         Energia limpa para um futuro sustentável
                     </span>
@@ -57,7 +57,7 @@ export function Hero() {
                     className="max-w-4xl text-5xl font-extrabold tracking-tight text-white sm:text-6xl md:text-7xl lg:text-8xl"
                 >
                     Transforme o Sol em <br />
-                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-yellow-300">
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-300">
                         Economia Real
                     </span>
                 </motion.h1>

@@ -38,7 +38,7 @@ export function AppShowcase() {
 
                             <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">
                                 O controle total da sua energia <br />
-                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-yellow-300">
+                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-100">
                                     na palma da mão
                                 </span>
                             </h2>

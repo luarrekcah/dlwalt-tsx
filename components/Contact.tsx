@@ -19,7 +19,7 @@ export function Contact() {
                         </div>
                         <h2 className="text-4xl lg:text-5xl font-bold tracking-tight mb-6">
                             Pronto para zerar sua <br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-yellow-300">
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-100">
                                 conta de luz?
                             </span>
                         </h2>

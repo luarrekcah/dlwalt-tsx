@@ -45,7 +45,7 @@ export function Services() {
                         >
                             <div className="absolute top-0 right-0 -mt-4 -mr-4 h-24 w-24 rounded-full bg-primary/10 transition-all group-hover:bg-primary/20" />
 
-                            <service.icon className={cn("h-12 w-12 mb-6", service.icon === Zap ? "text-yellow-500" : "text-primary")} />
+                            <service.icon className={cn("h-12 w-12 mb-6 text-primary")} />
 
                             <h3 className="text-xl font-semibold mb-3 text-foreground">{service.title}</h3>
                             <p className="text-muted-foreground leading-relaxed">
