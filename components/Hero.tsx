@@ -100,7 +100,7 @@ export function Hero() {
                 className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce"
             >
                 <div className="flex flex-col items-center gap-2">
-                    <span className="text-xs text-white/50 uppercase tracking-widest">Scroll</span>
+                    <span className="text-xs text-white/50 uppercase tracking-widest">ROLE PARA BAIXO</span>
                     <div className="h-10 w-[1px] bg-gradient-to-b from-primary to-transparent" />
                 </div>
             </motion.div>
