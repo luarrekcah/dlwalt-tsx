@@ -2,21 +2,40 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { Menu, X, Sun } from "lucide-react";
+import { Menu, X, Sun, ChevronDown, Calculator, PiggyBank, Users, MapPin, FileText, Shield, BookOpen, Briefcase } from "lucide-react";
 import { Button } from "./ui/button";
 import { cn } from "@/lib/utils";
 
-const navigation = [
-    { name: "Início", href: "#home" },
-    { name: "Sobre Nós", href: "#about" },
-    { name: "Serviços", href: "#services" },
-    { name: "Projetos", href: "#projects" },
-    { name: "Contato", href: "#contact" },
-];
+const navigation = {
+    solucoes: {
+        title: "Soluções",
+        items: [
+            { name: "Calculadora Solar", href: "/calculadora-solar", icon: Calculator, description: "Estime sua economia mensal e o tamanho do sistema." },
+            { name: "Simular Financiamento", href: "/simular-financiamento", icon: PiggyBank, description: "Planeje o investimento com parcelas que cabem no bolso." },
+        ]
+    },
+    institucional: {
+        title: "Institucional",
+        items: [
+            { name: "Sobre Nós", href: "/#about", icon: Users, description: "Conheça nossa história e missão." },
+            { name: "Nossas Unidades", href: "/unidades", icon: MapPin, description: "Encontre o escritório mais próximo de você." },
+            { name: "Política de Privacidade", href: "/politica-de-privacidade", icon: Shield, description: "Como protegemos seus dados." },
+            { name: "Termos de Uso", href: "/termos-de-uso", icon: FileText, description: "Regras de utilização do nosso site." },
+        ]
+    },
+    conteudo: {
+        title: "Conteúdo",
+        items: [
+            { name: "Blog", href: "/blog", icon: BookOpen, description: "Notícias e artigos sobre energia solar." },
+            { name: "Projetos", href: "/#projects", icon: Briefcase, description: "Veja nossos cases de sucesso." },
+        ]
+    }
+};
 
 export function Header() {
     const [isScrolled, setIsScrolled] = useState(false);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+    const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -31,32 +50,65 @@ export function Header() {
             className={cn(
                 "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
                 isScrolled
-                    ? "bg-background/80 backdrop-blur-md shadow-md py-4"
+                    ? "bg-background/95 backdrop-blur-md shadow-md py-4"
                     : "bg-transparent py-6"
             )}
+            onMouseLeave={() => setActiveDropdown(null)}
         >
             <div className="container mx-auto flex items-center justify-between px-4">
-                <Link href="/" className="flex items-center gap-2">
-                    {/* Logo Placeholder */}
+                <Link href="/" className="flex items-center gap-2 relative z-50">
                     <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary text-primary-foreground font-bold">
                         <Sun className="h-6 w-6" />
                     </div>
-                    <span className="text-xl font-bold tracking-tight text-white md:text-2xl">
+                    <span className={cn(
+                        "text-xl font-bold tracking-tight md:text-2xl transition-colors",
+                        isScrolled ? "text-foreground" : "text-white"
+                    )}>
                         DWalt <span className="text-primary">Energia</span>
                     </span>
                 </Link>
 
                 {/* Desktop Navigation */}
                 <nav className="hidden md:flex items-center gap-8">
-                    {navigation.map((item) => (
-                        <Link
-                            key={item.name}
-                            href={item.href}
-                            className="text-sm font-medium text-white/90 transition-colors hover:text-primary"
-                        >
-                            {item.name}
-                        </Link>
+                    <Link
+                        href="/#home"
+                        className={cn(
+                            "text-sm font-medium transition-colors hover:text-primary",
+                            isScrolled && !activeDropdown ? "text-foreground" : "text-white/90"
+                        )}
+                        onMouseEnter={() => setActiveDropdown(null)}
+                    >
+                        Início
+                    </Link>
+
+                    {/* Mega Menu Items */}
+                    {Object.entries(navigation).map(([key, section]) => (
+                        <div key={key} className="relative group">
+                            <button
+                                className={cn(
+                                    "flex items-center gap-1 text-sm font-medium transition-colors hover:text-primary focus:outline-none",
+                                    isScrolled || activeDropdown ? "text-foreground" : "text-white/90"
+                                )}
+                                onMouseEnter={() => setActiveDropdown(key)}
+                                onClick={() => setActiveDropdown(activeDropdown === key ? null : key)}
+                            >
+                                {section.title}
+                                <ChevronDown className={cn("h-4 w-4 transition-transform", activeDropdown === key ? "rotate-180" : "")} />
+                            </button>
+                        </div>
                     ))}
+
+                    <Link
+                        href="/#contact"
+                        className={cn(
+                            "text-sm font-medium transition-colors hover:text-primary",
+                            isScrolled && !activeDropdown ? "text-foreground" : "text-white/90"
+                        )}
+                        onMouseEnter={() => setActiveDropdown(null)}
+                    >
+                        Contato
+                    </Link>
+
                     <Button variant="default" className="font-semibold shadow-lg shadow-primary/20">
                         Solicite um Orçamento
                     </Button>
@@ -64,27 +116,101 @@ export function Header() {
 
                 {/* Mobile Menu Button */}
                 <button
-                    className="md:hidden text-white"
+                    className={cn(
+                        "md:hidden z-50 transition-colors",
+                        isScrolled || mobileMenuOpen ? "text-foreground" : "text-white"
+                    )}
                     onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                 >
                     {mobileMenuOpen ? <X className="h-8 w-8" /> : <Menu className="h-8 w-8" />}
                 </button>
             </div>
 
+            {/* Desktop Mega Menu Dropdown */}
+            {activeDropdown && (
+                <div
+                    className="hidden md:block absolute top-full left-0 w-full bg-background/95 backdrop-blur-xl border-t border-border shadow-xl animate-in fade-in slide-in-from-top-2 duration-200"
+                    onMouseEnter={() => setActiveDropdown(activeDropdown)}
+                    onMouseLeave={() => setActiveDropdown(null)}
+                >
+                    <div className="container mx-auto py-8 px-4">
+                        <div className="grid grid-cols-12 gap-8">
+                            <div className="col-span-3">
+                                <h3 className="text-lg font-bold text-primary mb-2">
+                                    {navigation[activeDropdown as keyof typeof navigation].title}
+                                </h3>
+                                <p className="text-sm text-muted-foreground">
+                                    Explore nossas opções e descubra como podemos ajudar você a economizar energia.
+                                </p>
+                            </div>
+                            <div className="col-span-9 grid grid-cols-2 lg:grid-cols-3 gap-6">
+                                {navigation[activeDropdown as keyof typeof navigation].items.map((item) => (
+                                    <Link
+                                        key={item.name}
+                                        href={item.href}
+                                        className="flex items-start gap-4 p-3 rounded-lg hover:bg-accent transition-colors group"
+                                        onClick={() => setActiveDropdown(null)}
+                                    >
+                                        <div className="p-2 bg-primary/10 rounded-md text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                                            <item.icon className="h-5 w-5" />
+                                        </div>
+                                        <div>
+                                            <div className="font-semibold text-foreground group-hover:text-primary transition-colors">
+                                                {item.name}
+                                            </div>
+                                            <p className="text-xs text-muted-foreground mt-1">
+                                                {item.description}
+                                            </p>
+                                        </div>
+                                    </Link>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            )}
+
             {/* Mobile Menu Overlay */}
             {mobileMenuOpen && (
-                <div className="absolute top-full left-0 right-0 bg-background border-b border-border p-4 md:hidden flex flex-col gap-4 shadow-xl">
-                    {navigation.map((item) => (
-                        <Link
-                            key={item.name}
-                            href={item.href}
-                            className="text-base font-medium text-foreground hover:text-primary py-2 block border-b border-border/10"
-                            onClick={() => setMobileMenuOpen(false)}
-                        >
-                            {item.name}
-                        </Link>
+                <div className="fixed inset-0 z-40 bg-background pt-24 px-4 md:hidden flex flex-col gap-4 overflow-y-auto">
+                    <Link
+                        href="/#home"
+                        className="text-lg font-medium py-3 border-b border-border/50"
+                        onClick={() => setMobileMenuOpen(false)}
+                    >
+                        Início
+                    </Link>
+
+                    {Object.entries(navigation).map(([key, section]) => (
+                        <div key={key} className="py-2 border-b border-border/50">
+                            <div className="font-semibold text-primary mb-3 uppercase text-xs tracking-wider">
+                                {section.title}
+                            </div>
+                            <div className="grid gap-4 pl-2">
+                                {section.items.map((item) => (
+                                    <Link
+                                        key={item.name}
+                                        href={item.href}
+                                        className="flex items-center gap-3 text-sm text-foreground/80 hover:text-primary"
+                                        onClick={() => setMobileMenuOpen(false)}
+                                    >
+                                        <item.icon className="h-4 w-4 text-muted-foreground" />
+                                        {item.name}
+                                    </Link>
+                                ))}
+                            </div>
+                        </div>
                     ))}
-                    <Button className="w-full mt-2">Solicite um Orçamento</Button>
+
+                    <Link
+                        href="/#contact"
+                        className="text-lg font-medium py-3 border-b border-border/50"
+                        onClick={() => setMobileMenuOpen(false)}
+                    >
+                        Contato
+                    </Link>
+
+                    <Button className="w-full mt-4" size="lg">Solicite um Orçamento</Button>
                 </div>
             )}
         </header>
