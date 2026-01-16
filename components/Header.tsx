@@ -27,7 +27,7 @@ const navigation = {
         title: "Conteúdo",
         items: [
             { name: "Blog", href: "/blog", icon: BookOpen, description: "Notícias e artigos sobre energia solar." },
-            { name: "Projetos", href: "/#projects", icon: Briefcase, description: "Veja nossos cases de sucesso." },
+            { name: "Projetos", href: "/projetos", icon: Briefcase, description: "Veja nossos cases de sucesso." },
         ]
     }
 };
