@@ -57,7 +57,7 @@ export default function SolarResidencial() {
                 <LandingNavbar />
 
                 {/* HERO SECTION - HOOK */}
-                <section className="lp-hero parallax-bg" style={{ backgroundImage: "url(/images/banner/banner1.jpg)" }}>
+                <section className="lp-hero parallax-bg" style={{ backgroundImage: "url(https://descarbonizesolucoes.com.br/blog/wp-content/uploads/2024/12/engenharia-instalacao-paineis-solares-campo-aberto.webp)" }}>
                     <div className="container">
                         <div className="row">
                             <div className="col-lg-8" data-aos="fade-up" data-aos-duration="1000">
@@ -108,7 +108,7 @@ export default function SolarResidencial() {
                             <div className="col-lg-6 mb-4 mb-lg-0" data-aos="fade-right">
                                 <div className="position-relative">
                                     <div className="absolute-bg" style={{ position: 'absolute', top: -20, left: -20, width: '100%', height: '100%', background: 'var(--lp-primary)', opacity: 0.1, borderRadius: 20, zIndex: 0 }}></div>
-                                    <img src="/images/projects/project1.jpg" alt="Instalação Residencial" className="img-fluid rounded shadow-lg position-relative" style={{ zIndex: 1 }} />
+                                    <img src="https://inovacare.solar/images/publicacao/grd/geracao-de-energia-solar-e-consumo-simultaneo-entendendo-o-fluxo-de-energia_240617103034.jpg" alt="Instalação Residencial" className="img-fluid rounded shadow-lg position-relative" style={{ zIndex: 1 }} />
                                 </div>
                             </div>
                             <div className="col-lg-6" data-aos="fade-left">
