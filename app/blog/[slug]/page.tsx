@@ -41,7 +41,7 @@ export default async function BlogPostPage({ params }: Props) {
             "name": "DWalt Energia",
             "logo": {
                 "@type": "ImageObject",
-                "url": "https://dwaltenergia.com.br/logo.png"
+                "url": "https://dwalt.net/logo.png"
             }
         },
         "datePublished": "2024-01-01", // Should ideally be in the post data in ISO format

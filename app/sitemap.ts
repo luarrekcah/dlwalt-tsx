@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next';
 import { BLOG_POSTS } from '@/lib/data/blog';
 import { PROJECTS } from '@/lib/data/projects';
 
-const BASE_URL = 'https://dwaltenergia.com.br'; // Use env var in production
+const BASE_URL = 'https://dwalt.net'; // Use env var in production
 
 export default function sitemap(): MetadataRoute.Sitemap {
     const staticRoutes = [

@@ -91,7 +91,7 @@ export default async function ProjectDetailPage({ params }: Props) {
                             <div className="absolute bottom-6 left-6 right-6">
                                 <div className="grid grid-cols-3 gap-4">
                                     <div className="bg-black/50 backdrop-blur p-4 rounded-xl border border-white/10 text-center">
-                                        <Zap className="w-6 h-6 text-primary mx-auto mb-2" />
+                                        <Zap className="w-6 h-6 text-yellow-500 mx-auto mb-2" />
                                         <p className="text-xs text-gray-400 uppercase">Potência</p>
                                         <p className="font-bold text-white">{project.size}</p>
                                     </div>

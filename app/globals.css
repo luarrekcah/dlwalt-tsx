@@ -39,14 +39,17 @@
     from {
       height: 0;
     }
+
     to {
       height: var(--radix-accordion-content-height);
     }
   }
+
   @keyframes accordion-up {
     from {
       height: var(--radix-accordion-content-height);
     }
+
     to {
       height: 0;
     }
@@ -56,10 +59,12 @@
 @utility container {
   margin-inline: auto;
   padding-inline: 2rem;
-  @media (width >= --theme(--breakpoint-sm)) {
+
+  @media (width >=--theme(--breakpoint-sm)) {
     max-width: none;
   }
-  @media (width >= 1400px) {
+
+  @media (width >=1400px) {
     max-width: 1400px;
   }
 }
@@ -69,6 +74,7 @@
   so we've added these compatibility styles to sure everything still looks the same.
 */
 @layer base {
+
   *,
   ::after,
   ::before,
@@ -90,8 +96,8 @@
     --popover-foreground: 222.2 84% 4.9%;
 
     /* Brand Colors - Solar Theme */
-    /* Primary: Vibrant Orange/Yellow */
-    --primary: 35 90% 55%; 
+    /* Primary: Blue #3266AF */
+    --primary: 215 56% 44%;
     --primary-foreground: 210 40% 98%;
 
     /* Secondary: Deep Energy Blue */
@@ -124,8 +130,8 @@
     --popover: 222.2 84% 4.9%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 35 90% 55%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: 215 56% 44%;
+    --primary-foreground: 210 40% 98%;
 
     --secondary: 217.2 32.6% 17.5%;
     --secondary-foreground: 210 40% 98%;

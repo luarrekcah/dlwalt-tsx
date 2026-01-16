@@ -50,7 +50,7 @@ export default function SolarCalculatorPage() {
                 <div className="container mx-auto px-4 max-w-6xl">
                     <div className="text-center mb-16 space-y-4">
                         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium">
-                            <Zap className="w-4 h-4" />
+                            <Zap className="w-4 h-4 text-yellow-500" />
                             Simulador Inteligente
                         </div>
                         <h1 className="text-4xl md:text-6xl font-bold">
@@ -137,7 +137,7 @@ export default function SolarCalculatorPage() {
                                     {/* Details Grid */}
                                     <div className="grid md:grid-cols-2 gap-4">
                                         <div className="bg-white/5 border border-white/10 rounded-2xl p-6 flex items-center gap-4">
-                                            <div className="p-3 rounded-full bg-blue-500/20 text-blue-400">
+                                            <div className="p-3 rounded-full bg-yellow-500/20 text-yellow-500">
                                                 <Zap className="w-6 h-6" />
                                             </div>
                                             <div>
