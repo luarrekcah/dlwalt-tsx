@@ -18,7 +18,7 @@ export function About() {
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                             <div className="absolute bottom-6 left-6 text-white">
-                                <p className="text-sm font-medium uppercase tracking-wider mb-1">Desde 2018</p>
+                                <p className="text-sm font-medium uppercase tracking-wider mb-1">Desde 2015</p>
                                 <p className="text-2xl font-bold">Líder em Energia Solar na Região</p>
                             </div>
                         </div>
@@ -31,7 +31,7 @@ export function About() {
                         </h2>
                         <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
                             Somos especialistas em transformar a maneira como você consome energia.
-                            Com mais de 500 projetos executados, levamos economia, sustentabilidade e inovação
+                            Com mais de 2000 projetos executados, levamos economia, sustentabilidade e inovação
                             para lares e empresas em todo o estado.
                         </p>
                         <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
