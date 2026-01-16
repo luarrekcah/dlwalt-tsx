@@ -6,6 +6,7 @@ import { MapPin, Zap, ArrowLeft, BatteryCharging, PanelTop } from 'lucide-react'
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { Button } from '@/components/ui/button';
+import { JsonLd } from '@/components/JsonLd';
 
 interface Props {
     params: Promise<{
@@ -27,8 +28,26 @@ export default async function ProjectDetailPage({ params }: Props) {
         notFound();
     }
 
+    const jsonLd = {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        "name": project.title,
+        "image": project.image,
+        "description": project.description,
+        "brand": {
+            "@type": "Brand",
+            "name": "DWalt Energia"
+        },
+        "offers": {
+            "@type": "Offer",
+            "priceCurrency": "BRL",
+            "availability": "https://schema.org/InStock"
+        }
+    };
+
     return (
         <div className="flex flex-col min-h-screen bg-black text-white">
+            <JsonLd data={jsonLd} />
             <Header />
             <main className="flex-grow pt-32 pb-20">
                 <div className="container mx-auto px-4 max-w-5xl">

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { JsonLd } from "@/components/JsonLd";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,11 +29,32 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "DWalt Energia",
+    "url": "https://dwaltenergia.com.br", // Replace with actual domain
+    "logo": "https://dwaltenergia.com.br/logo.png", // Replace with actual logo URL
+    "sameAs": [
+      "https://instagram.com/dwaltenergia",
+      "https://facebook.com/dwaltenergia",
+      "https://youtube.com/dwaltenergia"
+    ],
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+5569999999999",
+      "contactType": "sales",
+      "areaServed": "BR",
+      "availableLanguage": "Portuguese"
+    }
+  };
+
   return (
     <html lang="pt-BR" className="dark scroll-smooth">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground`}
       >
+        <JsonLd data={jsonLd} />
         {children}
       </body>
     </html>

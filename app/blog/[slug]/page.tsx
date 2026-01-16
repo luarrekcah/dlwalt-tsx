@@ -5,6 +5,7 @@ import { BLOG_POSTS } from '@/lib/data/blog';
 import { Calendar, User, ArrowLeft, Share2 } from 'lucide-react';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import { JsonLd } from '@/components/JsonLd';
 
 interface Props {
     params: Promise<{
@@ -26,8 +27,30 @@ export default async function BlogPostPage({ params }: Props) {
         notFound();
     }
 
+    const jsonLd = {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": post.title,
+        "image": post.imageUrl,
+        "author": {
+            "@type": "Person",
+            "name": post.author
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "DWalt Energia",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://dwaltenergia.com.br/logo.png"
+            }
+        },
+        "datePublished": "2024-01-01", // Should ideally be in the post data in ISO format
+        "description": post.excerpt || post.content.substring(0, 160)
+    };
+
     return (
         <div className="flex flex-col min-h-screen bg-black text-white">
+            <JsonLd data={jsonLd} />
             <Header />
             <main className="flex-grow pt-32 pb-20">
                 <article className="container mx-auto px-4 max-w-4xl">
