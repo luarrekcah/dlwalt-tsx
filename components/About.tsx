@@ -19,7 +19,7 @@ export function About() {
                             <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                             <div className="absolute bottom-6 left-6 text-white">
                                 <p className="text-sm font-medium uppercase tracking-wider mb-1">Desde 2015</p>
-                                <p className="text-2xl font-bold">Líder em Energia Solar na Região</p>
+                                <p className="text-2xl font-bold">Líder em Energia Solar na Região Norte</p>
                             </div>
                         </div>
                     </div>
