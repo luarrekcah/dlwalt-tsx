@@ -85,56 +85,13 @@ export function AppShowcase() {
                                 repeat: Infinity,
                                 ease: "easeInOut"
                             }}
-                            className="relative w-[300px] h-[600px] bg-black border-[12px] border-zinc-800 rounded-[3rem] shadow-2xl overflow-hidden"
+                            className="relative z-10"
                         >
-                            {/* Screen Content - Simulated App UI */}
-                            <div className="absolute inset-0 bg-zinc-900 flex flex-col">
-                                {/* Header */}
-                                <div className="h-24 bg-primary p-6 flex items-end justify-between">
-                                    <span className="text-black font-bold text-xl">Olá, Cliente</span>
-                                    <div className="w-8 h-8 bg-black/20 rounded-full" />
-                                </div>
-
-                                {/* Production Graph Simulation */}
-                                <div className="p-6 space-y-6">
-                                    <div className="bg-zinc-800/50 p-4 rounded-2xl h-40 flex items-center justify-center border border-white/5 relative overflow-hidden">
-                                        <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-primary/20 to-transparent" />
-                                        <span className="text-gray-500 text-xs uppercase tracking-widest relative z-10">Gráfico de Geração</span>
-                                        {/* Simple SVG Line */}
-                                        <svg className="absolute bottom-4 left-4 right-4 h-20 overflow-visible" viewBox="0 0 100 50">
-                                            <path d="M0 50 Q 25 20 50 40 T 100 10" fill="none" stroke="#eab308" strokeWidth="3" />
-                                        </svg>
-                                    </div>
-
-                                    {/* Action Buttons */}
-                                    <div className="grid grid-cols-2 gap-4">
-                                        <div className="bg-zinc-800/50 p-4 rounded-xl border border-white/5 flex flex-col items-center gap-2">
-                                            <FileText className="text-primary w-6 h-6" />
-                                            <span className="text-white text-xs">Contratos</span>
-                                        </div>
-                                        <div className="bg-zinc-800/50 p-4 rounded-xl border border-white/5 flex flex-col items-center gap-2">
-                                            <Camera className="text-primary w-6 h-6" />
-                                            <span className="text-white text-xs">Fotos</span>
-                                        </div>
-                                    </div>
-
-                                    {/* Notification */}
-                                    <div className="bg-zinc-800/30 p-4 rounded-xl border-l-4 border-primary flex items-start gap-3">
-                                        <div className="p-1 bg-yellow-500/10 rounded-full mt-1">
-                                            <Bell className="w-3 h-3 text-primary" />
-                                        </div>
-                                        <div>
-                                            <p className="text-white text-sm font-bold">Instalação Concluída</p>
-                                            <p className="text-gray-500 text-xs">Sua usina está pronta para gerar.</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                {/* Floating Action Button */}
-                                <div className="absolute bottom-6 right-6 w-14 h-14 bg-primary rounded-full flex items-center justify-center shadow-lg shadow-primary/30">
-                                    <MessageSquare className="w-6 h-6 text-black" />
-                                </div>
-                            </div>
+                            <img
+                                src="/app/celular.webp"
+                                alt="App Connect Dwalt"
+                                className="w-full max-w-[320px] h-auto drop-shadow-2xl"
+                            />
                         </motion.div>
 
                         {/* Glow Effect behind phone */}
