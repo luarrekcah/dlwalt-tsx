@@ -28,11 +28,12 @@ export function Hero() {
             >
                 <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-background z-10" />
                 {/* Placeholder for actual Solar Panel Image */}
-                <div
-                    className="h-full w-full bg-cover bg-center"
-                    style={{
-                        backgroundImage: 'url("https://images.unsplash.com/photo-1509391366360-2e959784a276?q=80&w=2664&auto=format&fit=crop")',
-                    }}
+                <iframe
+                    className="absolute inset-0 h-full w-full pointer-events-none scale-[1.35] md:scale-[3.5]"
+                    src="https://www.youtube.com/embed/QD_DLGDJsos?autoplay=1&mute=1&controls=0&loop=1&playlist=QD_DLGDJsos&showinfo=0&rel=0&iv_load_policy=3&disablekb=1"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                    style={{ pointerEvents: 'none' }}
                 />
             </motion.div>
 
