@@ -84,62 +84,64 @@ export default function PostsPage() {
             </div>
 
             <div className="bg-zinc-900/50 border border-white/10 rounded-2xl overflow-hidden">
-                <table className="w-full text-left">
-                    <thead className="bg-white/5 border-b border-white/10">
-                        <tr>
-                            <th className="px-6 py-4 font-medium text-gray-400">Thumbnail</th>
-                            <th className="px-6 py-4 font-medium text-gray-400">Título</th>
-                            <th className="px-6 py-4 font-medium text-gray-400">Status</th>
-                            <th className="px-6 py-4 font-medium text-gray-400 text-right">Ações</th>
-                        </tr>
-                    </thead>
-                    <tbody className="divide-y divide-white/5">
-                        {filtered.map((post) => (
-                            <tr key={post.id} className="hover:bg-white/5 transition-colors">
-                                <td className="px-6 py-4">
-                                    {post.thumbnailUrl ? (
-                                        <div className="w-12 h-12 relative rounded overflow-hidden">
-                                            <Image src={post.thumbnailUrl} alt={post.title} fill className="object-cover" />
-                                        </div>
-                                    ) : (
-                                        <div className="w-12 h-12 bg-white/10 rounded flex items-center justify-center">
-                                            <FileText className="w-6 h-6 text-gray-500" />
-                                        </div>
-                                    )}
-                                </td>
-                                <td className="px-6 py-4 font-medium">{post.title}</td>
-                                <td className="px-6 py-4">
-                                    <span className={`px-2 py-1 rounded-full text-xs font-medium ${post.status === 'published' ? 'bg-green-500/20 text-green-400' : 'bg-yellow-500/20 text-yellow-500'}`}>
-                                        {post.status === 'published' ? 'Publicado' : 'Rascunho'}
-                                    </span>
-                                </td>
-                                <td className="px-6 py-4 text-right">
-                                    <div className="flex items-center justify-end gap-2">
-                                        <Link href={`/admin/posts/${post.id}`}>
-                                            <button className="p-2 hover:bg-blue-500/20 rounded-lg text-gray-400 hover:text-blue-500 transition-colors" title="Editar">
-                                                <Edit className="w-4 h-4" />
-                                            </button>
-                                        </Link>
-                                        <button
-                                            className="p-2 hover:bg-red-500/20 rounded-lg text-gray-400 hover:text-red-500 transition-colors"
-                                            onClick={() => removePost(post.id)}
-                                            title="Remover"
-                                        >
-                                            <Trash2 className="w-4 h-4" />
-                                        </button>
-                                    </div>
-                                </td>
-                            </tr>
-                        ))}
-                        {filtered.length === 0 && !loading && (
+                <div className="overflow-x-auto">
+                    <table className="w-full text-left min-w-[700px]">
+                        <thead className="bg-white/5 border-b border-white/10">
                             <tr>
-                                <td colSpan={4} className="px-6 py-8 text-center text-gray-500">
-                                    Nenhum post encontrado.
-                                </td>
+                                <th className="px-6 py-4 font-medium text-gray-400">Thumbnail</th>
+                                <th className="px-6 py-4 font-medium text-gray-400">Título</th>
+                                <th className="px-6 py-4 font-medium text-gray-400">Status</th>
+                                <th className="px-6 py-4 font-medium text-gray-400 text-right">Ações</th>
                             </tr>
-                        )}
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody className="divide-y divide-white/5">
+                            {filtered.map((post) => (
+                                <tr key={post.id} className="hover:bg-white/5 transition-colors">
+                                    <td className="px-6 py-4">
+                                        {post.thumbnailUrl ? (
+                                            <div className="w-12 h-12 relative rounded overflow-hidden">
+                                                <Image src={post.thumbnailUrl} alt={post.title} fill className="object-cover" />
+                                            </div>
+                                        ) : (
+                                            <div className="w-12 h-12 bg-white/10 rounded flex items-center justify-center">
+                                                <FileText className="w-6 h-6 text-gray-500" />
+                                            </div>
+                                        )}
+                                    </td>
+                                    <td className="px-6 py-4 font-medium whitespace-nowrap">{post.title}</td>
+                                    <td className="px-6 py-4 whitespace-nowrap">
+                                        <span className={`px-2 py-1 rounded-full text-xs font-medium ${post.status === 'published' ? 'bg-green-500/20 text-green-400' : 'bg-yellow-500/20 text-yellow-500'}`}>
+                                            {post.status === 'published' ? 'Publicado' : 'Rascunho'}
+                                        </span>
+                                    </td>
+                                    <td className="px-6 py-4 text-right whitespace-nowrap">
+                                        <div className="flex items-center justify-end gap-2">
+                                            <Link href={`/admin/posts/${post.id}`}>
+                                                <button className="p-2 hover:bg-blue-500/20 rounded-lg text-gray-400 hover:text-blue-500 transition-colors" title="Editar">
+                                                    <Edit className="w-4 h-4" />
+                                                </button>
+                                            </Link>
+                                            <button
+                                                className="p-2 hover:bg-red-500/20 rounded-lg text-gray-400 hover:text-red-500 transition-colors"
+                                                onClick={() => removePost(post.id)}
+                                                title="Remover"
+                                            >
+                                                <Trash2 className="w-4 h-4" />
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            ))}
+                            {filtered.length === 0 && !loading && (
+                                <tr>
+                                    <td colSpan={4} className="px-6 py-8 text-center text-gray-500">
+                                        Nenhum post encontrado.
+                                    </td>
+                                </tr>
+                            )}
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     );

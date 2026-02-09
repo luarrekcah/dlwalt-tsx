@@ -104,43 +104,45 @@ export default function UsersPage() {
             </div>
 
             <div className="bg-zinc-900/50 border border-white/10 rounded-2xl overflow-hidden">
-                <table className="w-full text-left">
-                    <thead className="bg-white/5 border-b border-white/10">
-                        <tr>
-                            <th className="px-6 py-4 font-medium text-gray-400">Nome</th>
-                            <th className="px-6 py-4 font-medium text-gray-400">Email</th>
-                            <th className="px-6 py-4 font-medium text-gray-400 text-right">Ações</th>
-                        </tr>
-                    </thead>
-                    <tbody className="divide-y divide-white/5">
-                        {filtered.map((u) => (
-                            <tr key={u.id} className="hover:bg-white/5 transition-colors">
-                                <td className="px-6 py-4">{u.name}</td>
-                                <td className="px-6 py-4 text-gray-400">{u.email}</td>
-                                <td className="px-6 py-4 text-right">
-                                    {u.email === "contato@dwalt.net" ? (
-                                        <span className="text-xs text-gray-500 italic">Admin Principal</span>
-                                    ) : (
-                                        <button
-                                            className="p-2 hover:bg-red-500/20 rounded-lg text-gray-400 hover:text-red-500 transition-colors"
-                                            onClick={() => removeUser(u.id)}
-                                            title="Remover usuário"
-                                        >
-                                            <Trash2 className="w-4 h-4" />
-                                        </button>
-                                    )}
-                                </td>
-                            </tr>
-                        ))}
-                        {filtered.length === 0 && (
+                <div className="overflow-x-auto">
+                    <table className="w-full text-left min-w-[600px]">
+                        <thead className="bg-white/5 border-b border-white/10">
                             <tr>
-                                <td colSpan={3} className="px-6 py-8 text-center text-gray-500">
-                                    Nenhum usuário encontrado.
-                                </td>
+                                <th className="px-6 py-4 font-medium text-gray-400">Nome</th>
+                                <th className="px-6 py-4 font-medium text-gray-400">Email</th>
+                                <th className="px-6 py-4 font-medium text-gray-400 text-right">Ações</th>
                             </tr>
-                        )}
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody className="divide-y divide-white/5">
+                            {filtered.map((u) => (
+                                <tr key={u.id} className="hover:bg-white/5 transition-colors">
+                                    <td className="px-6 py-4 whitespace-nowrap">{u.name}</td>
+                                    <td className="px-6 py-4 text-gray-400 whitespace-nowrap">{u.email}</td>
+                                    <td className="px-6 py-4 text-right whitespace-nowrap">
+                                        {u.email === "contato@dwalt.net" ? (
+                                            <span className="text-xs text-gray-500 italic">Admin Principal</span>
+                                        ) : (
+                                            <button
+                                                className="p-2 hover:bg-red-500/20 rounded-lg text-gray-400 hover:text-red-500 transition-colors"
+                                                onClick={() => removeUser(u.id)}
+                                                title="Remover usuário"
+                                            >
+                                                <Trash2 className="w-4 h-4" />
+                                            </button>
+                                        )}
+                                    </td>
+                                </tr>
+                            ))}
+                            {filtered.length === 0 && (
+                                <tr>
+                                    <td colSpan={3} className="px-6 py-8 text-center text-gray-500">
+                                        Nenhum usuário encontrado.
+                                    </td>
+                                </tr>
+                            )}
+                        </tbody>
+                    </table>
+                </div>
             </div>
 
             {showModal && (

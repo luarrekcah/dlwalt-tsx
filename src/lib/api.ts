@@ -14,10 +14,13 @@ const api = axios.create({
 // Interceptor para adicionar token automaticamente
 api.interceptors.request.use(
     (config) => {
-        const token = Cookies.get("token"); // token salvo nos cookies
+        // Check if running on client side before accessing cookies
+        if (typeof window !== "undefined") {
+            const token = Cookies.get("token"); // token saved in cookies
 
-        if (token) {
-            config.headers.Authorization = `Bearer ${token}`;
+            if (token) {
+                config.headers.Authorization = `Bearer ${token}`;
+            }
         }
 
         return config;
