@@ -49,7 +49,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
         try {
             const result = await api.get("/user/me");
-            setUser(result.data.data); // specific to user's API structure: data.data.user or just data.data? User snippet said result.data.data.user but in Users component it says result.data.data for list. Validating from snippet: "setUser(result.data.data.user);" ok using that.
+            setUser(result.data.data.user); // specific to user's API structure: data.data.user or just data.data? User snippet said result.data.data.user but in Users component it says result.data.data for list. Validating from snippet: "setUser(result.data.data.user);" ok using that.
         } catch (error) {
             console.log("Erro ao carregar usuário", error);
             // await logout(); // Don't logout automatically on every error, maybe just invalid token
