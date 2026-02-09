@@ -64,7 +64,7 @@ export default function RootLayout({
           <SmoothScroll />
           <JsonLd data={jsonLd} />
           {children}
-          <Toaster richColors position="top-right" />
+          <Toaster richColors position="top-center" closeButton />
         </AuthProvider>
       </body>
     </html>
