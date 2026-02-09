@@ -25,6 +25,9 @@ export const metadata: Metadata = {
   },
 };
 
+// ... imports
+import { Toaster } from 'sonner';
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -58,6 +61,7 @@ export default function RootLayout({
         <SmoothScroll />
         <JsonLd data={jsonLd} />
         {children}
+        <Toaster richColors position="top-right" />
       </body>
     </html>
   );
