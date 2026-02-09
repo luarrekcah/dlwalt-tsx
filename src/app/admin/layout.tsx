@@ -53,18 +53,28 @@ export default function AdminLayout({
                 <Link
                     href="/admin"
                     className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-colors ${pathname === "/admin"
-                            ? "bg-green-600/10 text-green-400 border border-green-600/20"
-                            : "hover:bg-white/5 text-gray-400 hover:text-white"
+                        ? "bg-green-600/10 text-green-400 border border-green-600/20"
+                        : "hover:bg-white/5 text-gray-400 hover:text-white"
                         }`}
                 >
                     <LayoutDashboard className="w-5 h-5" />
                     Dashboard
                 </Link>
                 <Link
+                    href="/admin/financiamentos"
+                    className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-colors ${pathname.startsWith("/admin/financiamentos")
+                        ? "bg-green-600/10 text-green-400 border border-green-600/20"
+                        : "hover:bg-white/5 text-gray-400 hover:text-white"
+                        }`}
+                >
+                    <FileText className="w-5 h-5" />
+                    Simulações
+                </Link>
+                <Link
                     href="/admin/posts"
                     className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-colors ${pathname.startsWith("/admin/posts")
-                            ? "bg-green-600/10 text-green-400 border border-green-600/20"
-                            : "hover:bg-white/5 text-gray-400 hover:text-white"
+                        ? "bg-green-600/10 text-green-400 border border-green-600/20"
+                        : "hover:bg-white/5 text-gray-400 hover:text-white"
                         }`}
                 >
                     <FileText className="w-5 h-5" />
@@ -73,8 +83,8 @@ export default function AdminLayout({
                 <Link
                     href="/admin/users"
                     className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-colors ${pathname.startsWith("/admin/users")
-                            ? "bg-green-600/10 text-green-400 border border-green-600/20"
-                            : "hover:bg-white/5 text-gray-400 hover:text-white"
+                        ? "bg-green-600/10 text-green-400 border border-green-600/20"
+                        : "hover:bg-white/5 text-gray-400 hover:text-white"
                         }`}
                 >
                     <Users className="w-5 h-5" />

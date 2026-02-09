@@ -50,7 +50,7 @@ export default function SolarCalculatorPage() {
 
         const uf = cityUf.split("/")[1] || "SP";
         // Default to a median value if UF not found or not in map
-        const irradiation = irradiationData[uf] || 5.0;
+        const irradiation = 4.5 //irradiationData[uf] || 5.0;
 
         // Cálculo do tamanho do sistema
         // Fórmula básica: Consumo / 30 dias / Irradiação / Rendimento (0.80 padrão)
