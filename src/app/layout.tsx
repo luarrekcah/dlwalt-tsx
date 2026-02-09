@@ -26,7 +26,9 @@ export const metadata: Metadata = {
 };
 
 // ... imports
+// ... imports
 import { Toaster } from 'sonner';
+import { AuthProvider } from "@/providers/auth-provider";
 
 export default function RootLayout({
   children,
@@ -58,10 +60,12 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground`}
       >
-        <SmoothScroll />
-        <JsonLd data={jsonLd} />
-        {children}
-        <Toaster richColors position="top-right" />
+        <AuthProvider>
+          <SmoothScroll />
+          <JsonLd data={jsonLd} />
+          {children}
+          <Toaster richColors position="top-right" />
+        </AuthProvider>
       </body>
     </html>
   );
