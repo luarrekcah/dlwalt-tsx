@@ -6,6 +6,7 @@ import { Projects } from "@/components/Projects";
 import { Testimonials } from "@/components/Testimonials";
 import { FAQ } from "@/components/FAQ";
 import { AppShowcase } from "@/components/AppShowcase";
+import { AffiliateSection } from "@/components/AffiliateSection";
 import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
 import { JsonLd } from "@/components/JsonLd";
@@ -46,6 +47,7 @@ export default function Home() {
       <Testimonials />
       <FAQ />
       <AppShowcase />
+      <AffiliateSection />
       <Contact />
       <Footer />
     </main>
