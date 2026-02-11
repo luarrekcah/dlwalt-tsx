@@ -49,7 +49,13 @@ export default function ProjectsPage() {
     const loadData = async () => {
         try {
             const { data } = await api.get("/projects");
-            setProjects(data.data || data || []);
+            if (Array.isArray(data.data)) {
+                setProjects(data.data);
+            } else if (data.data?.data && Array.isArray(data.data.data)) {
+                setProjects(data.data.data);
+            } else {
+                setProjects([]);
+            }
         } catch (error) {
             console.error("Failed to load projects", error);
             toast.error("Erro ao carregar projetos.");

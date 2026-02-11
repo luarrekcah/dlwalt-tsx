@@ -67,7 +67,13 @@ export default function UsersPage() {
     const loadData = async () => {
         try {
             const { data } = await api.get("/user");
-            setUsers(data.data);
+            if (Array.isArray(data.data)) {
+                setUsers(data.data);
+            } else if (data.data?.data && Array.isArray(data.data.data)) {
+                setUsers(data.data.data);
+            } else {
+                setUsers([]);
+            }
         } catch (error) {
             console.error("Failed to load users", error);
             toast.error("Erro ao carregar usuários.");

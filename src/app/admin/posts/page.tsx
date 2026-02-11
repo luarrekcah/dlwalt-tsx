@@ -46,7 +46,13 @@ export default function PostsPage() {
             const { data } = await api.get("/posts");
             // Adjust based on actual API response (data.data.data according to snippet?)
             // User snippet: setPosts(postsResponse.data.data.data);
-            setPosts(data.data.data || data.data || []);
+            if (Array.isArray(data.data)) {
+                setPosts(data.data);
+            } else if (data.data?.data && Array.isArray(data.data.data)) {
+                setPosts(data.data.data);
+            } else {
+                setPosts([]);
+            }
         } catch (error) {
             console.error("Failed to load posts", error);
             toast.error("Erro ao carregar posts.");

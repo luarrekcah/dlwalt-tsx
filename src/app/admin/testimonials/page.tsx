@@ -48,7 +48,13 @@ export default function TestimonialsPage() {
     const loadData = async () => {
         try {
             const { data } = await api.get("/testimonials");
-            setTestimonials(data.data || data || []);
+            if (Array.isArray(data.data)) {
+                setTestimonials(data.data);
+            } else if (data.data?.data && Array.isArray(data.data.data)) {
+                setTestimonials(data.data.data);
+            } else {
+                setTestimonials([]);
+            }
         } catch (error) {
             console.error("Failed to load testimonials", error);
             // toast.error("Erro ao carregar depoimentos."); // Avoid spamming if empty or err
