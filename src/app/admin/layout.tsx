@@ -4,7 +4,7 @@ import { useAuth } from "@/providers/auth-provider";
 import { useRouter, usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { LayoutDashboard, FileText, Users, LogOut, Menu, X } from "lucide-react";
+import { LayoutDashboard, FileText, Users, LogOut, Menu, X, Zap, MessageSquare } from "lucide-react";
 
 export default function AdminLayout({
     children,
@@ -69,6 +69,26 @@ export default function AdminLayout({
                 >
                     <FileText className="w-5 h-5" />
                     Simulações
+                </Link>
+                <Link
+                    href="/admin/projects"
+                    className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-colors ${pathname.startsWith("/admin/projects")
+                        ? "bg-green-600/10 text-green-400 border border-green-600/20"
+                        : "hover:bg-white/5 text-gray-400 hover:text-white"
+                        }`}
+                >
+                    <Zap className="w-5 h-5" />
+                    Projetos
+                </Link>
+                <Link
+                    href="/admin/testimonials"
+                    className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-colors ${pathname.startsWith("/admin/testimonials")
+                        ? "bg-green-600/10 text-green-400 border border-green-600/20"
+                        : "hover:bg-white/5 text-gray-400 hover:text-white"
+                        }`}
+                >
+                    <MessageSquare className="w-5 h-5" />
+                    Depoimentos
                 </Link>
                 <Link
                     href="/admin/posts"
