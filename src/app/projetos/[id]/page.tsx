@@ -274,10 +274,10 @@ export default function ProjectDetailPage({ params }: Props) {
                                 Sua residência ou empresa também pode gerar a própria energia e economizar até 95% na conta de luz.
                             </p>
                             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-                                <Button size="lg" className="bg-primary text-black hover:bg-primary/90 font-bold px-8 h-14 rounded-full text-lg shadow-lg shadow-primary/25" asChild>
-                                    <Link href="/calculadora-solar">
+                                <Button size="lg" className="bg-primary text-black hover:bg-primary/90 font-bold px-8 h-14 rounded-full text-lg shadow-lg shadow-primary/25 group" asChild>
+                                    <Link href="/calculadora-solar" className="flex items-center gap-2">
                                         Simular meu Projeto Agora
-                                        <ArrowRight className="w-5 h-5 ml-2" />
+                                        <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
                                     </Link>
                                 </Button>
                                 <Button size="lg" variant="outline" className="border-white/10 hover:bg-white/5 text-white h-14 px-8 rounded-full text-lg" asChild>
