@@ -39,6 +39,7 @@ const getYouTubeId = (url: string) => {
 export function Testimonials() {
     const [testimonials, setTestimonials] = useState<Testimonial[]>([]);
     const [currentIndex, setCurrentIndex] = useState(0);
+    const [expandedId, setExpandedId] = useState<number | null>(null);
     const isDesktop = useMediaQuery('(min-width: 1024px)');
     const isTablet = useMediaQuery('(min-width: 768px) and (max-width: 1023px)');
     const [mounted, setMounted] = useState(false);
@@ -175,7 +176,19 @@ export function Testimonials() {
                                             )}
 
                                             {/* Text */}
-                                            <p className="text-gray-300 italic mb-8 flex-grow leading-relaxed line-clamp-6">"{t.testimonial}"</p>
+                                            <div className="flex-grow mb-8">
+                                                <p className={`text-gray-300 italic leading-relaxed ${expandedId === t.id ? '' : 'line-clamp-6'}`}>
+                                                    "{t.testimonial}"
+                                                </p>
+                                                {t.testimonial.length > 150 && (
+                                                    <button
+                                                        onClick={() => setExpandedId(expandedId === t.id ? null : t.id)}
+                                                        className="text-primary text-sm font-semibold mt-2 hover:underline focus:outline-none"
+                                                    >
+                                                        {expandedId === t.id ? 'Recolher' : 'Ler tudo'}
+                                                    </button>
+                                                )}
+                                            </div>
 
                                             {/* Author Profile */}
                                             <div className="flex items-center gap-4 mt-auto pt-6 border-t border-white/5">
