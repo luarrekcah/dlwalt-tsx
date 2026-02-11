@@ -1,10 +1,10 @@
 import { MetadataRoute } from 'next';
 import { BLOG_POSTS } from '@/lib/data/blog';
-import { PROJECTS } from '@/lib/data/projects';
+import axios from 'axios';
 
 const BASE_URL = 'https://dwalt.net'; // Use env var in production
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const staticRoutes = [
         '',
         '/blog',
@@ -28,12 +28,27 @@ export default function sitemap(): MetadataRoute.Sitemap {
         priority: 0.6,
     }));
 
-    const projectRoutes = PROJECTS.map((project) => ({
-        url: `${BASE_URL}/projetos/${project.slug}`,
-        lastModified: new Date(),
-        changeFrequency: 'monthly' as const,
-        priority: 0.7,
-    }));
+    let projectRoutes: MetadataRoute.Sitemap = [];
+    try {
+        // Fetch projects from API
+        // Adjust URL based on environment or hardcode public API
+        const { data } = await axios.get('https://api.dwalt.net/api/projects');
+        let projects = [];
+        if (Array.isArray(data.data)) {
+            projects = data.data;
+        } else if (data.data?.data && Array.isArray(data.data.data)) {
+            projects = data.data.data;
+        }
+
+        projectRoutes = projects.map((project: any) => ({
+            url: `${BASE_URL}/projetos/${project.id}`,
+            lastModified: new Date(project.updatedAt || new Date()),
+            changeFrequency: 'monthly' as const,
+            priority: 0.7,
+        }));
+    } catch (error) {
+        console.error('Failed to fetch projects for sitemap', error);
+    }
 
     return [...staticRoutes, ...blogRoutes, ...projectRoutes];
 }

@@ -1,10 +1,48 @@
+'use client';
+
 import Link from 'next/link';
-import { PROJECTS } from '@/lib/data/projects';
 import { ArrowRight } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import api from '@/lib/api';
+
+export interface Project {
+    id: number;
+    name: string;
+    category: string;
+    location: string;
+    description: string;
+    photos: string[];
+    panelCount: number;
+    kwp: string;
+    slug?: string; // Optional for backward compatibility if needed, but we use id
+}
 
 export function Projects() {
-    // Show only first 3 projects on home
-    const projects = PROJECTS.slice(0, 3);
+    const [projects, setProjects] = useState<Project[]>([]);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        const fetchProjects = async () => {
+            try {
+                const { data } = await api.get("/projects");
+                let receivedData = [];
+                if (Array.isArray(data.data)) {
+                    receivedData = data.data;
+                } else if (data.data?.data && Array.isArray(data.data.data)) {
+                    receivedData = data.data.data;
+                }
+                // Take first 3 for home page
+                setProjects(receivedData.slice(0, 3));
+            } catch (error) {
+                console.error("Failed to fetch projects", error);
+            } finally {
+                setLoading(false);
+            }
+        };
+        fetchProjects();
+    }, []);
+
+    if (loading) return null; // Or a skeleton
 
     return (
         <section id="projects" className="py-24 bg-black text-white overflow-hidden">
@@ -27,16 +65,16 @@ export function Projects() {
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    {projects.map((project, index) => (
+                    {projects.map((project) => (
                         <Link
-                            key={index}
-                            href={`/projetos/${project.slug}`}
+                            key={project.id}
+                            href={`/projetos/${project.id}`}
                             className="group relative rounded-2xl overflow-hidden bg-zinc-900 border border-zinc-800 hover:border-primary/50 transition-all duration-300 block"
                         >
                             <div className="aspect-[16/10] overflow-hidden relative">
                                 <img
-                                    src={project.image}
-                                    alt={project.title}
+                                    src={project.photos?.[0] || 'https://images.unsplash.com/photo-1548613053-220d938b8ca7?w=800&q=80'}
+                                    alt={project.name}
                                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-60 group-hover:opacity-40 transition-opacity" />
@@ -45,17 +83,17 @@ export function Projects() {
                                 </div>
                             </div>
                             <div className="p-6">
-                                <h3 className="text-xl font-bold text-white mb-2 group-hover:text-primary transition-colors">{project.title}</h3>
+                                <h3 className="text-xl font-bold text-white mb-2 group-hover:text-primary transition-colors">{project.name}</h3>
                                 <p className="text-sm text-zinc-400 mb-4">{project.location}</p>
 
                                 <div className="grid grid-cols-2 gap-4 pt-4 border-t border-zinc-800">
                                     <div>
                                         <p className="text-xs text-zinc-500 uppercase tracking-wider mb-1">Potência</p>
-                                        <p className="font-semibold text-primary">{project.size}</p>
+                                        <p className="font-semibold text-primary">{project.kwp} kWp</p>
                                     </div>
                                     <div>
-                                        <p className="text-xs text-zinc-500 uppercase tracking-wider mb-1">Economia</p>
-                                        <p className="font-semibold text-primary">{project.savings}</p>
+                                        <p className="text-xs text-zinc-500 uppercase tracking-wider mb-1">Painéis</p>
+                                        <p className="font-semibold text-primary">{project.panelCount}</p>
                                     </div>
                                 </div>
                             </div>
