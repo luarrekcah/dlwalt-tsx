@@ -60,9 +60,9 @@ export function AppShowcase() {
                             </div>
 
                             <div className="flex flex-wrap gap-4">
-                                <Button className="h-14 px-8 bg-white text-black hover:bg-gray-200 rounded-xl font-bold flex items-center gap-3 shadow-lg shadow-white/5 transition-all hover:scale-105">
+                                <Button className="h-14 px-8 bg-white text-black hover:bg-gray-200 rounded-xl font-bold flex items-center gap-3 shadow-lg shadow-white/5 transition-all hover:scale-105" onClick={()=> {alert("Ainda estamos trabalhando na disponibilização do app, por favor, aguarde!")}}>
                                     <Download className="w-5 h-5" />
-                                    Baixar na Play Store
+                                    Baixar na Google Play
                                 </Button>
                                 {/* Apple Store Button Placeholder if needed in future */}
                                 {/* <Button variant="outline" className="h-14 px-8 border-white/20 text-white hover:bg-white/10 rounded-xl font-bold flex items-center gap-3">
