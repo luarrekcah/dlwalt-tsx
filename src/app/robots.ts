@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
             allow: '/',
             disallow: '/private/',
         },
-        sitemap: 'https://dwalt.net/sitemap.xml', // Replace with actual domain
+        sitemap: 'https://www.dwalt.net/sitemap.xml', // Replace with actual domain
     };
 }

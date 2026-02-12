@@ -21,7 +21,7 @@ export default function Home() {
       {
         "@type": "LocalBusiness",
         "name": COMPANY_INFO.name,
-        "image": "https://dwalt.net/logo-branca.svg",
+        "image": "https://www.dwalt.net/logo-branca.svg",
         "description": COMPANY_INFO.description,
         "telephone": COMPANY_INFO.contact.whatsapp,
         "address": {
@@ -31,7 +31,7 @@ export default function Home() {
           "addressCountry": "BR",
           "streetAddress": COMPANY_INFO.units[0].address
         },
-        "url": "https://dwalt.net",
+        "url": "https://www.dwalt.net",
         "priceRange": "$$$",
         "openingHoursSpecification": {
           "@type": "OpeningHoursSpecification",

@@ -81,12 +81,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         description,
         keywords: keywords.join(", "),
         alternates: {
-            canonical: `https://dwalt.net/${slug}`,
+            canonical: `https://www.dwalt.net/${slug}`,
         },
         openGraph: {
             title,
             description,
-            url: `https://dwalt.net/${slug}`,
+            url: `https://www.dwalt.net/${slug}`,
             siteName: "DWalt Energia",
             locale: "pt_BR",
             type: "website",
@@ -128,7 +128,7 @@ export default async function LandingPage({ params }: Props) {
         "@context": "https://schema.org",
         "@type": "LocalBusiness",
         "name": "DWalt Energia",
-        "image": "https://dwalt.net/logo-branca.svg",
+        "image": "https://www.dwalt.net/logo-branca.svg",
         "description": description,
         "telephone": "+5569993695702",
         "address": {
@@ -137,7 +137,7 @@ export default async function LandingPage({ params }: Props) {
             "addressRegion": "RO",
             "addressCountry": "BR"
         },
-        "url": `https://dwalt.net/${slug}`,
+        "url": `https://www.dwalt.net/${slug}`,
         "priceRange": "$$$",
         "areaServed": {
             "@type": "City",
