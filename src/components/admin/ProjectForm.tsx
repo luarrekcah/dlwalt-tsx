@@ -24,6 +24,7 @@ interface Project {
 export default function ProjectForm({ project }: { project?: Project }) {
     const router = useRouter();
     const [loading, setLoading] = useState(false);
+    const [uploadingPhotos, setUploadingPhotos] = useState(false);
 
     // Form state
     const [name, setName] = useState(project?.name || "");
@@ -74,6 +75,7 @@ export default function ProjectForm({ project }: { project?: Project }) {
         const files = e.target.files;
         if (!files || files.length === 0) return;
 
+        setUploadingPhotos(true);
         try {
             const uploadPromises = Array.from(files).map(async (file) => {
                 const formData = new FormData();
@@ -90,6 +92,8 @@ export default function ProjectForm({ project }: { project?: Project }) {
         } catch (err) {
             console.error(err);
             toast.error("Erro ao enviar fotos.");
+        } finally {
+            setUploadingPhotos(false);
         }
     }
 
@@ -106,9 +110,9 @@ export default function ProjectForm({ project }: { project?: Project }) {
                     </Link>
                     <h1 className="text-2xl font-bold">{project?.id ? "Editar Projeto" : "Novo Projeto"}</h1>
                 </div>
-                <Button onClick={save} disabled={loading} className="bg-green-600 hover:bg-green-700 text-white gap-2">
+                <Button onClick={save} disabled={loading || uploadingPhotos} className="bg-green-600 hover:bg-green-700 text-white gap-2">
                     <Save className="w-4 h-4" />
-                    {loading ? "Salvando..." : "Salvar"}
+                    {loading ? "Salvando..." : uploadingPhotos ? "Enviando fotos..." : "Salvar"}
                 </Button>
             </div>
 

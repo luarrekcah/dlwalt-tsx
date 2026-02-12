@@ -34,6 +34,7 @@ export default function PostEditor({ post }: { post?: Post }) {
     const [thumbnailUrl, setThumbnailUrl] = useState(post?.thumbnailUrl || "");
     const [editorState, setEditorState] = useState(EditorState.createEmpty());
     const [loading, setLoading] = useState(false);
+    const [uploadingThumbnail, setUploadingThumbnail] = useState(false);
 
     useEffect(() => {
         if (post?.content) {
@@ -108,6 +109,7 @@ export default function PostEditor({ post }: { post?: Post }) {
         const file = e.target.files?.[0];
         if (!file) return;
 
+        setUploadingThumbnail(true);
         try {
             const formData = new FormData();
             formData.append("image", file);
@@ -122,6 +124,8 @@ export default function PostEditor({ post }: { post?: Post }) {
         } catch (err) {
             console.error(err);
             toast.error("Erro ao enviar thumbnail.");
+        } finally {
+            setUploadingThumbnail(false);
         }
     }
 
@@ -134,9 +138,9 @@ export default function PostEditor({ post }: { post?: Post }) {
                     </Link>
                     <h1 className="text-2xl font-bold">{post?.id ? "Editar Post" : "Novo Post"}</h1>
                 </div>
-                <Button onClick={save} disabled={loading} className="bg-green-600 hover:bg-green-700 text-white gap-2">
+                <Button onClick={save} disabled={loading || uploadingThumbnail} className="bg-green-600 hover:bg-green-700 text-white gap-2">
                     <Save className="w-4 h-4" />
-                    {loading ? "Salvando..." : "Salvar"}
+                    {loading ? "Salvando..." : uploadingThumbnail ? "Enviando imagem..." : "Salvar"}
                 </Button>
             </div>
 

@@ -23,6 +23,7 @@ interface Testimonial {
 export default function TestimonialForm({ testimonial: existingTestimonial }: { testimonial?: Testimonial }) {
     const router = useRouter();
     const [loading, setLoading] = useState(false);
+    const [uploadingAvatar, setUploadingAvatar] = useState(false);
 
     // Form state
     const [name, setName] = useState(existingTestimonial?.name || "");
@@ -33,8 +34,8 @@ export default function TestimonialForm({ testimonial: existingTestimonial }: { 
     const [url, setUrl] = useState(existingTestimonial?.url || "");
 
     async function save() {
-        if (!name || !location || !testimonial) {
-            toast.error("Preencha os campos obrigatórios.");
+        if (!name || !location || !testimonial || !avatar) {
+            toast.error("Preencha todos os campos obrigatórios (incluindo foto).");
             return;
         }
 
@@ -71,6 +72,7 @@ export default function TestimonialForm({ testimonial: existingTestimonial }: { 
         const file = e.target.files?.[0];
         if (!file) return;
 
+        setUploadingAvatar(true);
         try {
             const formData = new FormData();
             formData.append("image", file);
@@ -84,6 +86,8 @@ export default function TestimonialForm({ testimonial: existingTestimonial }: { 
         } catch (err) {
             console.error(err);
             toast.error("Erro ao enviar avatar.");
+        } finally {
+            setUploadingAvatar(false);
         }
     }
 
@@ -96,9 +100,9 @@ export default function TestimonialForm({ testimonial: existingTestimonial }: { 
                     </Link>
                     <h1 className="text-2xl font-bold">{existingTestimonial?.id ? "Editar Depoimento" : "Novo Depoimento"}</h1>
                 </div>
-                <Button onClick={save} disabled={loading} className="bg-green-600 hover:bg-green-700 text-white gap-2">
+                <Button onClick={save} disabled={loading || uploadingAvatar} className="bg-green-600 hover:bg-green-700 text-white gap-2">
                     <Save className="w-4 h-4" />
-                    {loading ? "Salvando..." : "Salvar"}
+                    {loading ? "Salvando..." : uploadingAvatar ? "Enviando foto..." : "Salvar"}
                 </Button>
             </div>
 
