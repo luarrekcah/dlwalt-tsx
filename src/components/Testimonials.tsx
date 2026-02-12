@@ -111,7 +111,7 @@ export function Testimonials() {
                     <div className="overflow-hidden">
                         <motion.div
                             className="flex"
-                            animate={{ x: `-${currentIndex * (100 / itemsToShow)}%` }}
+                            animate={{ x: `-${currentIndex * (100 / testimonials.length)}%` }}
                             transition={{ type: "spring", stiffness: 300, damping: 30 }}
                             style={{
                                 width: `${(testimonials.length * 100) / itemsToShow}%`,
