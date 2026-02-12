@@ -101,9 +101,11 @@ export function Header() {
                         Contato
                     </Link>
 
-                    <Button variant="default" className="font-semibold shadow-lg shadow-primary/20">
-                        Solicite um Orçamento
-                    </Button>
+                    <Link href="/#contact">
+                        <Button variant="default" className="font-semibold shadow-lg shadow-primary/20">
+                            Solicite um Orçamento
+                        </Button>
+                    </Link>
                 </nav>
 
                 {/* Mobile Menu Button */}
@@ -202,7 +204,9 @@ export function Header() {
                         Contato
                     </Link>
 
-                    <Button className="w-full mt-4" size="lg">Solicite um Orçamento</Button>
+                    <Link href="/#contact" onClick={() => setMobileMenuOpen(false)} className="w-full mt-4">
+                        <Button className="w-full" size="lg">Solicite um Orçamento</Button>
+                    </Link>
                 </div>
             )}
         </header>

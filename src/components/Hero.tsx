@@ -4,6 +4,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { Button } from "./ui/button";
 import { ArrowRight, Sun } from "lucide-react";
 import { useRef } from "react";
+import Link from "next/link";
 
 export function Hero() {
     const ref = useRef(null);
@@ -79,17 +80,21 @@ export function Hero() {
                     transition={{ duration: 0.8, delay: 0.8 }}
                     className="mt-10 flex flex-col gap-4 sm:flex-row"
                 >
-                    <Button size="lg" className="text-lg h-14 px-8 rounded-full">
-                        Simular Economia
-                        <ArrowRight className="ml-2 h-5 w-5" />
-                    </Button>
-                    <Button
-                        variant="outline"
-                        size="lg"
-                        className="text-lg h-14 px-8 rounded-full border-white/20 bg-white/5 text-white hover:bg-white/10 hover:text-white"
-                    >
-                        Conheça Nossos Projetos
-                    </Button>
+                    <Link href="/calculadora-solar">
+                        <Button size="lg" className="text-lg h-14 px-8 rounded-full">
+                            Simular Economia
+                            <ArrowRight className="ml-2 h-5 w-5" />
+                        </Button>
+                    </Link>
+                    <Link href="/projetos">
+                        <Button
+                            variant="outline"
+                            size="lg"
+                            className="text-lg h-14 px-8 rounded-full border-white/20 bg-white/5 text-white hover:bg-white/10 hover:text-white"
+                        >
+                            Conheça Nossos Projetos
+                        </Button>
+                    </Link>
                 </motion.div>
             </div>
 
