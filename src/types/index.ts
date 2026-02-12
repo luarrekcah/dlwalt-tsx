@@ -19,3 +19,22 @@ export interface PaginatedPosts {
     limit: number;
     data: Post[];
 }
+
+export interface Project {
+    id: number;
+    name: string;
+    category: string;
+    location: string;
+    description: string;
+    photos: string[];
+    panelCount: number;
+    kwp: number;
+    createdAt?: string; // Optional as not confirmed in verified files
+}
+
+export interface PaginatedProjects {
+    total: number;
+    page: number;
+    limit: number;
+    data: Project[];
+}

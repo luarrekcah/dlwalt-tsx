@@ -1,30 +1,66 @@
 "use client";
 
 import { useAuth } from "@/providers/auth-provider";
-import { PROJECTS } from "@/lib/data/projects";
-import { BLOG_POSTS } from "@/lib/data/blog";
 import { DashboardKPI } from "@/components/admin/dashboard-kpi";
 import { DashboardCharts } from "@/components/admin/dashboard-charts";
 import { Zap, FileText, TrendingUp, DollarSign } from "lucide-react";
-import { useMemo } from "react";
+import { useEffect, useState, useMemo } from "react";
+import api from "@/lib/api";
+import { Project, Post } from "@/types";
+import Link from "next/link";
 
 export default function AdminDashboard() {
     const { user } = useAuth();
+    const [projects, setProjects] = useState<Project[]>([]);
+    const [posts, setPosts] = useState<Post[]>([]);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        async function fetchData() {
+            try {
+                const [projectsRes, postsRes] = await Promise.all([
+                    api.get("/projects"),
+                    api.get("/posts")
+                ]);
+
+                // Handle Projects Response
+                if (Array.isArray(projectsRes.data.data)) {
+                    setProjects(projectsRes.data.data);
+                } else if (projectsRes.data.data?.data && Array.isArray(projectsRes.data.data.data)) {
+                    setProjects(projectsRes.data.data.data);
+                }
+
+                // Handle Posts Response
+                if (Array.isArray(postsRes.data.data)) {
+                    setPosts(postsRes.data.data);
+                } else if (postsRes.data.data?.data && Array.isArray(postsRes.data.data.data)) {
+                    setPosts(postsRes.data.data.data);
+                }
+
+            } catch (error) {
+                console.error("Error fetching dashboard data:", error);
+            } finally {
+                setLoading(false);
+            }
+        }
+
+        fetchData();
+    }, []);
 
     // Calculate Data
     const stats = useMemo(() => {
-        const totalProjects = PROJECTS.length;
-        const totalPosts = BLOG_POSTS.length;
+        const totalProjects = projects.length;
+        const totalPosts = posts.length;
 
-        // Parse Capacity (kWp)
-        const totalCapacity = PROJECTS.reduce((acc, curr) => {
-            const val = parseFloat(curr.size.replace(/[^0-9.]/g, ''));
+        // Calculate Total Capacity (kWp)
+        const totalCapacity = projects.reduce((acc, curr) => {
+            const val = Number(curr.kwp);
             return acc + (isNaN(val) ? 0 : val);
         }, 0);
 
-        // Parse Monthly Savings (R$)
-        const totalSavings = PROJECTS.reduce((acc, curr) => {
-            const val = parseFloat(curr.savings.replace(/[^0-9,]/g, '').replace(',', '.'));
+        // Calculate Total Panels
+        const totalPanels = projects.reduce((acc, curr) => {
+            const val = Number(curr.panelCount);
             return acc + (isNaN(val) ? 0 : val);
         }, 0);
 
@@ -32,9 +68,17 @@ export default function AdminDashboard() {
             totalProjects,
             totalPosts,
             totalCapacity: totalCapacity.toFixed(1),
-            totalSavings: totalSavings
+            totalPanels
         };
-    }, []);
+    }, [projects, posts]);
+
+    if (loading) {
+        return (
+            <div className="flex items-center justify-center min-h-[400px]">
+                <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-green-500"></div>
+            </div>
+        );
+    }
 
     return (
         <div className="space-y-8">
@@ -60,15 +104,15 @@ export default function AdminDashboard() {
                     value={stats.totalProjects}
                     icon={Zap}
                     description="Obras entregues e operando"
-                    trend="+2 este mês"
+                    trend="Atualizado"
                     trendUp={true}
                 />
                 <DashboardKPI
-                    title="Economia Gerada"
-                    value={`R$ ${stats.totalSavings.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`}
-                    icon={DollarSign}
-                    description="Economia mensal estimada"
-                    trend="+12%"
+                    title="Total de Painéis"
+                    value={stats.totalPanels}
+                    icon={Zap} // Reuse Zap or find another icon like Grid
+                    description="Módulos fotovoltaicos instalados"
+                    trend="Instalados"
                     trendUp={true}
                 />
                 <DashboardKPI
@@ -76,7 +120,7 @@ export default function AdminDashboard() {
                     value={`${stats.totalCapacity} kWp`}
                     icon={TrendingUp}
                     description="Capacidade total de geração"
-                    trend="+15%"
+                    trend="kWp Total"
                     trendUp={true}
                 />
                 <DashboardKPI
@@ -84,21 +128,23 @@ export default function AdminDashboard() {
                     value={stats.totalPosts}
                     icon={FileText}
                     description="Artigos no blog"
-                    trend="Atualizado hoje"
+                    trend="Posts ativos"
                     trendUp={true}
                 />
             </div>
 
             {/* Charts Section */}
-            <DashboardCharts projects={PROJECTS} />
+            <DashboardCharts projects={projects} />
 
             {/* Recent Activity / Projects List */}
             <div className="bg-zinc-900/50 border border-white/10 rounded-2xl overflow-hidden">
                 <div className="p-6 border-b border-white/10 flex items-center justify-between">
                     <h3 className="text-lg font-semibold">Projetos Recentes</h3>
-                    <button className="text-sm text-green-400 hover:text-green-300 transition-colors">
-                        Ver todos
-                    </button>
+                    <Link href="/admin/projects">
+                        <button className="text-sm text-green-400 hover:text-green-300 transition-colors">
+                            Ver todos
+                        </button>
+                    </Link>
                 </div>
                 <div className="overflow-x-auto">
                     <table className="w-full text-left text-sm">
@@ -107,15 +153,13 @@ export default function AdminDashboard() {
                                 <th className="px-6 py-3">Projeto</th>
                                 <th className="px-6 py-3">Localização</th>
                                 <th className="px-6 py-3">Categoria</th>
-                                <th className="px-6 py-3">Potência</th>
-                                <th className="px-6 py-3">Data</th>
-                                <th className="px-6 py-3 text-right">Economia</th>
+                                <th className="px-6 py-3 text-right">Potência</th>
                             </tr>
                         </thead>
                         <tbody className="divide-y divide-white/5">
-                            {PROJECTS.slice(0, 5).map((project) => (
-                                <tr key={project.slug} className="hover:bg-white/5 transition-colors">
-                                    <td className="px-6 py-3 font-medium text-white">{project.title}</td>
+                            {projects.slice(0, 5).map((project) => (
+                                <tr key={project.id} className="hover:bg-white/5 transition-colors">
+                                    <td className="px-6 py-3 font-medium text-white">{project.name}</td>
                                     <td className="px-6 py-3 text-gray-400">{project.location}</td>
                                     <td className="px-6 py-3">
                                         <span className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-medium 
@@ -126,9 +170,7 @@ export default function AdminDashboard() {
                                             {project.category}
                                         </span>
                                     </td>
-                                    <td className="px-6 py-3 text-gray-300">{project.size}</td>
-                                    <td className="px-6 py-3 text-gray-400">{project.date}</td>
-                                    <td className="px-6 py-3 text-right text-emerald-400 font-medium">{project.savings}</td>
+                                    <td className="px-6 py-3 text-right text-emerald-400 font-medium">{project.kwp} kWp</td>
                                 </tr>
                             ))}
                         </tbody>

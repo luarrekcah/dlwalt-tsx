@@ -1,5 +1,5 @@
 import { MetadataRoute } from 'next';
-import { BLOG_POSTS } from '@/lib/data/blog';
+
 import axios from 'axios';
 
 const BASE_URL = 'https://dwalt.net'; // Use env var in production
@@ -21,12 +21,25 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         priority: route === '' ? 1 : 0.8,
     }));
 
-    const blogRoutes = BLOG_POSTS.map((post) => ({
-        url: `${BASE_URL}/blog/${post.slug}`,
-        lastModified: new Date(), // Should come from post.date if possible
-        changeFrequency: 'monthly' as const,
-        priority: 0.6,
-    }));
+    let blogRoutes: MetadataRoute.Sitemap = [];
+    try {
+        const { data } = await axios.get('https://api.dwalt.net/api/posts');
+        let posts = [];
+        if (Array.isArray(data.data)) {
+            posts = data.data;
+        } else if (data.data?.data && Array.isArray(data.data.data)) {
+            posts = data.data.data;
+        }
+
+        blogRoutes = posts.map((post: any) => ({
+            url: `${BASE_URL}/blog/${post.slug}`,
+            lastModified: new Date(post.updatedAt || new Date()),
+            changeFrequency: 'monthly' as const,
+            priority: 0.6,
+        }));
+    } catch (error) {
+        console.error('Failed to fetch posts for sitemap', error);
+    }
 
     let projectRoutes: MetadataRoute.Sitemap = [];
     try {

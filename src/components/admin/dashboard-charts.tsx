@@ -13,16 +13,14 @@ import {
     CartesianGrid,
     Tooltip,
     Legend,
-    AreaChart,
-    Area,
 } from "recharts";
-import { Project } from "@/lib/data/projects";
+import { Project } from "@/types";
 
 interface DashboardChartsProps {
     projects: Project[];
 }
 
-const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
+const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", "#8884d8"];
 
 export function DashboardCharts({ projects }: DashboardChartsProps) {
     // 1. Projects by Category (Pie Chart)
@@ -34,20 +32,15 @@ export function DashboardCharts({ projects }: DashboardChartsProps) {
         return Object.entries(counts).map(([name, value]) => ({ name, value }));
     }, [projects]);
 
-    // 2. Top Savings (Bar Chart) - Top 5
-    const topSavings = useMemo(() => {
-        // Helper to parse savings string "R$ 1.000,00/mês" -> 1000.00
-        const parseSavings = (s: string) => {
-            return parseFloat(s.replace(/[^0-9,]/g, '').replace(',', '.'));
-        };
-
+    // 2. Top Capacity (Bar Chart) - Top 5 by kWp
+    const topCapacity = useMemo(() => {
         return [...projects]
-            .sort((a, b) => parseSavings(b.savings) - parseSavings(a.savings))
+            .sort((a, b) => b.kwp - a.kwp)
             .slice(0, 5)
             .map(p => ({
-                name: p.title.length > 15 ? p.title.substring(0, 15) + '...' : p.title,
-                savings: parseSavings(p.savings),
-                fullTitle: p.title
+                name: p.name.length > 15 ? p.name.substring(0, 15) + '...' : p.name,
+                kwp: p.kwp,
+                fullTitle: p.name
             }));
     }, [projects]);
 
@@ -84,25 +77,25 @@ export function DashboardCharts({ projects }: DashboardChartsProps) {
                 </div>
             </div>
 
-            {/* Top Savings */}
+            {/* Top Capacity */}
             <div className="p-6 bg-zinc-900/50 border border-white/10 rounded-2xl">
-                <h3 className="text-lg font-semibold text-white mb-6">Top 5 - Maior Economia Mensal (R$)</h3>
+                <h3 className="text-lg font-semibold text-white mb-6">Top 5 - Maior Potência (kWp)</h3>
                 <div className="h-[300px] w-full">
                     <ResponsiveContainer width="100%" height="100%">
                         <BarChart
-                            data={topSavings}
+                            data={topCapacity}
                             layout="vertical"
                             margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
                         >
                             <CartesianGrid strokeDasharray="3 3" stroke="#3f3f46" horizontal={false} />
-                            <XAxis type="number" stroke="#a1a1aa" tickFormatter={(value) => `R$${value}`} />
+                            <XAxis type="number" stroke="#a1a1aa" tickFormatter={(value) => `${value}kWp`} />
                             <YAxis dataKey="name" type="category" stroke="#a1a1aa" width={100} />
                             <Tooltip
                                 cursor={{ fill: 'transparent' }}
                                 contentStyle={{ backgroundColor: '#18181b', borderColor: '#3f3f46', color: '#fff' }}
-                                formatter={(value: any) => [`R$ ${Number(value).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`, 'Economia']}
+                                formatter={(value: any) => [`${Number(value).toFixed(2)} kWp`, 'Potência']}
                             />
-                            <Bar dataKey="savings" fill="#10b981" radius={[0, 4, 4, 0]} />
+                            <Bar dataKey="kwp" fill="#10b981" radius={[0, 4, 4, 0]} />
                         </BarChart>
                     </ResponsiveContainer>
                 </div>
