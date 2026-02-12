@@ -39,8 +39,8 @@ export default function RootLayout({
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "DWalt Energia",
-    "url": "https://dwalt.net", // Replace with actual domain
-    "logo": "https://dwalt.net/logo.png", // Replace with actual logo URL
+    "url": "https://www.dwalt.net", // Replace with actual domain
+    "logo": "https://www.dwalt.net/logo.png", // Replace with actual logo URL
     "sameAs": [
       "https://instagram.com/dwaltenergia",
       "https://facebook.com/dwaltenergia",

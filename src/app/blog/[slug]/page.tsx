@@ -69,7 +69,7 @@ export default async function BlogPostPage({ params }: Props) {
             "name": "DWalt Energia",
             "logo": {
                 "@type": "ImageObject",
-                "url": "https://dwalt.net/logo.png"
+                "url": "https://www.dwalt.net/logo.png"
             }
         },
         "datePublished": post.createdAt,
