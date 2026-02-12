@@ -2,6 +2,9 @@ import { MetadataRoute } from 'next';
 
 import axios from 'axios';
 
+import { RONDONIA_CITIES, slugify } from '@/lib/constants/rondonia-cities';
+import { SOLAR_SERVICES } from '@/lib/constants/services';
+
 const BASE_URL = 'https://dwalt.net'; // Use env var in production
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
@@ -21,10 +24,22 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         priority: route === '' ? 1 : 0.8,
     }));
 
+    const landingPages: MetadataRoute.Sitemap = [];
+    for (const service of SOLAR_SERVICES) {
+        for (const city of RONDONIA_CITIES) {
+            landingPages.push({
+                url: `${BASE_URL}/${service.slug}-em-${slugify(city)}`,
+                lastModified: new Date(),
+                changeFrequency: 'weekly' as const,
+                priority: 0.9,
+            });
+        }
+    }
+
     let blogRoutes: MetadataRoute.Sitemap = [];
     try {
         const { data } = await axios.get('https://api.dwalt.net/api/posts');
-        let posts = [];
+        let posts: any[] = [];
         if (Array.isArray(data.data)) {
             posts = data.data;
         } else if (data.data?.data && Array.isArray(data.data.data)) {
@@ -46,7 +61,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         // Fetch projects from API
         // Adjust URL based on environment or hardcode public API
         const { data } = await axios.get('https://api.dwalt.net/api/projects');
-        let projects = [];
+        let projects: any[] = [];
         if (Array.isArray(data.data)) {
             projects = data.data;
         } else if (data.data?.data && Array.isArray(data.data.data)) {
@@ -63,5 +78,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         console.error('Failed to fetch projects for sitemap', error);
     }
 
-    return [...staticRoutes, ...blogRoutes, ...projectRoutes];
+    return [...staticRoutes, ...landingPages, ...blogRoutes, ...projectRoutes];
 }
