@@ -8,6 +8,7 @@ import Link from "next/link";
 import { CheckCircle, MapPin, ArrowRight, AlertTriangle, ShieldCheck, TrendingUp, Sun } from "lucide-react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { TESTIMONIALS } from "@/lib/constants/testimonials";
 
 // Force static generation for all combinations
 export async function generateStaticParams() {
@@ -153,7 +154,25 @@ export default async function LandingPage({ params }: Props) {
             ],
             "opens": "08:00",
             "closes": "18:00"
-        }
+        },
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "5.0",
+            "reviewCount": TESTIMONIALS.length.toString()
+        },
+        "review": TESTIMONIALS.map(t => ({
+            "@type": "Review",
+            "reviewRating": {
+                "@type": "Rating",
+                "ratingValue": t.stars,
+                "bestRating": "5"
+            },
+            "author": {
+                "@type": "Person",
+                "name": t.name
+            },
+            "reviewBody": t.testimonial
+        }))
     };
 
     return (
