@@ -5,7 +5,7 @@ import axios from 'axios';
 import { RONDONIA_CITIES, slugify } from '@/lib/constants/rondonia-cities';
 import { SOLAR_SERVICES } from '@/lib/constants/services';
 
-const BASE_URL = 'https://dwalt.net'; // Use env var in production
+const BASE_URL = 'https://www.dwalt.net'; // Use env var in production
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const staticRoutes = [
