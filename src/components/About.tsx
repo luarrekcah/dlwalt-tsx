@@ -13,7 +13,7 @@ export function About() {
                             <div
                                 className="aspect-[4/3] bg-cover bg-center"
                                 style={{
-                                    backgroundImage: 'url("https://images.unsplash.com/photo-1548613053-220e399532c6?q=80&w=2670&auto=format&fit=crop")',
+                                    backgroundImage: 'url("/oldphoto.png")',
                                 }}
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
