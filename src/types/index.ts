@@ -38,3 +38,28 @@ export interface PaginatedProjects {
     limit: number;
     data: Project[];
 }
+
+export interface Testimonial {
+    id: number;
+    name: string;
+    location: string;
+    avatar: string;
+    testimonial: string;
+    stars: number;
+    url: string;
+}
+
+export interface CreditAnalysis {
+    id: number;
+    status: string;
+    energyBillValue: number;
+    fullName: string;
+    phone: string;
+    cpf: string;
+    email?: string;
+    createdAt: string;
+    monthlyIncome: number;
+    propertyType: string;
+    city: string;
+    state: string;
+}
