@@ -60,12 +60,53 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
     const { service, city } = data;
 
+    const title = `${service.title} em ${city} (RO) | Energia Solar DWalt`;
+    const description = `Economize com ${service.title} em ${city}. ${service.pain.split('?')[0]}? A DWalt oferece projetos de energia solar, instalação e manutenção. Peça um orçamento!`;
+    const keywords = [
+        "energia solar",
+        "placa solar",
+        "painel solar",
+        "economia de energia",
+        "dwalt energia",
+        service.title.toLowerCase(),
+        `energia solar em ${city.toLowerCase()}`,
+        `instalador solar ${city.toLowerCase()}`,
+        "rondonia",
+        "sustentabilidade"
+    ];
+
     return {
-        title: `${service.title} em ${city} | Solução Especializada`,
-        description: `Procurando por ${service.title} em ${city}? ${service.pain} Conheça a solução da DWalt Energia.`,
+        title,
+        description,
+        keywords: keywords.join(", "),
+        alternates: {
+            canonical: `https://dwalt.net/${slug}`,
+        },
         openGraph: {
-            title: `${service.title} em ${city} | DWalt Energia`,
-            description: service.description,
+            title,
+            description,
+            url: `https://dwalt.net/${slug}`,
+            siteName: "DWalt Energia",
+            locale: "pt_BR",
+            type: "website",
+            images: [
+                {
+                    url: service.image,
+                    width: 1200,
+                    height: 630,
+                    alt: `${service.title} em ${city}`,
+                },
+            ],
+        },
+        twitter: {
+            card: "summary_large_image",
+            title,
+            description,
+            images: [service.image],
+        },
+        robots: {
+            index: true,
+            follow: true,
         }
     };
 }
@@ -80,8 +121,47 @@ export default async function LandingPage({ params }: Props) {
 
     const { service, city } = data;
 
+    const description = `Economize com ${service.title} em ${city}. ${service.pain.split('?')[0]}? A DWalt oferece projetos de energia solar, instalação e manutenção.`;
+
+    const jsonLd = {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "DWalt Energia",
+        "image": "https://dwalt.net/logo-branca.svg",
+        "description": description,
+        "telephone": "+5569993695702",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": city,
+            "addressRegion": "RO",
+            "addressCountry": "BR"
+        },
+        "url": `https://dwalt.net/${slug}`,
+        "priceRange": "$$$",
+        "areaServed": {
+            "@type": "City",
+            "name": city
+        },
+        "openingHoursSpecification": {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": [
+                "Monday",
+                "Tuesday",
+                "Wednesday",
+                "Thursday",
+                "Friday"
+            ],
+            "opens": "08:00",
+            "closes": "18:00"
+        }
+    };
+
     return (
         <main className="min-h-screen bg-neutral-950 text-white font-sans selection:bg-green-500/30">
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+            />
             <Header />
 
             {/* HERO SECTION */}
