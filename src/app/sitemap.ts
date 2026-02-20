@@ -27,8 +27,17 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const landingPages: MetadataRoute.Sitemap = [];
     for (const service of SOLAR_SERVICES) {
         for (const city of RONDONIA_CITIES) {
+            const citySlug = slugify(city);
+            // Default version
             landingPages.push({
-                url: `${BASE_URL}/${service.slug}-em-${slugify(city)}`,
+                url: `${BASE_URL}/${service.slug}-em-${citySlug}`,
+                lastModified: new Date(),
+                changeFrequency: 'weekly' as const,
+                priority: 0.9,
+            });
+            // State-specific version
+            landingPages.push({
+                url: `${BASE_URL}/${service.slug}-em-${citySlug}-ro`,
                 lastModified: new Date(),
                 changeFrequency: 'weekly' as const,
                 priority: 0.9,

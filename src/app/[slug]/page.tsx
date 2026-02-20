@@ -16,8 +16,14 @@ export async function generateStaticParams() {
 
     for (const service of SOLAR_SERVICES) {
         for (const city of RONDONIA_CITIES) {
+            const citySlug = slugify(city);
+            // Default version
             params.push({
-                slug: `${service.slug}-em-${slugify(city)}`,
+                slug: `${service.slug}-em-${citySlug}`,
+            });
+            // State-specific version
+            params.push({
+                slug: `${service.slug}-em-${citySlug}-ro`,
             });
         }
     }
@@ -33,10 +39,13 @@ async function getData(slug: string) {
     // Brute-force match to find service and city from slug
     // Format: [service-slug]-em-[city-slug]
 
+    // Normalize slug by removing common state suffixes (e.g., -ro)
+    const normalizedSlug = slug.endsWith("-ro") ? slug.slice(0, -3) : slug;
+
     for (const service of SOLAR_SERVICES) {
-        if (slug.startsWith(service.slug)) {
+        if (normalizedSlug.startsWith(service.slug)) {
             // Potential match, check if the rest is "em-[city-slug]"
-            const suffix = slug.slice(service.slug.length);
+            const suffix = normalizedSlug.slice(service.slug.length);
             if (suffix.startsWith("-em-")) {
                 const citySlug = suffix.replace("-em-", "");
                 const city = RONDONIA_CITIES.find(c => slugify(c) === citySlug);
