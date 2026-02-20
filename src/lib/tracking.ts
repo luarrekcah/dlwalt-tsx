@@ -39,13 +39,13 @@ export const trackPixelEvent = (eventName: string, params: Record<string, any> =
  */
 export const trackLead = (params: Record<string, any> = {}) => {
     trackPixelEvent("Lead", params);
-    trackEvent("generate_lead", params);
+    trackEvent("gerar_lead", params);
 };
 
 /**
  * Tracking for Contact (e.g. clicking WhatsApp or Email)
  */
-export const trackContact = (method: string, params: Record<string, any> = {}) => {
-    trackPixelEvent("Contact", { method, ...params });
-    trackEvent("contact", { method, ...params });
+export const trackContact = (metodo: string, params: Record<string, any> = {}) => {
+    trackPixelEvent("Contact", { metodo, ...params });
+    trackEvent("contato", { metodo, ...params });
 };

@@ -23,12 +23,12 @@ export function WhatsAppWidget() {
         setIsOpen(nextState);
         setShowTooltip(false);
         if (nextState) {
-            trackEvent("whatsapp_widget_open");
+            trackEvent("abrir_widget_whatsapp");
         }
     };
 
     const handleStartConversation = () => {
-        trackContact("whatsapp_widget");
+        trackContact("widget_whatsapp");
         window.open(`https://wa.me/${COMPANY_INFO.contact.whatsapp}`, "_blank");
     };
 

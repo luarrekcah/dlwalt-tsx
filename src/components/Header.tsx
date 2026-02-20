@@ -103,7 +103,7 @@ export function Header() {
                         Contato
                     </Link>
 
-                    <Link href="/#contact" onClick={() => trackEvent("click_cta_header", { location: "desktop" })}>
+                    <Link href="/#contact" onClick={() => trackEvent("clique_cta_cabecalho", { local: "desktop" })}>
                         <Button variant="default" className="font-semibold shadow-lg shadow-primary/20">
                             Solicite um Orçamento
                         </Button>
@@ -206,7 +206,7 @@ export function Header() {
                         Contato
                     </Link>
 
-                    <Link href="/#contact" onClick={() => { trackEvent("click_cta_header", { location: "mobile" }); setMobileMenuOpen(false); }} className="w-full mt-4">
+                    <Link href="/#contact" onClick={() => { trackEvent("clique_cta_cabecalho", { local: "mobile" }); setMobileMenuOpen(false); }} className="w-full mt-4">
                         <Button className="w-full" size="lg">Solicite um Orçamento</Button>
                     </Link>
                 </div>

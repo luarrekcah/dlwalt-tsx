@@ -102,7 +102,7 @@ export function Contact() {
                             className="space-y-5 relative z-10"
                             onSubmit={(e) => {
                                 e.preventDefault();
-                                trackLead({ form: "contact_main" });
+                                trackLead({ formulario: "contato_principal" });
                                 alert("Solicitação enviada com sucesso! (Rastreado)");
                             }}
                         >
