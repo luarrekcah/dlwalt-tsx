@@ -1,6 +1,7 @@
 import { Button } from "./ui/button";
 import { Mail, MapPin, Phone, Send, Instagram, Facebook, Youtube, MessageCircle } from "lucide-react";
 import { COMPANY_INFO } from "@/lib/data/company";
+import { trackContact, trackLead } from "@/lib/tracking";
 
 export function Contact() {
     return (
@@ -35,7 +36,12 @@ export function Contact() {
                                 </div>
                                 <div>
                                     <p className="font-bold text-lg text-white mb-1">Telefone / WhatsApp</p>
-                                    <a href={`https://wa.me/${COMPANY_INFO.contact.whatsapp}`} target="_blank" className="text-gray-400 hover:text-primary transition-colors">
+                                    <a
+                                        href={`https://wa.me/${COMPANY_INFO.contact.whatsapp}`}
+                                        target="_blank"
+                                        className="text-gray-400 hover:text-primary transition-colors"
+                                        onClick={() => trackContact("whatsapp")}
+                                    >
                                         {COMPANY_INFO.contact.phone}
                                     </a>
                                 </div>
@@ -47,7 +53,11 @@ export function Contact() {
                                 </div>
                                 <div>
                                     <p className="font-bold text-lg text-white mb-1">E-mail</p>
-                                    <a href={`mailto:${COMPANY_INFO.contact.email}`} className="text-gray-400 hover:text-primary transition-colors">
+                                    <a
+                                        href={`mailto:${COMPANY_INFO.contact.email}`}
+                                        className="text-gray-400 hover:text-primary transition-colors"
+                                        onClick={() => trackContact("email")}
+                                    >
                                         {COMPANY_INFO.contact.email}
                                     </a>
                                 </div>
@@ -86,7 +96,14 @@ export function Contact() {
                         <h3 className="text-2xl font-bold text-white mb-2">Solicite uma Proposta</h3>
                         <p className="text-gray-400 text-sm mb-8">Preencha o formulário e entraremos em contato em até 24h.</p>
 
-                        <form className="space-y-5 relative z-10">
+                        <form
+                            className="space-y-5 relative z-10"
+                            onSubmit={(e) => {
+                                e.preventDefault();
+                                trackLead({ form: "contact_main" });
+                                alert("Solicitação enviada com sucesso! (Rastreado)");
+                            }}
+                        >
                             <div>
                                 <label htmlFor="name" className="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Nome Completo</label>
                                 <input
@@ -114,7 +131,7 @@ export function Contact() {
                                     placeholder="(99) 99999-9999"
                                 />
                             </div>
-                            <Button size="lg" className="w-full h-14 text-lg font-bold bg-primary text-black hover:bg-primary/90 mt-4 rounded-xl shadow-lg shadow-primary/25">
+                            <Button type="submit" size="lg" className="w-full h-14 text-lg font-bold bg-primary text-black hover:bg-primary/90 mt-4 rounded-xl shadow-lg shadow-primary/25">
                                 Enviar Solicitação
                             </Button>
                             <p className="text-[10px] text-center text-gray-500 mt-4">

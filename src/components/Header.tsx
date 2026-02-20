@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Menu, X, Sun, ChevronDown, Calculator, PiggyBank, Users, MapPin, FileText, Shield, BookOpen, Briefcase } from "lucide-react";
 import { Button } from "./ui/button";
 import { cn } from "@/lib/utils";
+import { trackEvent } from "@/lib/tracking";
 
 const navigation = {
     solucoes: {
@@ -102,7 +103,7 @@ export function Header() {
                         Contato
                     </Link>
 
-                    <Link href="/#contact">
+                    <Link href="/#contact" onClick={() => trackEvent("click_cta_header", { location: "desktop" })}>
                         <Button variant="default" className="font-semibold shadow-lg shadow-primary/20">
                             Solicite um Orçamento
                         </Button>
@@ -205,7 +206,7 @@ export function Header() {
                         Contato
                     </Link>
 
-                    <Link href="/#contact" onClick={() => setMobileMenuOpen(false)} className="w-full mt-4">
+                    <Link href="/#contact" onClick={() => { trackEvent("click_cta_header", { location: "mobile" }); setMobileMenuOpen(false); }} className="w-full mt-4">
                         <Button className="w-full" size="lg">Solicite um Orçamento</Button>
                     </Link>
                 </div>
