@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { MessageCircle, X, Send } from "lucide-react";
 import { Button } from "./ui/button";
 import { COMPANY_INFO } from "@/lib/data/company";
-import { trackContact } from "@/lib/tracking";
+import { trackContact, trackEvent } from "@/lib/tracking";
 
 export function WhatsAppWidget() {
     const [isOpen, setIsOpen] = useState(false);
@@ -19,8 +19,12 @@ export function WhatsAppWidget() {
     }, [isOpen]);
 
     const handleOpenChat = () => {
-        setIsOpen(!isOpen);
+        const nextState = !isOpen;
+        setIsOpen(nextState);
         setShowTooltip(false);
+        if (nextState) {
+            trackEvent("whatsapp_widget_open");
+        }
     };
 
     const handleStartConversation = () => {
