@@ -1,3 +1,5 @@
+"use client";
+
 import { Button } from "./ui/button";
 import { Mail, MapPin, Phone, Send, Instagram, Facebook, Youtube, MessageCircle } from "lucide-react";
 import { COMPANY_INFO } from "@/lib/data/company";

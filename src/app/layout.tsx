@@ -4,6 +4,9 @@ import "./globals.css";
 import { JsonLd } from "@/components/JsonLd";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import Script from "next/script";
+import { Toaster } from 'sonner';
+import { AuthProvider } from "@/providers/auth-provider";
+import { WhatsAppWidget } from "@/components/WhatsAppWidget";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -26,11 +29,6 @@ export const metadata: Metadata = {
   },
 };
 
-// ... imports
-// ... imports
-import { Toaster } from 'sonner';
-import { AuthProvider } from "@/providers/auth-provider";
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -40,8 +38,8 @@ export default function RootLayout({
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "DWalt Energia",
-    "url": "https://www.dwalt.net", // Replace with actual domain
-    "logo": "https://www.dwalt.net/logo.png", // Replace with actual logo URL
+    "url": "https://www.dwalt.net",
+    "logo": "https://www.dwalt.net/logo.png",
     "sameAs": [
       "https://instagram.com/dwaltenergia",
       "https://facebook.com/dwaltenergia",
@@ -105,6 +103,7 @@ export default function RootLayout({
           <SmoothScroll />
           <JsonLd data={jsonLd} />
           {children}
+          <WhatsAppWidget />
           <Toaster richColors position="top-center" closeButton />
         </AuthProvider>
       </body>
