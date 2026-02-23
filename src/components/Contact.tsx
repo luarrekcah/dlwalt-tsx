@@ -3,7 +3,7 @@
 import { Button } from "./ui/button";
 import { Mail, MapPin, Phone, Send, Instagram, Facebook, Youtube, MessageCircle } from "lucide-react";
 import { COMPANY_INFO } from "@/lib/data/company";
-import { trackContact, trackLead } from "@/lib/tracking";
+import { trackContact } from "@/lib/tracking";
 
 export function Contact() {
     return (
@@ -102,7 +102,7 @@ export function Contact() {
                             className="space-y-5 relative z-10"
                             onSubmit={(e) => {
                                 e.preventDefault();
-                                trackLead({ formulario: "contato_principal" });
+                                trackContact("formulario_contato");
                                 alert("Solicitação enviada com sucesso! (Rastreado)");
                             }}
                         >

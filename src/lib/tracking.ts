@@ -2,14 +2,6 @@
  * Centralized tracking utility for Google Tag Manager (gtag) and Facebook Pixel (fbq)
  */
 
-type TrackingEvent = {
-    action: string;
-    category?: string;
-    label?: string;
-    value?: number;
-    [key: string]: any;
-};
-
 /**
  * Sends a custom event to Google Ads/Analytics and Facebook Pixel
  */
@@ -35,15 +27,7 @@ export const trackPixelEvent = (eventName: string, params: Record<string, any> =
 };
 
 /**
- * Tracking for Lead generation (e.g. form submission)
- */
-export const trackLead = (params: Record<string, any> = {}) => {
-    trackPixelEvent("Lead", params);
-    trackEvent("gerar_lead", params);
-};
-
-/**
- * Tracking for Contact (e.g. clicking WhatsApp or Email)
+ * Tracking for Contact (e.g. clicking WhatsApp, Email or Form Submission)
  */
 export const trackContact = (metodo: string, params: Record<string, any> = {}) => {
     trackPixelEvent("Contact", { metodo, ...params });

@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Sun, Zap, ArrowRight, Wallet, MapPin, BarChart3, TrendingUp, CheckCircle2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { irradiationData, ENERGY_PRICE, ENERGY_INFLATION } from '@/lib/solar-constants';
+import { trackContact } from '@/lib/tracking';
 
 export default function SolarCalculatorPage() {
     const [cityUf, setCityUf] = useState("");
@@ -140,6 +141,8 @@ export default function SolarCalculatorPage() {
 
     const handleWhatsAppSubmit = () => {
         if (!result) return;
+
+        trackContact("calculadora_whatsapp");
 
         const message = result.fullText;
         const encodedMessage = encodeURIComponent(message);
