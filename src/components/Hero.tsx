@@ -5,7 +5,6 @@ import { Button } from "./ui/button";
 import { ArrowRight, Sun } from "lucide-react";
 import { useRef } from "react";
 import Link from "next/link";
-import { trackEvent } from "@/lib/tracking";
 
 export function Hero() {
     const ref = useRef(null);
@@ -81,13 +80,13 @@ export function Hero() {
                     transition={{ duration: 0.8, delay: 0.8 }}
                     className="mt-10 flex flex-col gap-4 sm:flex-row"
                 >
-                    <Link href="/calculadora-solar" onClick={() => trackEvent("clique_hero_simulador")}>
+                    <Link href="/calculadora-solar">
                         <Button size="lg" className="text-lg h-14 px-8 rounded-full">
                             Simular Economia
                             <ArrowRight className="ml-2 h-5 w-5" />
                         </Button>
                     </Link>
-                    <Link href="/projetos" onClick={() => trackEvent("clique_hero_projetos")}>
+                    <Link href="/projetos">
                         <Button
                             variant="outline"
                             size="lg"
