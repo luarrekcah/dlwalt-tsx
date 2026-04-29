@@ -124,7 +124,7 @@ export default function SolarCalculatorPage() {
         // Número de painéis (estimativa 550W)
         const panelsVal = Math.ceil(systemSizeVal / 0.55);
 
-        const simulationText = `Olá, fiz uma simulação no site.\n\n*Simulação realizada:*\n- Cidade/UF: ${cityUf}\n- Consumo mensal: ${kwhValue} kWh\n- Sistema Estimado: ${systemSizeVal.toFixed(2)} kWp\n- Investimento aprox.: ${formattedInvestment}\n- Economia Mensal: ${formattedMonthlySavings}\n- Retorno (Payback): ${formattedPayback}\n- Economia Total (25 anos): ${formattedTotalSavings}`;
+        const simulationText = `Olá, fiz uma simulação no site.\n\n*Simulação realizada:*\n- Cidade/UF: ${cityUf}\n- Consumo mensal: ${kwhValue} kWh\n- Sistema Estimado: ${systemSizeVal.toFixed(2)} kWp\n- Economia Mensal: ${formattedMonthlySavings}\n- Retorno (Payback): ${formattedPayback}\n- Economia Total (25 anos): ${formattedTotalSavings}`;
 
         setResult({
             irradiation: irradiation.toFixed(2),
