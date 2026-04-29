@@ -243,10 +243,13 @@ export default function SolarCalculatorPage() {
                                                 {result.totalSavings25Years}
                                             </p>
                                             <div className="flex flex-wrap gap-4">
+                                                {/**
+                                                 * 
                                                 <div className="bg-black/30 backdrop-blur-sm px-4 py-2 rounded-lg border border-white/10">
                                                     <p className="text-xs text-gray-400 uppercase">Investimento</p>
                                                     <p className="font-bold text-white">{result.investment}</p>
                                                 </div>
+                                                 */}
                                                 <div className="bg-black/30 backdrop-blur-sm px-4 py-2 rounded-lg border border-white/10">
                                                     <p className="text-xs text-gray-400 uppercase">Payback</p>
                                                     <p className="font-bold text-green-400">{result.paybackTime}</p>
