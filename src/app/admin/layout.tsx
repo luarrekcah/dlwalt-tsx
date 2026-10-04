@@ -4,7 +4,7 @@ import { useAuth } from "@/providers/auth-provider";
 import { useRouter, usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { LayoutDashboard, FileText, Users, LogOut, Menu, X, Zap, MessageSquare } from "lucide-react";
+import { LayoutDashboard, FileText, Users, LogOut, Menu, X, Zap, MessageSquare, Code } from "lucide-react";
 
 export default function AdminLayout({
     children,
@@ -109,6 +109,16 @@ export default function AdminLayout({
                 >
                     <Users className="w-5 h-5" />
                     Usuários
+                </Link>
+                <Link
+                    href="/admin/scripts"
+                    className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-colors ${pathname.startsWith("/admin/scripts")
+                        ? "bg-green-600/10 text-green-400 border border-green-600/20"
+                        : "hover:bg-white/5 text-gray-400 hover:text-white"
+                        }`}
+                >
+                    <Code className="w-5 h-5" />
+                    Scripts
                 </Link>
             </nav>
 

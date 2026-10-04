@@ -29,11 +29,28 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  let scripts = [];
+  try {
+    const res = await fetch(`${process.env.NODE_ENV === "development" ? "http://localhost:3000/api" : "https://api.dwalt.net/api"}/scripts`, {
+      next: { revalidate: 60 } // Revalidate every 60 seconds
+    });
+    if (res.ok) {
+      const data = await res.json();
+      scripts = data.filter((s: any) => s.isActive);
+    }
+  } catch (error) {
+    console.error("Failed to fetch scripts:", error);
+  }
+
+  const headScripts = scripts.filter((s: any) => s.position === "head");
+  const bodyStartScripts = scripts.filter((s: any) => s.position === "body_start");
+  const bodyEndScripts = scripts.filter((s: any) => s.position === "body_end");
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Organization",
@@ -59,6 +76,22 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground`}
       >
+        {headScripts.map((script: any) => (
+          <Script
+            key={`script-head-${script.id}`}
+            id={`script-head-${script.id}`}
+            strategy="afterInteractive"
+            dangerouslySetInnerHTML={{ __html: script.code }}
+          />
+        ))}
+        {bodyStartScripts.map((script: any) => (
+          <Script
+            key={`script-body-start-${script.id}`}
+            id={`script-body-start-${script.id}`}
+            strategy="afterInteractive"
+            dangerouslySetInnerHTML={{ __html: script.code }}
+          />
+        ))}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=AW-10800412438"
           strategy="afterInteractive"
@@ -106,6 +139,14 @@ export default function RootLayout({
           <WhatsAppWidget />
           <Toaster richColors position="top-center" closeButton />
         </AuthProvider>
+        {bodyEndScripts.map((script: any) => (
+          <Script
+            key={`script-body-end-${script.id}`}
+            id={`script-body-end-${script.id}`}
+            strategy="afterInteractive"
+            dangerouslySetInnerHTML={{ __html: script.code }}
+          />
+        ))}
       </body>
     </html>
   );
