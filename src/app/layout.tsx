@@ -3,10 +3,10 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { JsonLd } from "@/components/JsonLd";
 import { SmoothScroll } from "@/components/SmoothScroll";
-import Script from "next/script";
 import { Toaster } from 'sonner';
 import { AuthProvider } from "@/providers/auth-provider";
 import { WhatsAppWidget } from "@/components/WhatsAppWidget";
+import { ScriptRenderer } from "@/components/ScriptRenderer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -34,22 +34,31 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  let scripts = [];
+  let scripts: any[] = [];
+  const primaryApi = process.env.NODE_ENV === "development" ? "http://localhost:3000/api" : "https://api.dwalt.net/api";
+  const fallbackApi = "https://api.dwalt.net/api";
+
   try {
-    const res = await fetch(`${process.env.NODE_ENV === "development" ? "http://localhost:3000/api" : "https://api.dwalt.net/api"}/scripts`, {
-      next: { revalidate: 60 } // Revalidate every 60 seconds
-    });
-    if (res.ok) {
+    let res = await fetch(`${primaryApi}/scripts`, {
+      next: { revalidate: 60 }
+    }).catch(() => null);
+
+    // If local dev server returned error or is offline, fallback to production api
+    if (!res || !res.ok) {
+      res = await fetch(`${fallbackApi}/scripts`, {
+        next: { revalidate: 60 }
+      }).catch(() => null);
+    }
+
+    if (res && res.ok) {
       const data = await res.json();
-      scripts = data.filter((s: any) => s.isActive);
+      if (Array.isArray(data)) {
+        scripts = data.filter((s: any) => s.isActive);
+      }
     }
   } catch (error) {
     console.error("Failed to fetch scripts:", error);
   }
-
-  const headScripts = scripts.filter((s: any) => s.position === "head");
-  const bodyStartScripts = scripts.filter((s: any) => s.position === "body_start");
-  const bodyEndScripts = scripts.filter((s: any) => s.position === "body_end");
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -76,20 +85,11 @@ export default async function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground`}
       >
-        {headScripts.map((script: any) => (
-          <Script
-            key={`script-head-${script.id}`}
-            id={`script-head-${script.id}`}
-            strategy="afterInteractive"
-            dangerouslySetInnerHTML={{ __html: script.code }}
-          />
-        ))}
-        {bodyStartScripts.map((script: any) => (
-          <Script
-            key={`script-body-start-${script.id}`}
-            id={`script-body-start-${script.id}`}
-            strategy="afterInteractive"
-            dangerouslySetInnerHTML={{ __html: script.code }}
+        {scripts.map((script: any) => (
+          <ScriptRenderer
+            key={`script-${script.id}`}
+            id={script.id}
+            code={script.code}
           />
         ))}
 
@@ -100,15 +100,8 @@ export default async function RootLayout({
           <WhatsAppWidget />
           <Toaster richColors position="top-center" closeButton />
         </AuthProvider>
-        {bodyEndScripts.map((script: any) => (
-          <Script
-            key={`script-body-end-${script.id}`}
-            id={`script-body-end-${script.id}`}
-            strategy="afterInteractive"
-            dangerouslySetInnerHTML={{ __html: script.code }}
-          />
-        ))}
       </body>
     </html>
   );
 }
+
