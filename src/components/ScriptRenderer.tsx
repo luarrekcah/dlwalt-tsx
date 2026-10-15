@@ -5,13 +5,14 @@ import { useEffect } from "react";
 interface ScriptRendererProps {
   id: string | number;
   code: string;
+  position?: string;
 }
 
 /**
  * ScriptRenderer handles both raw HTML snippets (containing <script>, <noscript>, etc.)
  * and pure JavaScript snippets, properly executing script tags injected into the DOM.
  */
-export function ScriptRenderer({ id, code }: ScriptRendererProps) {
+export function ScriptRenderer({ id, code, position = "head" }: ScriptRendererProps) {
   useEffect(() => {
     if (!code || typeof window === "undefined") return;
 
@@ -50,7 +51,15 @@ export function ScriptRenderer({ id, code }: ScriptRendererProps) {
       }
     }
 
-    document.head.appendChild(container);
+    if (position === "body_start" && document.body) {
+      document.body.insertBefore(container, document.body.firstChild);
+    } else if (position === "body_end" && document.body) {
+      document.body.appendChild(container);
+    } else if (document.head) {
+      document.head.appendChild(container);
+    } else if (document.body) {
+      document.body.appendChild(container);
+    }
 
     return () => {
       const el = document.getElementById(containerId);
@@ -58,7 +67,7 @@ export function ScriptRenderer({ id, code }: ScriptRendererProps) {
         el.remove();
       }
     };
-  }, [id, code]);
+  }, [id, code, position]);
 
   return null;
 }

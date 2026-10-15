@@ -18,6 +18,18 @@ export const trackEvent = (eventName: string, params: Record<string, any> = {}) 
 };
 
 /**
+ * Sends a Google Ads conversion event (e.g. send_to: 'AW-10800412438/n1bVCJ3mm54dEJbuhJ4o')
+ */
+export const trackGoogleConversion = (sendTo: string, params: Record<string, any> = {}) => {
+    if (typeof window !== "undefined" && (window as any).gtag) {
+        (window as any).gtag("event", "conversion", {
+            send_to: sendTo,
+            ...params
+        });
+    }
+};
+
+/**
  * Special handling for Facebook Standard Events
  */
 export const trackPixelEvent = (eventName: string, params: Record<string, any> = {}) => {
@@ -33,3 +45,4 @@ export const trackContact = (metodo: string, params: Record<string, any> = {}) =
     trackPixelEvent("Contact", { metodo, ...params });
     trackEvent("contato", { metodo, ...params });
 };
+

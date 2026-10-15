@@ -80,16 +80,30 @@ export default async function RootLayout({
     }
   };
 
+  const headScripts = scripts.filter((s: any) => !s.position || s.position === "head");
+  const bodyScripts = scripts.filter((s: any) => s.position === "body_start" || s.position === "body_end");
+
   return (
     <html lang="pt-BR" className="dark">
+      <head>
+        {headScripts.map((script: any) => (
+          <ScriptRenderer
+            key={`script-head-${script.id}`}
+            id={script.id}
+            code={script.code}
+            position="head"
+          />
+        ))}
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground`}
       >
-        {scripts.map((script: any) => (
+        {bodyScripts.map((script: any) => (
           <ScriptRenderer
-            key={`script-${script.id}`}
+            key={`script-body-${script.id}`}
             id={script.id}
             code={script.code}
+            position={script.position}
           />
         ))}
 
@@ -104,4 +118,5 @@ export default async function RootLayout({
     </html>
   );
 }
+
 

@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { Button } from '@/components/ui/button';
@@ -9,6 +9,7 @@ import { InputMask } from "@react-input/mask";
 import { InputNumberFormat, unformat } from "@react-input/number-format";
 import api from "@/lib/api";
 import { toast } from "sonner";
+import { trackGoogleConversion, trackEvent, trackContact } from '@/lib/tracking';
 
 // Validation Helper
 function validarCPF(cpf: string) {
@@ -32,6 +33,13 @@ export default function FinancingSimulatorPage() {
     const [monthlyIncome, setMonthlyIncome] = useState("0");
     const [downPaymentValue, setDownPaymentValue] = useState("0");
     const [energyBillValue, setEnergyBillValue] = useState("0");
+
+    // Trigger conversion event for Page View of Financing Simulator on Google Ads
+    useEffect(() => {
+        trackGoogleConversion('AW-10800412438/n1bVCJ3mm54dEJbuhJ4o');
+        trackEvent('page_view_simulacao_financiamento');
+    }, []);
+
 
     // Address State
     const [address, setAddress] = useState({
@@ -92,6 +100,8 @@ export default function FinancingSimulatorPage() {
             // Simulate API call or use real API
             const response = await api.post("/financial/credit-analysis", data);
 
+            trackContact('financiamento_proposta');
+
             if (response.data.success) {
                 toast.success("Proposta enviada com sucesso! Aguarde o contato.");
                 form.reset();
@@ -105,6 +115,7 @@ export default function FinancingSimulatorPage() {
             }
         } catch (error) {
             console.error(error);
+            trackContact('financiamento_proposta');
             // toast.error("Erro ao enviar dados. Verifique sua conexão.");
             // START DEMO MODE: Since API might not be real, show success for UX
             toast.success("Solicitação recebida com sucesso! (Modo Demo)");
